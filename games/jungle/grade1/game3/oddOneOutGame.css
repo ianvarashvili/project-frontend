@@ -1,0 +1,87 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+}
+
+.games-container {
+  position: relative;
+  border: 2px solid var(--color-text);
+  padding: 2rem;
+  box-shadow: 4px 4px 0px 0px rgba(39, 38, 36, 1);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 560px;
+  background-color: var(--color-white);
+}
+
+.heading-1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* ── 2×2 shape grid ── */
+.shapes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ── Individual card ── */
+.shape-card {
+  background-color: var(--color-peach);
+  border: 2px solid var(--color-text);
+  border-radius: 25px 15px 35px 20px / 20px 30px 15px 25px;
+  box-shadow: 4px 4px 0px 0px var(--color-text);
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  transition: transform 150ms, box-shadow 150ms, background-color 150ms;
+}
+
+.shape-card:hover {
+  transform: translateY(-3px);
+  background-color: var(--color-pastel-orange);
+}
+
+.shape-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--color-text);
+}
+
+/* ── SVG inside card ── */
+.shape-svg {
+  width: 100%;
+  height: 100%;
+  max-width: 130px;
+  max-height: 130px;
+  stroke: var(--color-text);
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── Correct / wrong states ── */
+.card-correct {
+  background-color: var(--color-pastel-green) !important;
+  border-color: var(--color-green) !important;
+  box-shadow: 4px 4px 0px 0px var(--color-green) !important;
+}
+
+.card-wrong {
+  background-color: #fde8e8 !important;
+  border-color: var(--color-red) !important;
+  animation: card-shake 0.35s ease;
+}
+
+@keyframes card-shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-6px); }
+  75%       { transform: translateX(6px); }
+}

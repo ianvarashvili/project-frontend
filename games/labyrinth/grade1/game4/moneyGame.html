@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>დათვალე ფიგურები!</title>
+    <link rel="stylesheet" href="../../../../style/general.css" />
+    <link rel="stylesheet" href="../../../../style/games-general.css" />
+    <link rel="stylesheet" href="moneyGame.css" />
+  </head>
+
+  <body>
+    <svg style="display: none">
+      <defs>
+        <symbol
+          id="icon-time"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </symbol>
+        <symbol
+          id="icon-check"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </symbol>
+        <symbol id="result-star" viewBox="0 0 24 24">
+          <polygon
+            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+          ></polygon>
+        </symbol>
+      </defs>
+    </svg>
+    <header></header>
+    <main>
+      <div class="games-container chalk-txt">
+        <h1 class="top-instruction orange-txt">
+          შეაგროვე სათამაშოსთვის საჭირო თანხა!
+        </h1>
+        <div class="game-hud">
+          <div class="hud-stat">
+            <svg>
+              <use href="#icon-time"></use>
+            </svg>
+            <span id="timer-display">60 წმ</span>
+          </div>
+
+          <div class="hud-stat">
+            <svg>
+              <use href="#icon-check"></use>
+            </svg>
+            <span class="reg-txt"
+              >სწორი: <span id="score-display">0</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="info-panel">
+          <div class="toy-side">
+            <div id="toy-visual-container"></div>
+            <div class="toy-name" id="toy-title">სათამაშო</div>
+            <div class="toy-price-badge" id="toy-price">0 ლარი</div>
+          </div>
+          <div class="counter-side">
+            <div class="counter-label">შენი გადახდილი თანხა:</div>
+            <div class="current-paid"><span id="user-total">0</span> ₾</div>
+          </div>
+        </div>
+        <div class="money-selection">
+          <div class="money-wrapper" onclick="addMoney(1)">
+            <div class="coin">1 ₾</div>
+            <div class="money-label">1 ლარი</div>
+          </div>
+
+          <div class="money-wrapper" onclick="addMoney(2)">
+            <div class="coin coin-2">2 ₾</div>
+            <div class="money-label">2 ლარი</div>
+          </div>
+
+          <div class="money-wrapper" onclick="addMoney(5)">
+            <div class="bill bill-5">5 ₾</div>
+            <div class="money-label">5 ლარი</div>
+          </div>
+
+          <div class="money-wrapper" onclick="addMoney(10)">
+            <div class="bill bill-10">10 ₾</div>
+            <div class="money-label">10 ლარი</div>
+          </div>
+        </div>
+
+        <div class="controls-row">
+          <div
+            class="button sketchy-button--lg btn-clear"
+            onclick="resetCurrAmount()"
+          >
+            გასუფთავება
+          </div>
+          <div
+            class="button sketchy-button--lg orange-bg white-txt btn-pay"
+            onclick="checkAns()"
+          >
+            გადახდა
+          </div>
+        </div>
+        <h2 class="feedback-toast" id="feedback-msg">
+          დააჭირე შენს საფულეში ფულს გადასახდელად
+        </h2>
+      </div>
+    </main>
+    <div id="start-overlay">
+      <div class="result-box">
+        <h2 class="chalk-txt">იყიდე სათამაშო!</h2>
+        <p class="reg-txt grey-txt overlay-subtitle">
+          გაქვს 30 წამი - შეკრიბე თანხა!
+        </p>
+        <div
+          class="button sketchy-button--lg orange-bg push-down-btn chalk-txt"
+          onclick="handleStartGame()"
+        >
+          დაწყება
+        </div>
+      </div>
+    </div>
+
+    <div id="result-overlay">
+      <div class="result-box">
+        <h2 class="chalk-txt">დრო ამოიწურა!</h2>
+        <p id="result-count" class="reg-txt"></p>
+        <p id="result-improved" class="reg-txt"></p>
+        <h3 class="chalk-txt heading-3">
+          ქულა: <strong id="result-score" class="orange-txt"></strong>
+        </h3>
+
+        <div class="result-star-container">
+          <svg class="result-star">
+            <use href="#result-star"></use>
+          </svg>
+          <svg class="result-star">
+            <use href="#result-star"></use>
+          </svg>
+          <svg class="result-star">
+            <use href="#result-star"></use>
+          </svg>
+        </div>
+
+        <div class="rep-map-btns">
+          <button
+            id="btn-replay"
+            class="button sketchy-button--md push-down-btn chalk-txt"
+          >
+            თავიდან დაწყება
+          </button>
+          <button
+            id="btn-map"
+            class="button sketchy-button--md push-down-btn chalk-txt orange-bg white-txt"
+          >
+            კუნძულზე დაბრუნება
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="loading-overlay">
+      <div class="result-box chalk-txt">შედეგი იგზავნება...</div>
+    </div>
+    <footer></footer>
+    <script src="moneyGame.js"></script>
+
+    <script src="../../../../js/config.js"></script>
+    <script src="../../../../js/auth.js"></script>
+    <script src="../../../../js/game-engine.js"></script>
+    <script src="../../../../js/game-submit.js"></script>
+  </body>
+</html>

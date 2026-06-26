@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>აირჩიე სწორი ფიგურა</title>
+    <link rel="stylesheet" href="../../../../style/general.css" />
+    <link rel="stylesheet" href="../../../../style/games-general.css" />
+    <link rel="stylesheet" href="shapeGame.css" />
+  </head>
+
+  <body>
+    <defs>
+      <svg style="display: none">
+        <defs>
+          <symbol class="ui-shape-icon" id="icon-circle" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" class="fill-cream" />
+          </symbol>
+          <symbol
+            class="ui-shape-icon"
+            id="icon-triangle"
+            viewBox="0 0 100 100"
+          >
+            <polygon points="50,10 90,85 10,85" class="fill-cream" />
+          </symbol>
+          <symbol class="ui-shape-icon" id="icon-square" viewBox="0 0 100 100">
+            <rect
+              x="15"
+              y="15"
+              width="70"
+              height="70"
+              class="fill-cream"
+              rx="8"
+            />
+          </symbol>
+        </defs>
+      </svg>
+    </defs>
+
+    <header></header>
+    <main>
+      <div class="games-container chalk-txt">
+        <div class="game-hud">
+          <div class="hud-stat">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span id="timer-display">60 წმ</span>
+          </div>
+          <div class="hud-stat">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span class="reg-txt"
+              >სწორი: <span id="score-display">0</span></span
+            >
+          </div>
+        </div>
+
+        <h1 class="heading-1" id="feedback-msg">
+          აირჩიე სწორი <span class="orange-txt">ფორმა!</span>
+        </h1>
+        <div class="shape-game cards" id="item-card">
+          <div class="prompt-txt" id="prompt-label">იტვირთება...</div>
+          <div id="obj-visual-cont"></div>
+        </div>
+
+        <div class="opts-cont" id="options-cont">
+          <div class="shape-opt" onclick="checkAns('circle')">
+            <svg class="ui-shape-icon">
+              <use href="#icon-circle"></use>
+            </svg>
+            <span class="ui-txt" style="font-weight: bold">წრე</span>
+          </div>
+
+          <div class="shape-opt" onclick="checkAns('triangle')">
+            <svg class="ui-shape-icon">
+              <use href="#icon-triangle"></use>
+            </svg>
+            <span class="ui-txt" style="font-weight: bold">სამკუთხედი</span>
+          </div>
+
+          <div class="shape-opt" onclick="checkAns('square')">
+            <svg class="ui-shape-icon">
+              <use href="#icon-square"></use>
+            </svg>
+            <span class="ui-txt" style="font-weight: bold">კვადრატი</span>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div id="start-overlay">
+      <div class="result-box">
+        <h2 class="chalk-txt">სად არის ვარსკვლავი?</h2>
+        <p class="reg-txt grey-txt" style="margin: 16px 0 24px 0">
+          გაქვს 30 წამი — იპოვე ვარსკვლავი!
+        </p>
+        <div
+          class="button sketchy-button--lg orange-bg push-down-btn chalk-txt"
+          onclick="handleStartGame()"
+          style="margin: 0 auto; width: 80%"
+        >
+          დაწყება
+        </div>
+      </div>
+    </div>
+
+    <div id="result-overlay">
+      <div class="result-box">
+        <h2 class="chalk-txt">დრო ამოიწურა!</h2>
+        <p id="result-count" class="reg-txt" style="margin-top: 8px"></p>
+        <p id="result-improved" class="reg-txt"></p>
+
+        <h3 class="chalk-txt" style="margin-top: 16px; font-size: 1.5rem">
+          ქულა: <strong id="result-score" class="orange-txt"></strong>
+        </h3>
+
+        <div class="result-star-container">
+          <svg class="result-star" viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            ></polygon>
+          </svg>
+          <svg class="result-star" viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            ></polygon>
+          </svg>
+          <svg class="result-star" viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            ></polygon>
+          </svg>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 24px;
+          "
+        >
+          <button
+            id="btn-replay"
+            class="button sketchy-button--md push-down-btn chalk-txt"
+          >
+            თავიდან დაწყება
+          </button>
+          <button
+            id="btn-map"
+            class="button sketchy-button--md orange-bg push-down-btn chalk-txt"
+          >
+            კუნძულზე დაბრუნება
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="loading-overlay">
+      <div class="result-box chalk-txt">შედეგი იგზავნება...</div>
+    </div>
+
+    <script src="../../../../js/config.js"></script>
+    <script src="../../../../js/auth.js"></script>
+    <script src="../../../../js/game-engine.js"></script>
+    <script src="../../../../js/game-submit.js"></script>
+
+    <script src="shapeGame.js"></script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>არითმეტიკული ფუტკარი</title>
+    <link rel="stylesheet" href="../../../../style/general.css" />
+    <link rel="stylesheet" href="../../../../style/games-general.css" />
+    <link rel="stylesheet" href="BeeGame.css" />
+  </head>
+
+  <body>
+    <header></header>
+    <main>
+      <div class="games-container chalk-txt">
+        <div class="game-hud">
+          <div class="hud-stat">
+            <svg>
+              <use href="../../../../assets/game_assets.svg#icon-time"></use>
+            </svg>
+            <span id="timer-display">60 წმ</span>
+          </div>
+
+          <div class="hud-stat">
+            <svg>
+              <use href="../../../../assets/game_assets.svg#icon-check"></use>
+            </svg>
+            <span class="reg-txt"
+              >სწორი: <span id="score-display">0</span>
+            </span>
+          </div>
+        </div>
+
+        <h1>ფუტკარის დახმარება სჭირდება!</h1>
+        <h2 id="feedback-msg">
+          დააჭირე <span class="orange-txt">ფუტკარს</span>, შემდეგ კი
+          <span class="orange-txt">ყვავილს</span>, რომელიც მიიღება
+          <span class="orange-txt">გამოსახულების</span> შედეგად
+        </h2>
+        <div class="top-zone">
+          <div class="result-board" id="result-board"></div>
+          <div class="bee" id="bee" onclick="toggleBee()">
+            <svg>
+              <use
+                href="../../../../assets/game_assets.svg#beeSvg-element"
+              ></use>
+            </svg>
+          </div>
+        </div>
+
+        <div class="flowers-cont">
+          <div class="flower" id="flower-0" onclick="selectFlower(0, this)">
+            <svg>
+              <use
+                href="../../../../assets/game_assets.svg#flower-1-element"
+              ></use>
+            </svg>
+            <div class="flower-center" id="ans-0"></div>
+          </div>
+          <div class="flower" id="flower-1" onclick="selectFlower(1, this)">
+            <svg>
+              <use
+                href="../../../../assets/game_assets.svg#flower-2-element"
+              ></use>
+            </svg>
+            <div class="flower-center" id="ans-1"></div>
+          </div>
+          <div class="flower" id="flower-2" onclick="selectFlower(2, this)">
+            <svg>
+              <use
+                href="../../../../assets/game_assets.svg#flower-3-element"
+              ></use>
+            </svg>
+            <div class="flower-center" id="ans-2"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="start-overlay">
+      <div class="result-box">
+        <h2 class="chalk-txt">გაუმასპინძლდი მეგობარს!</h2>
+        <p class="reg-txt grey-txt overlay-subtitle">
+          გაქვს 30 წამი - გაანაწილე სწორად!
+        </p>
+        <div
+          class="button sketchy-button--lg orange-bg push-down-btn chalk-txt"
+          onclick="handleStartGame()"
+        >
+          დაწყება
+        </div>
+      </div>
+    </div>
+
+    <div id="result-overlay">
+      <div class="result-box">
+        <h2 class="chalk-txt">დრო ამოიწურა!</h2>
+        <p id="result-count" class="reg-txt"></p>
+        <p id="result-improved" class="reg-txt"></p>
+        <h3 class="chalk-txt heading-3">
+          ქულა: <strong id="result-score" class="orange-txt"></strong>
+        </h3>
+
+        <div class="result-star-container">
+          <svg class="result-star">
+            <use href="../../../../assets/game_assets.svg#result-star"></use>
+          </svg>
+          <svg class="result-star">
+            <use href="../../../../assets/game_assets.svg#result-star"></use>
+          </svg>
+          <svg class="result-star">
+            <use href="../../../../assets/game_assets.svg#result-star"></use>
+          </svg>
+        </div>
+
+        <div class="rep-map-btns">
+          <button
+            id="btn-replay"
+            class="button sketchy-button--md push-down-btn chalk-txt"
+          >
+            თავიდან დაწყება
+          </button>
+          <button
+            id="btn-map"
+            class="button sketchy-button--md push-down-btn chalk-txt orange-bg white-txt"
+          >
+            კუნძულზე დაბრუნება
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="loading-overlay">
+      <div class="result-box chalk-txt">შედეგი იგზავნება...</div>
+    </div>
+
+    <script src="../../../../js/config.js"></script>
+    <script src="../../../../js/auth.js"></script>
+    <script src="../../../../js/game-engine.js"></script>
+    <script src="../../../../js/game-submit.js"></script>
+    <script src="BeeGame.js"></script>
+  </body>
+</html>

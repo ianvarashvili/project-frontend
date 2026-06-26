@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ლიდერბორდი</title>
+  <link rel="icon" type="image/png" href="../assets/fox-logo.png" />
+  <link rel="stylesheet" href="../style/general.css" />
+  <link rel="stylesheet" href="../style/home.css" />
+  <link rel="stylesheet" href="../style/leaderboard.css" />
+  <link rel="stylesheet" href="../style/login.css" />
+</head>
+
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+    <defs>
+      <symbol id="icon-trophy" viewBox="0 0 24 24">
+        <path d="M8 21h8M12 17v4M7 3H5C4 3 3 4 3 5v2a4 4 0 003 4M17 3h2c1 0 2 1 2 2v2a4 4 0 01-3 4" fill="none"
+          stroke="#B23A14" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M8 3h8v7a4 4 0 01-8 0V3z" fill="none" stroke="#B23A14" stroke-width="1" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </symbol>
+      <symbol id="icon-back-arrow" viewBox="0 0 24 24">
+        <path d="M19 12H5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </symbol>
+      <symbol id="icon-profile" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round" />
+      </symbol>
+      <symbol id="icon-leaderboard" viewBox="0 0 24 24">
+        <path d="M18 20V10M12 20V4M6 20v-6" fill="none" stroke="#B23A14" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </symbol>
+      <symbol id="icon-place-first" viewBox="0 0 24 24">
+        <path d="M2 19h20M2 19l3-10 4.5 5L12 5l2.5 9L19 9l3 10" fill="none" stroke="#fab005" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round" />
+      </symbol>
+      <symbol id="icon-star" viewBox="0 0 24 24">
+        <path d="M12 2.5l2.7 5.5 6.1.9-4.4 4.2 1 6.1-5.4-2.8-5.4 2.8 1-6.1-4.4-4.2 6.1-.9L12 2.5z" fill="none"
+          stroke="#fab005" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+      </symbol>
+      <symbol id="icon-place-second" viewBox="0 0 24 24">
+        <circle cx="12" cy="14" r="8" stroke="#9ca3af" stroke-width="2.5" fill="none" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M8 6l-2-4h12l-2 4" fill="none" stroke="#9ca3af" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </symbol>
+      <symbol id="icon-place-third" viewBox="0 0 24 24">
+        <circle cx="12" cy="14" r="8" stroke="#c4835a" stroke-width="2.5" fill="none" stroke-linecap="round"
+          stroke-linejoin="round" />
+        <path d="M8 6l-2-4h12l-2 4" fill="none" stroke="#c4835a" stroke-width="2.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </symbol>
+    </defs>
+  </svg>
+  <header class="header-container">
+    <div class="flexrow">
+      <a href="home.html"><img src="../assets/fox-logo.png" alt="our website logo of a fox holding a pen"
+          class="logo" /></a>
+      <p class="chalk-txt">
+        <span class="orange-txt h-title">მელიას</span> <br />
+        მათემატიკა
+      </p>
+    </div>
+    <div class="flexrow">
+      <a href="home.html" class="anchor-el">
+        <div class="reg-txt button sketchy-button--sm hover-color-change">
+          <svg class="icon">
+            <use href="#icon-back-arrow"></use>
+          </svg>
+          <span> მთავარი</span>
+        </div>
+      </a>
+      <a href="profile.html" class="sign-up anchor-el">
+        <div class="reg-txt sign-up button sketchy-button--sm push-down-btn">
+          <svg class="icon">
+            <use href="#icon-profile"></use>
+          </svg>
+          <span>პროფილი</span>
+        </div>
+      </a>
+    </div>
+  </header>
+  <main>
+    <div class="leaderboard-container flexcolumn">
+      <div class="leaderboard-title-container flexcolumn">
+        <svg class="icon-trophy">
+          <use href="#icon-trophy"></use>
+        </svg>
+        <h1 class="chalk-txt">
+          სარეიტინგო <span class="orange-txt">სია</span>
+        </h1>
+        <p class="grey-txt reg-txt">ვინ არის ჩვენი მათემატიკური ჩემპიონი?</p>
+      </div>
+      <!-- კონტეინერი რომელშიც გამოჩნდება სხვადასხვა კლასების რეიტინგი ჯავასკრიპტით -->
+      <div class="leaderboard-data-container first-grade-leaderboard">
+        <div class="grade-name sketchy-button--md button chalk-txt not-clickable-btn">
+          <div class="flexrow">
+            <svg class="icon">
+              <use href="#icon-leaderboard"></use>
+            </svg>
+            <div class="leaderboard flexcolumn">
+              <p class="reg-txt" id="logged-user-grade"></p>
+              <p class="reg-txt">TOP 10 მოსწავლე</p>
+            </div>
+          </div>
+          <div class="flexrow">
+            <svg class="icon">
+              <use href="#icon-star"></use>
+            </svg>
+            <p>ვარსკვლავი</p>
+            <p>ქულა</p>
+          </div>
+        </div>
+
+        <!-- places  -->
+        <div class="top-3 flexcolumn reg-txt">
+          <div class="top-3-title flexrow">
+            <svg class="icon">
+              <use href="#icon-place-first"></use>
+            </svg>
+            <h2 class="chalk-txt">ტოპ 3</h2>
+          </div>
+
+          <div class="top-3 flexrow" id="podium-container">
+          </div>
+        </div>
+        <div class="top-10">
+          <div class="top-10 cards chalk-txt" id="top10-container">
+            <div class="leaderboard-table-head chalk-txt">
+              <div class="flexrow">
+                <p>#</p>
+                <p>ავატარი</p>
+                <p>მოსწავლე</p>
+              </div>
+              <div class="flexrow">
+                <p>ვარსკვ</p>
+                <p>ქულა</p>
+              </div>
+            </div>
+            <div id="leaderboard-rows"></div>
+          </div>
+        </div>
+        <div id="my-place-container" class="top-10 cards chalk-txt"></div>
+
+        <div id="loading-msg" style="display: none">იტვირთება...</div>
+        <div id="error-msg" style="display: none"></div>
+      </div>
+    </div>
+  </main>
+  <footer class="sign-in-footer flexrow reg-txt">
+    <p>2026 წელს შექმნილი ქართველი მოსწავლებიისთვის • მელიას მათემატიკა</p>
+  </footer>
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/leaderboard.js"></script>
+  <script src="../js/leaderboardScript.js"></script>
+</body>
+
+</html>

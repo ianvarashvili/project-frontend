@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>რეგისტრაცია</title>
+    <link rel="icon" type="image/png" href="../assets/fox-logo.png" />
+    <link rel="stylesheet" href="../style/general.css">
+    <link rel="stylesheet" href="../style/home.css">
+    <link rel="stylesheet" href="../style/register.css">
+    <link rel="stylesheet" href="../style/login.css">
+
+</head>
+
+<body>
+    <header class="header-container">
+        <div class="flexrow">
+            <a href="home.html"><img src="../assets/fox-logo.png" alt="our website logo of a fox holding a pen"
+                    class="logo"></a>
+            <p class="chalk-txt"><span class="orange-word h-title">მელიას</span> <br> მათემატიკა</p>
+        </div>
+        <a href="home.html" class="anchor-el">
+            <div class="reg-txt button sketchy-button--md hover-color-change">მთავარი</div>
+        </a>
+    </header>
+    <main>
+        <div class="sign-in-page-cont flexcolumn">
+            <h1 class="chalk-txt ">გამარჯობა, <span class="orange-txt">ახალო მეგობარო!</span></h1>
+            <p class="reg-txt grey-txt">შეავსე ფორმა და დაიწყე სახალისო თავგადასავალი</p>
+            <div class="form-div reg-txt">
+                <form id="register-form">
+                    <div class="form-group flexrow">
+                        <div class="form-group-flex-column">
+                            <label for="name">სახელი</label>
+                            <input type="text" name="username" id="name" placeholder="მაგ: ნინო"
+                                class="reg-txt sketchy-input" maxlength="30">
+                        </div>
+                        <div class="form-group-flex-column">
+                            <label for="surname">გვარი</label>
+                            <input type="text" name="lastname" id="surname" placeholder="მაგ: გელაშვილი"
+                                class="reg-txt sketchy-input" maxlength="30">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">ზედმეტსახელი</label>
+                        <input type="text" name="nickname" id="username" placeholder="მაგ: nino_star"
+                            class="reg-txt sketchy-input" maxlength="20">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">პაროლი</label>
+                        <input type="password" id="password" placeholder="მინიმუმ 6 სიმბოლო"
+                            class="reg-txt sketchy-input" maxlength="30" required>
+                    </div>
+                    <div class="grade-section">
+                        <label>აირჩიე შენი კლასი</label>
+                        <div class="option-group flexrow" id="grade">
+
+                            <input type="radio" id="opt1" name="choice" value="1">
+                            <label for="opt1">I</label>
+
+                            <input type="radio" id="opt2" name="choice" value="2">
+                            <label for="opt2">II</label>
+
+                            <input type="radio" id="opt3" name="choice" value="3">
+                            <label for="opt3">III</label>
+
+                            <input type="radio" id="opt4" name="choice" value="4">
+                            <label for="opt4">IV</label>
+                        </div>
+                    </div>
+
+                    <div class="avatar-section">
+                        <label>აირჩიე შენი ავატარი</label>
+                        <div class="avatar-picker">
+                            <div class="avatar-option" data-avatar-id="1">
+                                <img src="../assets/avatars/avatar-1.jpeg" alt="ავატარი 1">
+                            </div>
+                        </div>
+                        <div class="avatar-picker">
+                            <div class="avatar-option" data-avatar-id="2">
+                                <img src="../assets/avatars/avatar-2.jpeg" alt="ავატარი 2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="error-msg" style="display:none;"></div>
+                    <button type="submit"
+                        class="button sign-in-form-btn sketchy-button--md reg-txt form-group push-down-btn"
+                        id="register-btn">გაგრძელება</button>
+                    <p class="form-subtitle"> <span class="grey-txt">უკვე გაქვს ანგარიში?</span> <span
+                            class="orange-txt"><a href="login.html" class="separate-sign-pages anchor-el">შედი
+                                აქ</a></span></p>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer class="sign-in-footer flexrow">
+        <p class="reg-txt">2026 წელს შექმნილი ქართველი მოსწავლებიისთვის • მელიას მათემატიკა </p>
+    </footer>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/register.js"></script>
+</body>
+
+</html>

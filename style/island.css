@@ -1,0 +1,88 @@
+.island-title-section {
+  text-align: center;
+  padding: 20px 16px 8px;
+}
+.island-header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 16px 32px;
+  border-bottom: 2px solid var(--color-text);
+}
+#island-title {
+  font-weight: normal;
+}
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 24px 32px 48px;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+.game-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 20px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: normal;
+  box-shadow: inset 0px 3px 0px 0px var(--color-primary); 
+  height: 220px;
+}
+.game-title {
+  font-size: 1.2rem;
+  margin: 0;
+}
+.game-stars {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+.island-footer {
+  justify-self: center;
+  padding: 20px;
+  color: var(--color-muted);
+  border-top: 2px dashed var(--color-pastel-orange);
+  font-size: 12px;
+}
+.push-down-btn:hover {
+  color: var(--color-white);
+}
+.play-btn{
+  padding: 10px 20px;
+  border: 2px solid var(--color-text);
+  color: var(--color-white);
+}
+
+.game-card {
+  position: relative; 
+}
+
+.game-desc {
+  font-size: 0.8rem;
+  margin: 0;
+  position: absolute;
+  left: 105%;   
+  top: 10px;
+  width: 180px;    
+  z-index: 10;
+  background: white; 
+  border: 2px solid var(--color-text);
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: left;
+  box-shadow: 4px 4px 0px var(--color-text); 
+  
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+
+.game-card:hover .game-desc {
+  opacity: 1;
+  pointer-events: auto;
+}

@@ -1,0 +1,90 @@
+.games-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 700px;
+}
+.clock-cont {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 10px;
+}
+.wall-clock {
+  width: 220px;
+  height: 220px;
+  background-color: var(--color-white);
+  border: 10px solid var(--color-text);
+  border-radius: 50%;
+  position: relative;
+  background-color: var(--color-pastel-gold);
+}
+.clock-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-text);
+  border-radius: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+}
+.hand-hour {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 6px;
+  height: 55px;
+  background-color: var(--color-text);
+  border-radius: 4px;
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(0deg);
+  transition: transfrom 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 5;
+}
+.hand-minute {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 4px;
+  height: 80px;
+  background-color: var(--color-primary);
+  border-radius: 4px;
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(0deg);
+  transition: transfrom 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 6;
+}
+.options-cont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+.option-card {
+  background-color: var(--color-white);
+  border: 2px dashed var(--color-gold);
+  border-radius: 14px;
+  padding: 10px 20px;
+  font-size: 20px;
+  width: 300px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--color-primary);
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--color-pastel-gold);
+}
+.option-card:hover {
+  background-color: var(--color-pastel-orange);
+}
+.heading-1 {
+  margin-bottom: 10px;
+}
+.clock-title {
+  font-size: 20px;
+  font-weight: bold;
+}

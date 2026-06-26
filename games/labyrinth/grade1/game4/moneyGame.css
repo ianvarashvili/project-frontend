@@ -1,0 +1,152 @@
+.games-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+}
+.games-container .game-hud {
+  width: 50%;
+  align-self: center;
+}
+.info-panel {
+  border: 2px dashed var(--color-pastel-silver);
+  background-color: var(--color-peach);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.toy-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.toy-icon {
+  width: 80px;
+  height: 80px;
+}
+.toy-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.toy-price-badge {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: bold;
+  font-size: 1.3rem;
+  padding: 6px 20px;
+  border-radius: 10px;
+  border: 2px solid var(--color-text);
+}
+.counter-side {
+  text-align: center;
+}
+.counter-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.current-paid {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.money-selection {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+.money-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+.money-wrapper:hover {
+  transform: scale(1.05);
+}
+.money-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.coin {
+  width: 65px;
+  height: 65px;
+  background-color: var(--color-pastel-silver);
+  border-radius: 50%;
+  box-shadow: 3px 3px 0px var(--color-text);
+  border: 2px solid var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.coin-2 {
+  position: relative;
+  z-index: 1;
+}
+.coin-2::before {
+  content: "";
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-pastel-yellow);
+  border-radius: 50%;
+  z-index: -1;
+}
+.bill {
+  height: 60px;
+  border: 3px solid var(--color-text);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0px var(--color-text);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.bill-5 {
+  width: 110px;
+  background-color: var(--color-beige);
+}
+.bill-10 {
+  width: 120px;
+  background-color: var(--color-pastel-blue);
+}
+.bill-20 {
+  width: 130px;
+  background-color: var(--color-pastel-purple);
+}
+.bill::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  width: 25px;
+  height: 25px;
+  background-color: var(--color-pastel-silver);
+  border-radius: 50%;
+}
+.controls-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+.top-instruction {
+  align-self: center;
+}

@@ -1,0 +1,61 @@
+.games-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 700px;
+}
+.btns-cont {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+.btns-cont .button {
+  font-size: 20px;
+}
+#reset-btn {
+  background-color: var(--color-white);
+}
+#reset-btn:hover {
+  background-color: var(--color-pastel-silver);
+}
+.shapes-cont {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background-color: var(--color-peach);
+  border: 2px solid var(--color-text);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.shape-svg {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  filter: drop-shadow(2px 2px 0px var(--color-text));
+}
+.shape-svg:hover {
+  transform: scale(1.15);
+}
+.shape-svg path,
+.shape-svg rect,
+.shape-svg circle {
+  stroke: var(--color-text);
+  stroke-width: 2px;
+}
+.square-svg {
+  fill: var(--color-blue);
+}
+.circle-svg {
+  fill: var(--color-gold);
+}
+.triangle-svg {
+  fill: var(--color-red);
+}
+.shape-svg.selected path,
+.shape-svg.selected rect,
+.shape-svg.selected circle {
+  fill: var(--color-green) !important;
+}

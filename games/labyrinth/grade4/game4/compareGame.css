@@ -1,0 +1,102 @@
+.games-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+}
+.top-instruction {
+  text-align: center;
+}
+.dashed-zone {
+  background-color: var(--color-peach);
+  border: 2.5px dashed var(--color-pastel-silver);
+  border-radius: 20px;
+  padding: 5px;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.comparison-cont {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.operation-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-beige);
+  padding: 10px;
+  border: 2px solid var(--color-text);
+  border-radius: 16px;
+}
+.fraction-card {
+  background-color: var(--color-white);
+  border: 3px solid var(--color-text);
+  border-radius: 12px;
+  width: 110px;
+  height: 44px;
+  display: flex;
+  overflow: hidden;
+}
+.fraction-block {
+  flex: 1;
+  height: 100%;
+}
+.fraction-block:not(:last-child) {
+  border-right: 2.5px solid var(--color-text);
+}
+.fraction-block.filled {
+  background-color: var(--color-purple);
+}
+.work-sign {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--color-text);
+  min-width: 20px;
+  text-align: center;
+}
+.sign-slot {
+  width: 65px;
+  height: 65px;
+  background-color: var(--color-white);
+  border: 3px dashed var(--color-text);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--color-beige);
+  transition: all 0.15s ease;
+}
+.sign-slot.active-sign {
+  border: 3px solid var(--color-text);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.controls-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.btn-check {
+  width: 80px;
+  height: 60px;
+  color: var(--color-text);
+  font-size: 2rem;
+  font-weight: bold;
+  border: 3px solid var(--color-text);
+  border-radius: 18px;
+  cursor: pointer;
+  box-shadow: 0px 5px 0px var(--color-text);
+  transition: all 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-check:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 7px 0px var(--color-text);
+}

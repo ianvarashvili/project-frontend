@@ -1,0 +1,58 @@
+.games-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 700px;
+}
+.btns-cont {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+.btns-cont .button {
+  font-size: 20px;
+}
+#reset-grid-btn {
+  background-color: var(--color-white);
+}
+#reset-grid-btn:hover {
+  background-color: var(--color-pastel-silver);
+}
+.mirror-cont {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, 40px);
+  grid-template-rows: repeat(8, 40px);
+  gap: 2px;
+  background-color: var(--color-pastel-orange);
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.symmetry-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--color-text);
+  transform: translate(-50%);
+  pointer-events: none;
+}
+.cell {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-white);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.cell.left-side {
+  cursor: not-allowed;
+}
+.target-color {
+  background-color: var(--color-gold);
+}
+.user-color {
+  background-color: var(--color-primary);
+}

@@ -1,0 +1,41 @@
+.games-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 600px;
+}
+#obj-visual-cont {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.cloud-main-number {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3.2rem;
+  color: var(--color-white);
+}
+.drop-text {
+  position: absolute;
+  bottom: 12%;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-text);
+  width: 50px;
+  text-align: center;
+}
+.drop-left {
+  left: 20%;
+}
+.drop-right {
+  right: 20%;
+}
+#options-cont {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}

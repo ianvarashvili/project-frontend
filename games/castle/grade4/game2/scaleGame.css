@@ -1,0 +1,107 @@
+.games-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 800px;
+}
+#message {
+  transition: color 0.3s ease;
+}
+.scale-cont {
+  position: relative;
+  height: 260px;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 40px;
+}
+.base {
+  width: 24px;
+  height: 100px;
+  background-color: var(--color-text);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 8px 8px 0 0;
+  z-index: 1;
+}
+.beam {
+  width: 84%;
+  height: 14px;
+  background-color: var(--color-text);
+  position: absolute;
+  top: 140px;
+  left: 8%;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: center;
+  border-radius: 255px 15px 225px 15px/ 15px 225px 15px 255px;
+  z-index: 2;
+}
+.plate {
+  width: 180px;
+  height: 80px;
+  position: absolute;
+  top: -85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font: 24px;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+.sketchy-card {
+  background-color: var(--color-white);
+  border: 3px solid var(--color-text);
+  border-radius: 255px 15px 225px 15px/ 15px 225px 15px 255px;
+  box-shadow: 4px 4px 0px 0px var(--color-text);
+}
+.sketchy-card--fill {
+  background-color: var(--color-peachy);
+}
+.left-plate {
+  left: -30px;
+}
+.right-plate {
+  right: -30px;
+}
+.sketchy-card-outline {
+  background: transparent;
+  border: 2px dashed var(--color-text);
+  border-radius: 10px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+  font-size: 22px;
+  transition: background-color 0.3s ease;
+  padding: 2px 28px;
+}
+#options-cont {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+  min-height: 80px;
+  width: 100%;
+}
+.weight {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  border: 3px solid var(--color-text);
+  border-radius: 255px 15px 225px 15px/ 15px 225px 15px 255px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  cursor: pointer;
+  transition:
+    transform 150ms ease,
+    background-color 150ms ease;
+  user-select: none;
+}

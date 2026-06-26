@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>რიცხვითი თანრიგები</title>
+    <link rel="stylesheet" href="../../../../style/general.css" />
+    <link rel="stylesheet" href="../../../../style/games-general.css" />
+    <link rel="stylesheet" href="shortestRoute.css" />
+  </head>
+
+  <body>
+    <defs>
+      <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+        <defs>
+          <symbol
+            id="icon-time"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </symbol>
+          <symbol
+            id="icon-check"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </symbol>
+          <symbol id="result-star" viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            ></polygon>
+          </symbol>
+        </defs>
+      </svg>
+    </defs>
+    <main>
+      <div class="games-container chalk-txt">
+        <h1 class="heading-1 orange-txt">იპოვე უმოკლესი გზა!</h1>
+        <div class="game-hud">
+          <div class="hud-stat">
+            <svg>
+              <use href="#icon-time"></use>
+            </svg>
+            <span id="timer-display">60 წმ</span>
+          </div>
+
+          <div class="hud-stat">
+            <svg>
+              <use href="#icon-check"></use>
+            </svg>
+            <span class="reg-txt"
+              >სწორი: <span id="score-display">0</span>
+            </span>
+          </div>
+        </div>
+        <h2 id="feedback-msg">
+          დააჭირე ყველაზე მოკლე გზას, დააკვირდი
+          <span class="orange-txt">საზომ ერთეულებს</span>
+        </h2>
+
+        <div class="map-cont">
+          <svg id="map-svg" viewBox="0 0 650 350" width="100%" height="100%">
+            <g class="path-group" data-index="0">
+              <path
+                id="path-0"
+                class="visual-path"
+                d="M 95 175 C 210 40, 440 40, 555 175"
+              />
+              <path
+                class="hitbox-path"
+                d="M 95 175 C 210 40, 440 40, 555 175"
+              />
+              <text dy="-12">
+                <textPath
+                  href="#path-0"
+                  startOffset="50%"
+                  text-anchor="middle"
+                  class="path-text"
+                >
+                  ---
+                </textPath>
+              </text>
+            </g>
+
+            <g class="path-group" data-index="1">
+              <path
+                id="path-1"
+                class="visual-path"
+                d="M 95 175 C 210 100, 440 250, 555 175"
+              />
+              <path
+                class="hitbox-path"
+                d="M 95 175 C 210 100, 440 250, 555 175"
+              />
+              <text dy="-12">
+                <textPath
+                  href="#path-1"
+                  startOffset="50%"
+                  text-anchor="middle"
+                  class="path-text"
+                >
+                  ---
+                </textPath>
+              </text>
+            </g>
+
+            <g class="path-group" data-index="2">
+              <path
+                id="path-2"
+                class="visual-path"
+                d="M 95 175 C 210 310, 440 310, 555 175"
+              />
+              <path
+                class="hitbox-path"
+                d="M 95 175 C 210 310, 440 310, 555 175"
+              />
+              <text dy="-12">
+                <textPath
+                  href="#path-2"
+                  startOffset="50%"
+                  text-anchor="middle"
+                  class="path-text"
+                >
+                  ---
+                </textPath>
+              </text>
+            </g>
+
+            <g id="svg-point-a">
+              <circle cx="95" cy="175" r="22" fill="var(--color-primary)" />
+              <text
+                x="95"
+                y="176"
+                fill="var(--color-white)"
+                font-weight="bold"
+                font-size="1.2rem"
+                text-anchor="middle"
+                dominant-baseline="middle"
+              ></text>
+            </g>
+
+            <g id="svg-point-b">
+              <circle cx="555" cy="175" r="22" fill="var(--color-gold)" />
+              <text
+                x="555"
+                y="176"
+                fill="var(--color-white)"
+                font-weight="bold"
+                font-size="1.2rem"
+                text-anchor="middle"
+                dominant-baseline="middle"
+              ></text>
+            </g>
+
+            <g id="butterfly">
+              <path
+                d="M 0 -2 C -25 -25, -35 -5, -10 5 C -22 18, -12 28, 0 6"
+                fill="#ff7518"
+                stroke="#1e293b"
+                stroke-width="1.5"
+              />
+              <path
+                d="M 0 -2 C 25 -25, 35 -5, 10 5 C 22 18, 12 28, 0 6"
+                fill="#ff7518"
+                stroke="#1e293b"
+                stroke-width="1.5"
+              />
+              <path d="M -5 -5 C -15 -15, -22 -8, -10 0" fill="#fffb00" />
+              <path d="M -4 4 C -12 10, -10 16, -2 6" fill="#fffb00" />
+              <path d="M 5 -5 C 15 -15, 22 -8, 10 0" fill="#fffb00" />
+              <path d="M 4 4 C 12 10, 10 16, 2 6" fill="#fffb00" />
+              <rect
+                x="-2.5"
+                y="-14"
+                width="5"
+                height="26"
+                rx="2.5"
+                fill="#1e293b"
+              />
+              <path
+                d="M -1 -14 Q -6 -22, -10 -20"
+                stroke="#1e293b"
+                stroke-width="1.2"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <path
+                d="M 1 -14 Q 6 -22, 10 -20"
+                stroke="#1e293b"
+                stroke-width="1.2"
+                fill="none"
+                stroke-linecap="round"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </main>
+    <div id="start-overlay">
+      <div class="result-box">
+        <h2 class="chalk-txt">რომელი საათია?</h2>
+        <p class="reg-txt grey-txt overlay-subtitle">
+          გაქვს 30 წამი - იპოვე სწორი საათი!
+        </p>
+        <div
+          class="button sketchy-button--lg orange-bg push-down-btn chalk-txt"
+          onclick="handleStartGame()"
+        >
+          დაწყება
+        </div>
+      </div>
+    </div>
+
+    <div id="result-overlay">
+      <div class="result-box">
+        <h2 class="chalk-txt">დრო ამოიწურა!</h2>
+        <p id="result-count" class="reg-txt"></p>
+        <p id="result-improved" class="reg-txt"></p>
+        <h3 class="chalk-txt heading-3">
+          ქულა: <strong id="result-score" class="orange-txt"></strong>
+        </h3>
+
+        <div class="result-star-container">
+          <svg class="result-star">
+            <use href="#result-star"></use>
+          </svg>
+          <svg class="result-star">
+            <use href="#result-star"></use>
+          </svg>
+          <svg class="result-star">
+            <use href="#result-star"></use>
+          </svg>
+        </div>
+
+        <div class="rep-map-btns">
+          <button
+            id="btn-replay"
+            class="button sketchy-button--md push-down-btn chalk-txt"
+          >
+            თავიდან დაწყება
+          </button>
+          <button
+            id="btn-map"
+            class="button sketchy-button--md push-down-btn chalk-txt orange-bg white-txt"
+          >
+            კუნძულზე დაბრუნება
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="loading-overlay">
+      <div class="result-box chalk-txt">შედეგი იგზავნება...</div>
+    </div>
+
+    <footer></footer>
+
+    <script src="shortestRoute.js"></script>
+
+    <script src="../../../../js/config.js"></script>
+    <script src="../../../../js/auth.js"></script>
+    <script src="../../../../js/game-engine.js"></script>
+    <script src="../../../../js/game-submit.js"></script>
+  </body>
+</html>

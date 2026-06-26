@@ -1,0 +1,220 @@
+html {
+  scroll-behavior: smooth;
+}
+/**************** HEADER ****************/
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-bottom: 2px solid var(--color-text);
+  padding: 10px;
+}
+.sign-up {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+/**************** MAIN PAGE ****************/
+.main-page {
+  display: flex;
+  padding: 5rem 28rem;
+  justify-content: center;
+  gap: 30px;
+}
+.main.flexcolumn {
+  align-items: flex-start;
+  gap: 20px;
+}
+.main-page-logo {
+  height: 400px;
+}
+.main-page-title {
+  font-size: 45px;
+}
+.main-page-games-btn {
+  background-color: var(--color-beige);
+}
+/* temporary orange section */
+.temporary-orange-section {
+  height: 100px;
+  background-color: var(--color-primary);
+  border-top: 2px solid var(--color-text);
+  border-bottom: 2px solid var(--color-text);
+}
+/* introduction page */
+.introduction-page {
+  padding: 100px;
+  font-size: 20px;
+}
+.introduction-page-cards {
+  border: 2px solid var(--color-text);
+  background-color: var(--color-peach);
+  padding: 1.5rem;
+  width: 350px;
+  text-align: center;
+  border-radius: 15px 255px 15px 225px / 225px 15px 255px 15px;
+  box-shadow: 4px 4px 0px 0px rgba(39, 38, 36, 1);
+  transition: box-shadow 0.2s ease-in-out;
+}
+.introduction-page-cards:hover {
+  box-shadow: 8px 8px 0px 0px rgba(39, 38, 36, 1);
+}
+.introduction-page-cards:nth-child(1) {
+  animation: float-up 3s ease-in-out infinite;
+}
+.introduction-page-cards:nth-child(2) {
+  animation: float-down 3s ease-in-out infinite;
+}
+.introduction-page-cards:nth-child(3) {
+  animation: float-up 3s ease-in-out infinite;
+}
+.introduction.flexrow {
+  align-items: stretch;
+}
+.introduction-page-subtitle {
+  font-size: 16px;
+}
+/* how it works section */
+.how-works-page {
+  background-color: var(--color-peach);
+  border-top: 2px solid var(--color-text);
+  border-bottom: 2px solid var(--color-text);
+  padding: 100px 250px;
+}
+.how-works-page-cards {
+  padding: 40px;
+  font-size: 16px;
+  text-align: center;
+}
+.how-works-page-title {
+  font-size: 50px;
+}
+.pencil-div,
+.star-div,
+.target-div {
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  border: 2px solid var(--color-text);
+  box-shadow: 4px 4px 0px 0px rgba(39, 38, 36, 1);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.target-div {
+  background-color: var(--color-beige);
+}
+.star-div {
+  background-color: var(--color-muted);
+}
+.pencil-icon {
+  height: 30px;
+  width: 30px;
+}
+/**************** PLANET PAGE ****************/
+.planet-page {
+  padding: 60px 250px;
+}
+.flexrow.planets {
+  gap: 40px;
+}
+.grade-symbol {
+  font-size: 35px;
+}
+.grade-name {
+  font-size: 20px;
+}
+
+.grade-desc{
+font-size: 14px;
+}
+.planet-page-cards {
+  padding: 4rem 3rem;
+  gap: 26px;
+  text-align: center;
+  border: 2px solid var(--color-text);
+  border-radius: 15px 255px 15px 225px / 225px 15px 255px 15px;
+}
+/* PLANET CARDS */
+.first-class-card {
+  background-color: var(--color-pastel-orange);
+  animation: float-down 3s ease-in-out infinite;
+}
+.second-class-card {
+  background-color: var(--color-pastel-blue);
+  animation: float-up 3.2s ease-in-out infinite;
+}
+.third-class-card {
+  background-color: var(--color-pastel-green);
+  animation: float-down 3s ease-in-out infinite;
+}
+.fourth-class-card {
+  background-color: var(--color-pastel-purple);
+  animation: float-up 3.2s ease-in-out infinite;
+}
+/* PLANET BUTTONS */
+.first-class-card .button {
+  background-color: var(--color-primary);
+}
+.second-class-card .button {
+  background-color: var(--color-blue);
+}
+.third-class-card .button {
+  background-color: var(--color-green);
+}
+.fourth-class-card .button {
+  background-color: var(--color-purple);
+}
+.planet .button {
+  color: var(--color-white);
+}
+.first-class-card .button,
+.second-class-card .button,
+.third-class-card .button,
+.fourth-class-card .button {
+  color: var(--color-white);
+}
+.planet-page-title {
+  font-size: 40px;
+}
+/* sign up page */
+.sign-up-page {
+  padding: 5rem 10rem;
+}
+.sign-up-page-frame {
+  background-color: var(--color-white);
+  border: 4px solid var(--color-text);
+  width: 600px;
+  padding: 50px;
+  border-radius: 2rem;
+  box-shadow: 8px 8px 0px 0px var(--color-text);
+}
+.sign-up-page-title {
+  font-size: 32px;
+}
+.sign-up-page-subtitle {
+  color: var(--color-muted);
+  text-align: center;
+}
+.sign-up-page-btn {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.sign-up-logo {
+  height: 90px;
+}
+/**************** FOOTER ****************/
+.footer {
+  padding: 40px;
+  background-color: var(--color-text);
+  color: var(--color-muted);
+}
+.footer-logo {
+  height: 30px;
+}
+.footer-title {
+  color: var(--color-peach);
+  font-size: 18px;
+}
+footer.flexrow {
+  justify-content: space-evenly;
+}

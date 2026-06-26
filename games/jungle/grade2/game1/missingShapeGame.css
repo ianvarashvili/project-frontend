@@ -1,0 +1,61 @@
+.games-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 800px;
+}
+.shapes-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  border: 2px dashed var(--color-text);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 2.5rem;
+  background-color: var(--color-peach);
+  width: 75%;
+}
+.shape-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+.missing-box {
+  border: 3px dashed var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+  width: 75px;
+  border-radius: 10px;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+#options-cont {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.shape-btn {
+  cursor: pointer;
+}
+.rep-map-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}
+.heading-3 {
+  margin-top: 16px;
+  font-size: 1.5rem;
+}
+.game-hud svg {
+  height: 24px;
+  width: 24px;
+}

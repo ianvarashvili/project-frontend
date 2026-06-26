@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>მელიას მათემატიკა</title>
+    <link rel="icon" type="image/png" href="../assets/fox-logo.png" />
+    <link rel="stylesheet" href="../style/general.css" />
+    <link rel="stylesheet" href="../style/home.css" />
+  </head>
+
+<<<<<<< HEAD
+  <body>
+    <!-- HEADER -->
+    <header class="header-container">
+      <div class="flexrow">
+        <a href="home.html"
+          ><img
+            src="../assets/fox-logo.png"
+            alt="website logo of a fox holding a pen"
+            class="logo"
+        /></a>
+        <p class="chalk-txt">
+          <span class="orange-txt h-title">მელიას</span> <br />
+          მათემატიკა
+        </p>
+      </div>
+
+      <div class="button sketchy-button--sm beige-bg not-clickable-btn">
+        <span class="reg-txt"
+          ><svg class="icon-school">
+            <use href="../assets/sprites.svg#icon-school"></use>
+          </svg>
+          სასკოლო თამაშები</span
+        >
+      </div>
+      <!-- ახალი მომხმარებლისთვის -->
+      <div id="auth-buttons" class="flexrow">
+        <a href="login.html" class="anchor-el">
+          <div class="reg-txt button sketchy-button--sm hover-color-change">
+            შესვლა
+          </div>
+        </a>
+        <a href="register.html" class="sign-up anchor-el">
+          <div class="reg-txt sign-up button sketchy-button--sm push-down-btn">
+            დარეგისტრირდი
+          </div>
+        </a>
+      </div>
+
+      <!-- შესული მომხმარებლისთვის -->
+      <div id="user-buttons" class="flexrow" style="display: none">
+        <a href="profile.html" class="anchor-el">
+          <div class="reg-txt button sketchy-button--sm hover-color-change">
+            <svg class="icon">
+              <use href="../assets/sprites.svg#icon-person"></use>
+            </svg>
+            პროფილი
+          </div>
+        </a>
+        <div
+          class="reg-txt sign-up button sketchy-button--sm push-down-btn"
+          id="logout-btn"
+        >
+          გასვლა
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="main-page reg-txt">
+        <img
+          src="../assets/fox-without-circle.png"
+          alt="our website logo of a fox holding a pen"
+          class="main-page-logo"
+        />
+        <div class="main flexcolumn">
+          <div
+            class="main-page-games-btn button sketchy-button--sm not-clickable-btn"
+          >
+            <svg class="icon">
+              <use href="../assets/sprites.svg#icon-school"></use>
+=======
+</head>
+
+<body>
+    <!-- svgs -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <defs>
+            <symbol id="icon-plus" viewBox="0 0 24 24">
+                <path d="M12 5v14M5 12h14" fill="none" stroke="#E25921" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </symbol>
+            <symbol id="icon-minus" viewBox="0 0 24 24">
+                <path d="M5 12h14" fill="none" stroke="#8b5cf6" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </symbol>
+            <symbol id="icon-times" viewBox="0 0 24 24">
+                <path d="M6.5 6.5l11 11M17.5 6.5l-11 11" fill="none" stroke="#10b981" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </symbol>
+            <symbol id="icon-divide" viewBox="0 0 24 24">
+                <path d="M5 12h14" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <circle cx="12" cy="6.5" r="1.8" fill="#3b82f6" />
+                <circle cx="12" cy="17.5" r="1.8" fill="#3b82f6" />
+            </symbol>
+            <symbol id="icon-equals" viewBox="0 0 24 24">
+                <path d="M5 9h14M5 15h14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </symbol>
+
+            <symbol id="icon-rocket" viewBox="0 0 24 24">
+                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"
+                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"
+                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            </symbol>
+            <symbol id="icon-star" viewBox="0 0 24 24">
+                <path d="M12 2.5l2.7 5.5 6.1.9-4.4 4.2 1 6.1-5.4-2.8-5.4 2.8 1-6.1-4.4-4.2 6.1-.9L12 2.5z" fill="none"
+                    stroke="#fcc419" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </symbol>
+            <symbol id="icon-trophy" viewBox="0 0 24 24">
+                <path d="M8 21h8M12 17v4M7 3H5C4 3 3 4 3 5v2a4 4 0 003 4M17 3h2c1 0 2 1 2 2v2a4 4 0 01-3 4" fill="none"
+                    stroke="#B23A14" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M8 3h8v7a4 4 0 01-8 0V3z" fill="none" stroke="#B23A14" stroke-width="1" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </symbol>
+            <symbol id="icon-chart" viewBox="0 0 24 24">
+                <path d="M3 18l5-6 4 4 5-6.5 4-3.5" fill="none" stroke="#10b981" stroke-width="1" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M17 7h4v4" fill="none" stroke="#10b981" stroke-width="1" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </symbol>
+            <symbol id="icon-game" viewBox="0 0 24 24">
+                <path d="M6 12h12M12 6v12" fill="none" stroke="#e25921" stroke-width="1" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M2 14l2-6h16l2 6-2 4H4l-2-4z" fill="none" stroke="#e25921" stroke-width="1"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="16.5" cy="14" r="1.2" fill="#e25921" />
+                <circle cx="19" cy="11.5" r="1.2" fill="#e25921" />
+            </symbol>
+            <symbol id="icon-school" viewBox="0 0 24 24">
+                <path d="M3 10l9-7 9 7v11a1 1 0 01-1 1H4a1 1 0 01-1-1V10z" fill="none" stroke="currentColor"
+                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M9 21V12h6v9M12 3v3" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </symbol>
+            <symbol id="icon-pencil" viewBox="0 0 24 24">
+                <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" fill="none" stroke="#ffffff"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" fill="none" stroke="#ffffff"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </symbol>
+            <symbol id="icon-target" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <circle cx="12" cy="12" r="6" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <circle cx="12" cy="12" r="2" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </symbol>
+            <symbol id="icon-person" viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </symbol>
+            <symbol id="icon-planet-ui" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="6.5" fill="none" stroke="#E25921" stroke-width="1.2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <ellipse cx="12" cy="12" rx="11.5" ry="4" fill="none" stroke="#E25921" stroke-width="1.2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </symbol>
+            <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+                <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </symbol>
+
+            <symbol id="planet-grade-1" viewBox="0 0 130 130">
+                <path d="M66 12C89 11 110 31 110 57C110 83 89 106 63 105C37 104 14 83 15 57C16 31 43 13 66 12Z"
+                    fill="#FEE8D5" stroke="#E25921" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M28 50 Q65 43 103 50" fill="none" stroke="#E25921" stroke-width="1.8" stroke-opacity="0.3"
+                    stroke-linecap="round" />
+                <ellipse cx="47" cy="56" rx="8" ry="6.5" fill="none" stroke="#E25921" stroke-width="1.8"
+                    stroke-opacity="0.4" stroke-linecap="round" />
+            </symbol>
+            <symbol id="planet-grade-2" viewBox="0 0 140 130">
+                <ellipse cx="70" cy="76" rx="61" ry="13.5" fill="none" stroke="#3B82F6" stroke-width="3"
+                    stroke-opacity="0.55" stroke-linecap="round" />
+                <path d="M68 13C91 12 113 33 113 58C113 84 92 107 67 106C41 105 17 84 18 58C19 32 45 14 68 13Z"
+                    fill="#DBEAFE" stroke="#3B82F6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            </symbol>
+            <symbol id="planet-grade-3" viewBox="0 0 130 130">
+                <path d="M63 12C87 11 111 32 111 58C111 84 89 108 63 107C37 106 13 85 14 59C15 33 39 13 63 12Z"
+                    fill="#D1FAE5" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M38 44 Q48 37 58 44 Q54 55 42 53 Z" fill="#10B981" fill-opacity="0.25" stroke="#10B981"
+                    stroke-width="1.2" stroke-linejoin="round" />
+            </symbol>
+            <symbol id="planet-grade-4" viewBox="0 0 150 130">
+                <circle cx="112" cy="28" r="10" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="2.2"
+                    stroke-linecap="round" />
+                <path d="M65 13C89 12 112 33 111 59C110 85 89 108 64 107C38 106 14 85 15 59C16 33 41 14 65 13Z"
+                    fill="#EDE9FE" stroke="#8B5CF6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            </symbol>
+        </defs>
+    </svg>
+    <!-- HEADER -->
+    <header class="header-container">
+        <div class="flexrow">
+            <a href="home.html"><img src="../assets/fox-logo.png" alt="our website logo of a fox holding a pen"
+                    class="logo"></a>
+            <p class="chalk-txt"><span class="orange-txt h-title">მელიას</span> <br> მათემატიკა</p>
+        </div>
+
+        <div class="button sketchy-button--sm beige-bg not-clickable-btn">
+            <span class="reg-txt"><svg class="icon-school">
+                    <use href="#icon-school"></use>
+                </svg>სასკოლო თამაშები</span>
+        </div>
+        <!-- ახალი მომხმარებლისთვის -->
+        <div id="auth-buttons" class="flexrow">
+            <a href="login.html" class="anchor-el">
+                <div class="reg-txt button sketchy-button--sm hover-color-change">შესვლა</div>
+            </a>
+            <a href="register.html" class="sign-up anchor-el">
+                <div class="reg-txt sign-up button sketchy-button--sm push-down-btn">
+                    <svg class="icon">
+                        <use href="#icon-rocket"></use>
+                    </svg>
+                    დარეგისტრირდი
+                </div>
+            </a>
+        </div>
+
+        <!-- შესული მომხმარებლისთვის -->
+        <div id="user-buttons" class="flexrow" style="display:none;">
+            <a href="profile.html" class="anchor-el">
+                <div class="reg-txt button sketchy-button--sm hover-color-change">
+                    <svg class="icon">
+                        <use href="#icon-person"></use>
+                    </svg>
+                    პროფილი
+                </div>
+            </a>
+            <div class="reg-txt sign-up button sketchy-button--sm push-down-btn" onclick="logout()">გასვლა</div>
+        </div>
+    </header>
+    <main>
+        <section class="main-page reg-txt">
+            <img src="../assets/fox-without-circle.png" alt="our website logo of a fox holding a pen"
+                class="main-page-logo">
+            <div class="main flexcolumn">
+                <div class="main-page-games-btn button sketchy-button--sm not-clickable-btn"> <svg class="icon">
+                        <use href="#icon-school"></use>
+                    </svg>I-IV კლასი • სრულიად უფასო </div>
+                <p class="chalk-txt main-page-title"> მათემატიკა <span class="orange-txt">სახალისოდ!</span> </p>
+
+                <div id="logged-out-user-reg-auth" class="flexrow">
+                    <a href="register.html" class="anchor-el">
+                        <div class="sketchy-button--lg sign-up button push-down-btn"><svg class="icon">
+                                <use href="#icon-rocket"></use>
+                            </svg>დარეგისტრირდი უფასოდ</div>
+                    </a>
+                    <a href="login.html" class="anchor-el">
+                        <div class="sketchy-button--lg button beige-bg push-down-btn">შესვლა<svg class="icon">
+                                <use href="#icon-arrow-right"></use>
+                            </svg></div>
+                    </a>
+                </div>
+                <!-- შესული იუზერისთვის -->
+                <div id="user-start-playing" style="display: none;">
+                    <a href="#planet-section" class="anchor-el">
+                        <div class="sketchy-button--lg sign-up button push-down-btn">
+                            დაიწყე თამაში!
+                        </div>
+                    </a>
+
+                </div>
+                <p class="grey-txt">მელიას მათემატიკა - ადგილი, სადაც მათემატიკა გახდება შენი საუკეთესო მეგობარი</p>
+                <div class="flexrow">
+                    <div class="sketchy-button--sm button orange-shadow not-clickable-btn"><svg class="icon">
+                            <use href="#icon-plus"></use>
+                        </svg> შეკრება</div>
+                    <div class="sketchy-button--sm button purple-shadow not-clickable-btn"><svg class="icon">
+                            <use href="#icon-minus"></use>
+                        </svg>გამოკლება</div>
+                    <div class="sketchy-button--sm button green-shadow not-clickable-btn"><svg class="icon">
+                            <use href="#icon-times"></use>
+                        </svg>გამრავლება</div>
+                    <div class="sketchy-button--sm button blue-shadow not-clickable-btn"><svg class="icon">
+                            <use href="#icon-divide"></use>
+                        </svg>გაყოფა</div>
+                </div>
+            </div>
+
+        </section>
+        <section class="temporary-orange-section">
+
+
+        </section>
+
+        <section class="introduction-page flexcolumn">
+            <h1 class="chalk-txt">რატომ <span class="orange-txt">მელიას მათემატიკა?</span></h1>
+            <p class="reg-txt grey-txt">ჩვენ გვჯერა, რომ ყველა ბავშვს შეუძლია მათემატიკის შეყვარება
+            </p>
+            <div class="introduction flexrow">
+                <div class="introduction-page-cards flexcolumn">
+                    <svg class="icon-game">
+                        <use href="#icon-game "></use>
+                    </svg>
+                    <p class="chalk-txt orange-txt">სახალისო თამაშები</p>
+                    <p class="reg-txt introduction-page-subtitle">შეკრება, გამოკლება, გამრავლება - ყველა ამოცანა თამაშის
+                        სახით!</p>
+                </div>
+                <div class="introduction-page-cards flexcolumn">
+                    <svg class="icon-trophy">
+                        <use href="#icon-trophy"></use>
+                    </svg>
+                    <p class="chalk-txt dark-orange-txt">ნამდვილი გამოწვევები</p>
+                    <p class="reg-txt introduction-page-subtitle">შეეჯიბრე მეგობრებს, თანაკლასელებს, მოიპოვე ჯილდოები და
+                        გახდი კლასის ჩემპიონი</p>
+                </div>
+                <div class="introduction-page-cards flexcolumn">
+                    <svg class="icon-chart">
+                        <use href="#icon-chart"></use>
+                    </svg>
+                    <p class="chalk-txt green-txt">პირადი პროგრესი</p>
+                    <p class="reg-txt introduction-page-subtitle">თვალი ადევნე შედეგებს, მოიპოვე ვარსკვლავები და გადადი
+                        შემდეგ დონეზე!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-works-page flexcolumn">
+            <h1 class="chalk-txt how-works-page-title">როგორ <span class="orange-txt">მუშაობს?</span></h1>
+            <div class="flexrow">
+                <div class="how-works-page-cards flexcolumn">
+                    <div class="pencil-div">
+                        <svg class="icon-pencil">
+                            <use href="#icon-pencil"></use>
+                        </svg>
+                    </div>
+
+                    <p class="chalk-txt">დარეგისტრირდი</p>
+                    <p class="reg-txt grey-txt">შეავსე მარტივი ფორმა და აირჩიე ავატარი!</p>
+                </div>
+                <div class="how-works-page-cards flexcolumn">
+                    <div class="target-div">
+                        <svg class="icon-target">
+                            <use href="#icon-target"></use>
+                        </svg>
+                    </div>
+                    <p class="chalk-txt">აირჩიე თამაში</p>
+                    <p class="reg-txt grey-txt">დაიწყე შეკრებით ან შენი უნარების დახვეწისთვის შესაფერისი თამაში</p>
+                </div>
+                <div class="how-works-page-cards flexcolumn">
+                    <div class="star-div">
+                        <svg class="icon-star">
+                            <use href="#icon-star"></use>
+                        </svg>
+                    </div>
+
+                    <p class="chalk-txt">მოიგე ვარსვკლავები</p>
+                    <p class="reg-txt grey-txt">სწორი პასუხებისთვის მიიღეთ ქულები და ჯილდოები!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="planet-page flexcolumn reg-txt" id="planet-section">
+            <svg class="icon-planet">
+                <use href="#icon-planet-ui"></use>
+>>>>>>> f6996c1f25aade95e53d9244868b884f85d16dde
+            </svg>
+            I-IV კლასი • სრულიად უფასო
+          </div>
+          <p class="chalk-txt main-page-title">
+            მათემატიკა <span class="orange-txt">სახალისოდ!</span>
+          </p>
+
+<<<<<<< HEAD
+          <div id="logged-out-user-reg-auth" class="flexrow">
+            <a href="register.html" class="anchor-el">
+              <div class="sketchy-button--lg sign-up button push-down-btn">
+                დარეგისტრირდი უფასოდ
+              </div>
+            </a>
+            <a href="login.html" class="anchor-el">
+              <div class="sketchy-button--lg button beige-bg push-down-btn">
+                შესვლა<svg class="icon">
+                  <use href="../assets/sprites.svg#icon-arrow-right"></use>
+                </svg>
+              </div>
+            </a>
+          </div>
+          <!-- შესული იუზერისთვის -->
+          <div id="user-start-playing" style="display: none">
+            <a href="#planet-section" class="anchor-el">
+              <div class="sketchy-button--lg sign-up button push-down-btn">
+                დაიწყე თამაში!
+              </div>
+            </a>
+          </div>
+          <p class="grey-txt">
+            მელიას მათემატიკა - ადგილი, სადაც მათემატიკა გახდება შენი საუკეთესო
+            მეგობარი
+          </p>
+          <div class="flexrow">
+            <div
+              class="sketchy-button--sm button orange-shadow not-clickable-btn"
+            >
+              <svg class="icon">
+                <use href="../assets/sprites.svg#icon-plus"></use>
+              </svg>
+              შეკრება
+            </div>
+            <div
+              class="sketchy-button--sm button purple-shadow not-clickable-btn"
+            >
+              <svg class="icon">
+                <use href="../assets/sprites.svg#icon-minus"></use>
+              </svg>
+              გამოკლება
+            </div>
+            <div
+              class="sketchy-button--sm button green-shadow not-clickable-btn"
+            >
+              <svg class="icon">
+                <use href="../assets/sprites.svg#icon-times"></use>
+              </svg>
+              გამრავლება
+            </div>
+            <div
+              class="sketchy-button--sm button blue-shadow not-clickable-btn"
+            >
+              <svg class="icon">
+                <use href="../assets/sprites.svg#icon-divide"></use>
+              </svg>
+              გაყოფა
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="temporary-orange-section"></section>
+
+      <section class="introduction-page flexcolumn">
+        <h1 class="chalk-txt">
+          რატომ <span class="orange-txt">მელიას მათემატიკა?</span>
+        </h1>
+        <p class="reg-txt grey-txt">
+          ჩვენ გვჯერა, რომ ყველა ბავშვს შეუძლია მათემატიკის შეყვარება
+        </p>
+        <div class="introduction flexrow">
+          <div class="introduction-page-cards flexcolumn">
+            <svg class="icon-game">
+              <use href="../assets/sprites.svg#icon-game "></use>
+            </svg>
+            <p class="chalk-txt orange-txt">სახალისო თამაშები</p>
+            <p class="reg-txt introduction-page-subtitle">
+              შეკრება, გამოკლება, გამრავლება - ყველა ამოცანა თამაშის სახით!
+            </p>
+          </div>
+          <div class="introduction-page-cards flexcolumn">
+            <svg class="icon-trophy">
+              <use href="../assets/sprites.svg#icon-trophy"></use>
+            </svg>
+            <p class="chalk-txt dark-orange-txt">ნამდვილი გამოწვევები</p>
+            <p class="reg-txt introduction-page-subtitle">
+              შეეჯიბრე მეგობრებს, თანაკლასელებს, მოიპოვე ჯილდოები და გახდი
+              კლასის ჩემპიონი
+            </p>
+          </div>
+          <div class="introduction-page-cards flexcolumn">
+            <svg class="icon-chart">
+              <use href="../assets/sprites.svg#icon-chart"></use>
+            </svg>
+            <p class="chalk-txt green-txt">პირადი პროგრესი</p>
+            <p class="reg-txt introduction-page-subtitle">
+              თვალი ადევნე შედეგებს, მოიპოვე ვარსკვლავები და გადადი შემდეგ
+              დონეზე!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="how-works-page flexcolumn">
+        <h1 class="chalk-txt how-works-page-title">
+          როგორ <span class="orange-txt">მუშაობს?</span>
+        </h1>
+        <div class="flexrow">
+          <div class="how-works-page-cards flexcolumn">
+            <div class="pencil-div">
+              <svg class="icon-pencil">
+                <use href="../assets/sprites.svg#icon-pencil"></use>
+              </svg>
+=======
+        <section class="sign-up-page flexcolumn">
+            <div class="sign-up-page-frame flexcolumn" id="sign-up-frame">
+                <img src="../assets/fox-logo.png" alt="fox logo" class="sign-up-logo">
+                <p class="chalk-txt sign-up-page-title">მზად ხარ <span class="orange-txt">თავგადასავლებისთვის?</span>
+                </p>
+                <p class="reg-txt sign-up-page-subtitle">შემოუერთდი გვერდს და მელაკუდა სახალისოდ გასწავლის მათემატიკას!
+                </p>
+                <a href="register.html" class="anchor-el">
+                    <div class="reg-txt sign-up-page-btn button sketchy-button--lg push-down-btn">
+                        <svg class="icon">
+                            <use href="#icon-rocket"></use>
+                        </svg>
+                        შემოგვიერთდი უფასოდ!
+                    </div>
+                </a>
+                <p class="reg-txt"><span class="grey-txt">უკვე გაქვს ანგარიში?</span> <span class="orange-txt"><a
+                            href="login.html" class="login anchor-el">შედი
+                            აქ</span></a></p>
+>>>>>>> f6996c1f25aade95e53d9244868b884f85d16dde
+            </div>
+
+            <p class="chalk-txt">დარეგისტრირდი</p>
+            <p class="reg-txt grey-txt">
+              შეავსე მარტივი ფორმა და აირჩიე ავატარი!
+            </p>
+          </div>
+          <div class="how-works-page-cards flexcolumn">
+            <div class="target-div">
+              <svg class="icon-game-2">
+                <use href="../assets/sprites.svg#icon-game-2"></use>
+              </svg>
+            </div>
+            <p class="chalk-txt">აირჩიე თამაში</p>
+            <p class="reg-txt grey-txt">
+              დაიწყე შეკრებით ან შენი უნარების დახვეწისთვის შესაფერისი თამაში
+            </p>
+          </div>
+          <div class="how-works-page-cards flexcolumn">
+            <div class="star-div">
+              <svg class="icon-star">
+                <use href="../assets/sprites.svg#icon-star"></use>
+              </svg>
+            </div>
+
+            <p class="chalk-txt">მოიგე ვარსვკლავები</p>
+            <p class="reg-txt grey-txt">
+              სწორი პასუხებისთვის მიიღეთ ქულები და ჯილდოები!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="planet-page flexcolumn reg-txt" id="planet-section">
+        <svg class="icon-planet">
+          <use href="../assets/sprites.svg#icon-planet-ui"></use>
+        </svg>
+        <h1 class="chalk-txt planet-page-title">
+          შენი <span class="orange-txt">კლასის სამყარო</span>
+        </h1>
+        <p class="grey-txt">
+          რომელ კლასში ხარ? აირჩიე პლანეტა და დაიწყე თავგადასავალი!
+        </p>
+        <div class="flexrow planets">
+          <div
+            class="planet-page-cards flexcolumn first-class-card orange-shadow"
+          >
+            <svg class="planet-icon">
+              <use href="../assets/sprites.svg#planet-grade-1"></use>
+            </svg>
+            <p class="grade-symbol orange-txt">I</p>
+            <p class="chalk-txt grade-name">პირველი კლასი</p>
+            <p class="grade-desc grey-txt"></p>
+            <div
+              class="button sketchy-button--lg orange-shadow"
+              onclick="goToMap(1)"
+            >
+              დაწყება<svg class="icon">
+                <use href="../assets/sprites.svg#icon-arrow-right"></use>
+              </svg>
+            </div>
+          </div>
+          <div
+            class="planet-page-cards flexcolumn second-class-card blue-shadow"
+          >
+            <svg class="planet-icon">
+              <use href="../assets/sprites.svg#planet-grade-2"></use>
+            </svg>
+            <p class="grade-symbol blue-txt">II</p>
+            <p class="chalk-txt grade-name">მეორე კლასი</p>
+            <p class="grade-desc grey-txt"></p>
+            <div
+              class="button sketchy-button--lg blue-shadow"
+              onclick="goToMap(2)"
+            >
+              დაწყება<svg class="icon">
+                <use href="../assets/sprites.svg#icon-arrow-right"></use>
+              </svg>
+            </div>
+          </div>
+          <div
+            class="planet-page-cards third-class-card flexcolumn green-shadow"
+          >
+            <svg class="planet-icon">
+              <use href="../assets/sprites.svg#planet-grade-3"></use>
+            </svg>
+            <p class="grade-symbol green-txt">III</p>
+            <p class="chalk-txt grade-name">მესამე კლასი</p>
+            <p class="grade-desc grey-txt"></p>
+            <div
+              class="button sketchy-button--lg green-shadow"
+              onclick="goToMap(3)"
+            >
+              დაწყება<svg class="icon">
+                <use href="../assets/sprites.svg#icon-arrow-right"></use>
+              </svg>
+            </div>
+          </div>
+          <div
+            class="planet-page-cards fourth-class-card flexcolumn purple-shadow"
+          >
+            <svg class="planet-icon">
+              <use href="../assets/sprites.svg#planet-grade-4"></use>
+            </svg>
+            <p class="grade-symbol purple-txt">IV</p>
+            <p class="chalk-txt grade-name">მეოთხე კლასი</p>
+            <p class="grade-desc grey-txt"></p>
+            <div
+              class="button sketchy-button--lg purple-shadow"
+              onclick="goToMap(4)"
+            >
+              დაწყება<svg class="icon">
+                <use href="../assets/sprites.svg#icon-arrow-right"></use>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sign-up-page flexcolumn">
+        <div class="sign-up-page-frame flexcolumn" id="sign-up-frame">
+          <img
+            src="../assets/fox-logo.png"
+            alt="fox logo"
+            class="sign-up-logo"
+          />
+          <p class="chalk-txt sign-up-page-title">
+            მზად ხარ <span class="orange-txt">თავგადასავლებისთვის?</span>
+          </p>
+          <p class="reg-txt sign-up-page-subtitle">
+            შემოუერთდი გვერდს და მელაკუდა სახალისოდ გასწავლის მათემატიკას!
+          </p>
+          <a href="register.html" class="anchor-el">
+            <div
+              class="reg-txt sign-up-page-btn button sketchy-button--lg push-down-btn"
+            >
+              შემოგვიერთდი უფასოდ!
+            </div>
+          </a>
+          <p class="reg-txt">
+            <span class="grey-txt">უკვე გაქვს ანგარიში?</span>
+            <span class="orange-txt"
+              ><a href="login.html" class="login anchor-el">შედი აქ</a></span
+            >
+          </p>
+        </div>
+      </section>
+      <footer class="footer flexrow reg-txt">
+        <div class="flexrow">
+          <img
+            src="../assets/fox-logo.png"
+            alt="fox logo"
+            class="footer-logo"
+          />
+          <p class="chalk-txt footer-title">მელიას მათემატიკა</p>
+        </div>
+        <p>2026 წელს შექმნილი ქართველი მოსწავლეებისთვის</p>
+        <div class="footer-icons">
+          <svg class="icon">
+            <use href="../assets/sprites.svg#icon-plus"></use>
+          </svg>
+          <svg class="icon">
+            <use href="../assets/sprites.svg#icon-minus"></use>
+          </svg>
+          <svg class="icon">
+            <use href="../assets/sprites.svg#icon-times"></use>
+          </svg>
+          <svg class="icon">
+            <use href="../assets/sprites.svg#icon-divide"></use>
+          </svg>
+        </div>
+      </footer>
+      <div id="logout-modal" class="custom-modal-overlay">
+        <div class="cards custom-modal-box flexcolumn">
+          <svg
+            class="icon"
+            style="width: 40px; height: 40px; color: var(--color-primary)"
+          >
+            <use href="../assets/sprites.svg#icon-log-out"></use>
+          </svg>
+          <h2 class="chalk-txt h-title">გასვლა</h2>
+          <p class="reg-txt grey-txt">ნამდვილად გსურთ სისტემიდან გასვლა?</p>
+
+          <div class="flexrow" style="margin-top: 10px">
+            <div
+              class="button sketchy-button--md beige-bg push-down-btn reg-txt"
+              id="cancel-logout"
+            >
+              გაუქმება
+            </div>
+            <div
+              class="button sketchy-button--md orange-bg push-down-btn reg-txt white-txt"
+              id="confirm-logout"
+            >
+              გასვლა
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/home.js"></script>
+  </body>
+</html>

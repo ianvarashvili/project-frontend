@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ლუწია თუ კენტი?</title>
+    <link rel="stylesheet" href="../../../../style/general.css" />
+    <link rel="stylesheet" href="../../../../style/games-general.css" />
+    <link rel="stylesheet" href="EvenOdd.css" />
+  </head>
+
+  <body>
+    <header></header>
+    <main>
+      <div class="games-container chalk-txt">
+        <div class="game-hud">
+          <div class="hud-stat">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span id="timer-display">60 წმ</span>
+          </div>
+          <div class="hud-stat">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span class="reg-txt"
+              >სწორი: <span id="score-display">0</span></span
+            >
+          </div>
+        </div>
+
+        <h1>დაკრიფე ვაშლები!</h1>
+        <p class="even-odd-subtitle">
+          დააჭირე <span class="orange-txt">ვაშლს</span>, შემდეგ კი
+          <span class="orange-txt">კალათას</span>, რომელშიც მისი ადგილია
+        </p>
+        <h3 id="feedback-msg"></h3>
+        <div class="apples-cont" id="apples-cont"></div>
+        <div class="baskets-cont flexrow">
+          <div class="basket" onclick="chooseBasket('even')">
+            <h2>ლუწი</h2>
+            <div class="apple-places" id="even-apple-places"></div>
+          </div>
+          <div class="basket" onclick="chooseBasket('odd')">
+            <h2>კენტი</h2>
+            <div class="apple-places" id="odd-apple-places"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="start-overlay">
+      <div class="result-box">
+        <h2 class="chalk-txt">სად არის ვარსკვლავი?</h2>
+        <p class="reg-txt grey-txt" style="margin: 16px 0 24px 0">
+          გაქვს 30 წამი — იპოვე ვარსკვლავი!
+        </p>
+        <div
+          class="button sketchy-button--lg orange-bg push-down-btn chalk-txt"
+          onclick="handleStartGame()"
+          style="margin: 0 auto; width: 80%"
+        >
+          დაწყება
+        </div>
+      </div>
+    </div>
+
+    <div id="result-overlay">
+      <div class="result-box">
+        <h2 class="chalk-txt">დრო ამოიწურა!</h2>
+        <p id="result-count" class="reg-txt" style="margin-top: 8px"></p>
+        <p id="result-improved" class="reg-txt"></p>
+
+        <h3 class="chalk-txt" style="margin-top: 16px; font-size: 1.5rem">
+          ქულა: <strong id="result-score" class="orange-txt"></strong>
+        </h3>
+
+        <div class="result-star-container">
+          <svg class="result-star" viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            ></polygon>
+          </svg>
+          <svg class="result-star" viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            ></polygon>
+          </svg>
+          <svg class="result-star" viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            ></polygon>
+          </svg>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 24px;
+          "
+        >
+          <button
+            id="btn-replay"
+            class="button sketchy-button--md push-down-btn chalk-txt"
+          >
+            თავიდან დაწყება
+          </button>
+          <button
+            id="btn-map"
+            class="button sketchy-button--md orange-bg push-down-btn chalk-txt"
+          >
+            კუნძულზე დაბრუნება
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="loading-overlay">
+      <div class="result-box chalk-txt">შედეგი იგზავნება...</div>
+    </div>
+
+    <script src="../../../../js/config.js"></script>
+    <script src="../../../../js/auth.js"></script>
+    <script src="../../../../js/game-engine.js"></script>
+    <script src="../../../../js/game-submit.js"></script>
+    <script src="EvenOdd.js"></script>
+  </body>
+</html>

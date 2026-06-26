@@ -1,0 +1,148 @@
+.profile-buttons .push-down-btn:hover {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+.icon-chart-profile,
+.icon-trophy-profile {
+  height: 20px;
+  width: 20px;
+  stroke: var(--color-text);
+}
+.sketchy-button--sm:hover .icon-chart-profile,
+.sketchy-button--sm:hover .icon-trophy-profile {
+  stroke: var(--color-white);
+}
+.profile-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 250px;
+  gap: 20px;
+}
+.profile-frame {
+  border: 4px solid var(--color-text);
+  padding: 50px;
+  border-radius: 2rem;
+  box-shadow: 8px 8px 0px 0px var(--color-text);
+}
+.profile-frame.flexrow {
+  justify-content: space-between;
+}
+.profile.flexcolumn {
+  gap: 2px;
+  align-items: start;
+}
+.profile-cards {
+  border: 2px solid var(--color-text);
+  background-color: var(--color-peach);
+  padding: 1rem 2rem;
+  border-radius: 15px 255px 15px 225px / 225px 15px 255px 15px;
+  box-shadow: 4px 4px 0px 0px rgba(39, 38, 36, 1);
+}
+.chart-btn.active,
+.accomplishments-btn.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.chart-btn.active .icon-chart-profile,
+.accomplishments-btn.active .icon-trophy-profile {
+  stroke: var(--color-white);
+}
+.accomplishments {
+  display: none;
+}
+.statistics {
+  display: block;
+}
+.show .statistics {
+  display: none;
+}
+.show .accomplishments {
+  display: block;
+}
+.leaderboard-btn:link,
+.leaderboard-btn:visited {
+  text-decoration: none;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+.profile-to-game,
+.profile-cards.flexcolumn {
+  gap: 8px;
+}
+#profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-primary);
+  box-shadow: 0px 4px 12px var(--color-muted);
+}
+#profile-points {
+  font-size: 30px;
+}
+.profile-cards .icon.star-2 {
+  color: var(--color-gold);
+}
+.profile-cards.stats {
+  background-color: var(--color-white);
+  padding: 1rem 3rem;
+}
+.profile-cards.stats p:first-of-type {
+  font-size: 30px;
+}
+.icon-stats,
+.icon-badges {
+  width: 32px;
+  height: 32px;
+}
+
+.profile-cards.stats:first-of-type {
+  color: var(--color-primary);
+}
+.profile-cards.stats:nth-of-type(2) {
+  color: var(--color-gold);
+}
+.profile-cards.badges:first-of-type {
+  color: var(--color-gold);
+}
+.profile-cards.badges:nth-of-type(2) {
+  color: var(--color-primary);
+}
+.profile-cards.badges:nth-of-type(3) {
+  color: var(--color-blue);
+}
+.profile-cards.badges:nth-of-type(4) {
+  color: var(--color-green);
+}
+.profile-cards.badges {
+  text-align: center;
+}
+.profile-name-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+#edit-btn:hover {
+  transform: scale(1.1);
+}
+#edit-btn .icon {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+}
+.error-msg {
+  display: none;
+  font-size: 13px;
+  color: var(--color-red);
+  margin-top: 12px;
+}

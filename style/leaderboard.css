@@ -1,0 +1,169 @@
+.leaderboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+}
+.leaderboard-title-container {
+  gap: 10px;
+  padding: 50px;
+}
+.grade-btns {
+  margin-top: 20px;
+}
+.grade-name {
+  display: flex;
+  gap: 300px;
+  font-size: 12px;
+  justify-content: space-between;
+  background-color: var(--color-pastel-orange);
+  margin-bottom: 10px;
+}
+.grade-name .flexcolumn,
+.top-3 .flexcolumn {
+  gap: 6px;
+}
+.leaderboard.flexcolumn {
+  align-items: start;
+}
+.second-place {
+  background-color: var(--color-silver);
+  box-shadow: 4px 0px 0px 0px var(--color-silver);
+  padding: 3rem 4rem;
+}
+.first-place {
+  background-color: var(--color-gold);
+  box-shadow: 4px 0px 0px 0px var(--color-gold);
+  padding: 4rem 4rem;
+}
+.third-place {
+  background-color: var(--color-bronze);
+  box-shadow: 4px 0px 0px 0px var(--color-bronze);
+  padding: 2rem 4rem;
+}
+.second-place,
+.first-place,
+.third-place {
+  color: var(--color-white);
+}
+.top-3 {
+  margin-bottom: 10px;
+}
+.top-3.flexrow {
+  align-items: flex-end;
+}
+.podium-cards {
+  border-radius: 15px 255px 0px 0px / 225px 15px 0px 0px;
+  border: 2px solid var(--color-text);
+}
+.top-10-students {
+  justify-content: space-between;
+  border-bottom: 2px solid var(--color-peach);
+  padding: 4px 14px;
+}
+.top-10-students:last-child {
+  border: none;
+  padding: 10px 14px;
+}
+.top-10-students.flexrow {
+  gap: 25rem;
+}
+/* BG COLORS */
+.top-10-students {
+  border-bottom: 2px dashed var(--color-darker-pastel-bronze);
+}
+.top-10-students:nth-child(odd) {
+  background-color: var(--color-white);
+}
+.top-10-students:nth-child(even) {
+  background-color: var(--color-peach);
+}
+.top-10-students:first-child {
+  background-color: var(--color-pastel-gold);
+}
+.top-10-students:first-child .top-10-score-frame {
+  border: 1px solid var(--color-gold);
+  background-color: var(--color-darker-pastel-gold);
+}
+.top-10-students:nth-child(2) .top-10-score-frame {
+  border: 1px solid var(--color-silver);
+  background-color: var(--color-darker-pastel-silver);
+}
+.top-10-students:nth-child(3) .top-10-score-frame {
+  border: 1px solid var(--color-bronze);
+  background-color: var(--color-darker-pastel-bronze);
+}
+.top-10-students:nth-child(1),
+.top-10-students:nth-child(2),
+.top-10-students:nth-child(3) {
+  border-bottom: 2px solid var(--color-darker-pastel-bronze);
+}
+.top-10-students:nth-child(1) .top-10-score-frame,
+.top-10-students:nth-child(2) .top-10-score-frame,
+.top-10-students:nth-child(3) .top-10-score-frame {
+  color: var(--color-text);
+}
+.top-10-students:nth-child(2) {
+  background-color: var(--color-pastel-silver);
+}
+.top-10-students:nth-child(3) {
+  background-color: var(--color-pastel-bronze);
+}
+.top-10-score-frame {
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  border: 1px solid var(--color-primary);
+  padding: 4px 15px;
+  background-color: var(--color-pastel-orange);
+  color: var(--color-primary);
+}
+.top-10.cards {
+  padding: 0px;
+  overflow: hidden;
+  background-color: var(--color-white);
+}
+.leaderboard-user-pfp {
+  height: 64px;
+  width: 64px;
+  border: 2px solid var(--color-text);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+.leaderboard-table-head {
+  background-color: var(--color-text);
+  color: var(--color-pastel-orange);
+  display: flex;
+  justify-content: space-between;
+  padding: 14px;
+}
+.top-3-score-frame {
+  background-color: var(--color-peach);
+  border: 2px solid var(--color-text);
+  border-radius: 50px;
+  padding: 4px 14px;
+  font-size: 15px;
+  justify-content: center;
+}
+.top-3-title {
+  margin-top: 12px;
+}
+.icon-top-3-places {
+  height: 24px;
+  width: 24px;
+  stroke: currentColor;
+}
+#my-place-container {
+  margin-top: 20px;
+  display: none;
+  background-color: var(--color-peach);
+}
+.top-10-students.current-user {
+  background-color: var(--color-pastel-orange);
+  border: 2px dashed var(--color-primary);
+  border-radius: 12px;
+}
+.flexcolumn.current-user .chalk-txt:first-of-type {
+  color: var(--color-primary);
+}
+#my-place-container .top-10-students.current-user {
+  padding: 12px;
+  border: none;
+}

@@ -1,0 +1,63 @@
+.games-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 700px;
+}
+.cont {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-peach);
+  border: 2px solid var(--color-text);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.ans-input {
+  width: 120px;
+  padding: 10px;
+  font-size: 1.3rem;
+  border: 2px solid var(--color-text);
+  border-radius: 8px;
+  text-align: center;
+  outline: none;
+  box-shadow: 2px 2px 0px var(--color-text);
+}
+.input-label {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--color-text);
+}
+#game-instruction {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.thermometer-svg {
+  height: 500px;
+  width: auto;
+}
+.tube {
+  fill: var(--color-white);
+  stroke: var(--color-text);
+  stroke-width: 4px;
+  stroke-linecap: round;
+}
+.scale-line {
+  stroke: var(--color-text);
+  stroke-width: 2px;
+}
+.scale-text {
+  font-size: 14px;
+  font-weight: bold;
+  fill: var(--color-text);
+}

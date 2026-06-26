@@ -1,0 +1,87 @@
+.games-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  max-width: 700px;
+}
+.shapes-pool {
+  background-color: var(--color-peach);
+  border: 2px dashed var(--color-pastel-gold);
+  border-radius: 10px;
+  min-height: 110px;
+  width: 600px;
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.boxes-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.box {
+  border: 4px dashed var(--color-pastel-orange);
+  background-color: var(--color-peach);
+  border-radius: 20px;
+  padding: 20px 10px;
+  min-height: 270px;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.box:hover {
+  border-color: var(--color-primary);
+  transform: scale(1.02);
+}
+.box-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-gold);
+  margin-bottom: 15px;
+  padding: 5px 15px;
+  border-radius: 12px;
+}
+.shape-card {
+  width: 120px;
+  height: 40px;
+  cursor: grab;
+  transition: transform 0.2s;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-weight: bold;
+  filter: drop-shadow(4px 4px 0px var(--color-text));
+  font-family: "Geo-Chalk";
+}
+.shape-card svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.shape-card:active {
+  cursor: grabbing;
+}
+.box .shape-card {
+  width: 100px;
+  height: 33px;
+  margin: 5px;
+  display: inline-flex;
+}
+.box-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 200px;
+}

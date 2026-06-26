@@ -1,0 +1,81 @@
+.games-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 800px;
+}
+.map-cont {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  background-color: var(--color-peach);
+  border: 2px dashed var(--color-gold);
+  border-radius: 12px;
+  margin-top: 20px;
+}
+.map-point {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  z-index: 5;
+  top: 152px;
+}
+#point-a {
+  left: 25px;
+  background-color: var(--color-primary);
+}
+#point-b {
+  right: 25px;
+  background-color: var(--color-gold);
+}
+.path-group {
+  cursor: pointer;
+}
+.visual-path {
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 3;
+  stroke-dasharray: 8 6;
+  stroke-linecap: round;
+  transition:
+    stroke 0.3s,
+    stroke-width 0.3s;
+}
+.hitbox-path {
+  fill: none;
+  stroke-width: 40;
+  stroke: transparent;
+}
+.path-group:hover .visual-path {
+  stroke: var(--color-primary);
+}
+.path-group.correct .visual-path {
+  stroke: var(--color-green);
+}
+.path-group.wrong .visual-path {
+  stroke: var(--color-red);
+}
+.path-text {
+  font-weight: bold;
+  font-size: 28px;
+  pointer-events: none;
+  user-select: none;
+  paint-order: stroke fill;
+  stroke-width: 6px;
+}
+#butterfly {
+  offset-rotate: auto 90deg;
+  offset-distance: 6%;
+}
+#butterfly.animate-fly {
+  transition: offset-distance 2s cubic-bezier(0.4, 0, 0.2, 1);
+  offset-distance: 94%;
+}

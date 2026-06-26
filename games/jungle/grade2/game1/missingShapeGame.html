@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>რომელი ფიგურა აკლია?</title>
+    <link rel="stylesheet" href="../../../../style/general.css" />
+    <link rel="stylesheet" href="../../../../style/games-general.css" />
+    <link rel="stylesheet" href="missingShapeGame.css" />
+  </head>
+
+  <body>
+    <defs>
+      <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+        <defs>
+          <symbol
+            id="icon-time"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </symbol>
+          <symbol
+            id="icon-check"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </symbol>
+          <symbol id="result-star" viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            ></polygon>
+          </symbol>
+        </defs>
+      </svg>
+    </defs>
+    <header></header>
+    <main>
+      <div class="games-container chalk-txt">
+        <h1 id="prompt-label">
+          ფიგურის დეტექტივო, რომელი ფიგურა აკლია მწრკივს?
+        </h1>
+        <div class="game-hud">
+          <div class="hud-stat">
+            <svg>
+              <use href="#icon-time"></use>
+            </svg>
+            <span id="timer-display">60 წმ</span>
+          </div>
+
+          <div class="hud-stat">
+            <svg>
+              <use href="#icon-check"></use>
+            </svg>
+            <span class="reg-txt"
+              >სწორი: <span id="score-display">0</span>
+            </span>
+          </div>
+        </div>
+        <h2 id="feedback-msg">
+          გაითვალისწინე, ფიგურები დალაგებულია
+          <span class="orange-txt">წვეროების რაოდენობის</span> მიხედვით.
+        </h2>
+        <div class="shapes-cont" id="shapes-cont"></div>
+        <div id="options-cont"></div>
+      </div>
+    </main>
+
+    <div id="start-overlay">
+      <div class="result-box">
+        <h2 class="chalk-txt">რომელი ფიგურაა გამოტოვებული?</h2>
+        <p class="reg-txt grey-txt overlay-subtitle">
+          გაქვს 30 წამი - იპოვე ფიგურა!
+        </p>
+        <div
+          class="button sketchy-button--lg orange-bg push-down-btn chalk-txt"
+          onclick="handleStartGame()"
+        >
+          დაწყება
+        </div>
+      </div>
+    </div>
+
+    <div id="result-overlay">
+      <div class="result-box">
+        <h2 class="chalk-txt">დრო ამოიწურა!</h2>
+        <p id="result-count" class="reg-txt"></p>
+        <p id="result-improved" class="reg-txt"></p>
+        <h3 class="chalk-txt heading-3">
+          ქულა: <strong id="result-score" class="orange-txt"></strong>
+        </h3>
+        <div class="result-star-container">
+          <svg class="result-star">
+            <use href="#result-star"></use>
+          </svg>
+          <svg class="result-star">
+            <use href="#result-star"></use>
+          </svg>
+          <svg class="result-star">
+            <use href="#result-star"></use>
+          </svg>
+        </div>
+
+        <div class="rep-map-btns">
+          <button
+            id="btn-replay"
+            class="button sketchy-button--md push-down-btn chalk-txt"
+          >
+            თავიდან დაწყება
+          </button>
+          <button
+            id="btn-map"
+            class="button sketchy-button--md push-down-btn chalk-txt"
+          >
+            კუნძულზე დაბრუნება
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="loading-overlay">
+      <div class="result-box chalk-txt">შედეგი იგზავნება...</div>
+    </div>
+
+    <footer></footer>
+    <script src="../../../../js/config.js"></script>
+    <script src="../../../../js/auth.js"></script>
+    <script src="../../../../js/game-engine.js"></script>
+    <script src="../../../../js/game-submit.js"></script>
+
+    <script src="missingShapeGame.js"></script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+.games-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 800px;
+}
+.ufo-cont {
+  position: relative;
+  width: 240px;
+  height: 200px;
+  cursor: pointer;
+  transition: transfrom 0.3s ease;
+}
+.ufo-beam {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.ufo-cont.selected .ufo-beam {
+  opacity: 0.6;
+}
+.ufo-cont.selected .ufo-lights {
+  animation: ufo-flash 0.4s infinite alternate;
+}
+.ufo-txt {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--color-white);
+  pointer-events: none;
+  z-index: 5;
+}
+.planets-cont {
+  display: flex;
+  gap: 40px;
+}
+.planet-item {
+  position: relative;
+  width: 160px;
+  height: 130px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.planet-item:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+}
+.planet-item.correct {
+  transform: translateY(-240px) scale(0.1);
+  opacity: 0;
+  filter: blur(5px);
+  transition: all 1s ease-in-out;
+}
+.planet-txt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: var(--color-white);
+  pointer-events: none;
+  z-index: 5;
+}
+@keyframes ufo-flash {
+  0% {
+    fill: var(--color-purple);
+    filter: drop-shadow(0 0 2px var(--color-purple));
+  }
+  100% {
+    fill: var(--color-green);
+    filter: drop-shadow(0 0 8px var(--color-green));
+  }
+}

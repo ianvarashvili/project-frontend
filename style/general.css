@@ -1,0 +1,359 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+/** COLORS **/
+:root {
+  --color-primary: #e25921;
+  --color-beige: #dfcca9;
+  --color-background: #f9f6ee;
+  --color-text: #272624;
+  --color-muted: #8b8d88;
+  --color-white: #ffffff;
+  --color-darker-orange: #b23a14;
+  --color-darker-beige: #cfba91;
+  --color-peach: #fdf7e7;
+
+  --color-pastel-orange: #fee8d5;
+  --color-pastel-blue: #dbeafe;
+  --color-pastel-green: #d1fae5;
+  --color-pastel-purple: #ede9fe;
+
+  --color-blue: #3b82f6;
+  --color-green: #10b981;
+  --color-purple: #8b5cf6;
+
+  --color-gold: #f59e0b;
+  --color-silver: #9ca3af;
+  --color-bronze: #c4835a;
+
+  --color-pastel-gold: #f9eed9;
+  --color-pastel-silver: #f1eee8;
+  --color-pastel-bronze: #f4ebe0;
+
+  --color-darker-pastel-gold: #f9e2bc;
+  --color-darker-pastel-silver: #e5e3df;
+  --color-darker-pastel-bronze: #eddccc;
+
+  --color-red: #e03131;
+
+  /* EVEN ODD GAME COLORS */
+  --color-basket-brown: #d27d2d;
+  --color-basket-brown-darker: #b5651d;
+  --color-apple-green: #166534;
+  /* BALLOON GAME COLOR */
+  --color-red-button: #e11d48;
+  --color-red-button-border: #f43f5e;
+  --color-red-button-shadow: #9f1239;
+}
+/**************** FONTS ****************/
+@font-face {
+  font-family: "Geo-Chalk";
+  src: url(../fonts/SS\ GEO\ CHALK\ \(AllCaps\)-25543181111.otf);
+}
+@font-face {
+  font-family: "Geo-Regular";
+  src: url(../fonts/TFMecomicse-Regular-59522229166.otf);
+}
+@font-face {
+  font-family: "Cabin-Sketch";
+  src: url(../fonts/CabinSketch-Regular.ttf);
+}
+/* FLEX */
+.flexcolumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+.flexrow {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+/* ANIMATIONS */
+@keyframes float-up {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY((0px));
+  }
+}
+@keyframes float-down {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY((0px));
+  }
+}
+/**************** GENERAL CLASSES ****************/
+.chalk-txt {
+  font-family: "Geo-Chalk";
+  font-weight: normal;
+}
+.reg-txt {
+  font-family: "Geo-Regular";
+  /* font-weight: bold; */
+}
+.cabin-sketch-txt {
+  font-family: "Cabin-Sketch";
+}
+.hover-color-change {
+  transform: background-color 0.2s ease;
+}
+.h-title {
+  font-size: 26px;
+}
+/* BUTTONS STYLE */
+.sketchy-button--sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border: 2px solid var(--color-text);
+}
+.sketchy-button--md {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: 2px solid var(--color-text);
+}
+.sketchy-button--lg {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: 2px solid var(--color-text);
+}
+/* CARDS */
+.cards {
+  padding: 1.5rem;
+  border-radius: 15px 255px 15px 225px / 225px 15px 255px 15px;
+  box-shadow: 4px 4px 0px 0px rgba(39, 38, 36, 1);
+  border: 2px solid var(--color-text);
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-weight: bold;
+  box-shadow: 4px 4px 0px 0px var(--color-text);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+  cursor: pointer;
+}
+<<<<<<< HEAD
+.not-clickable-btn {
+=======
+.not-clickable-btn{
+>>>>>>> f6996c1f25aade95e53d9244868b884f85d16dde
+  cursor: default;
+}
+/* COLOR SETTINGS */
+.orange-txt {
+  color: var(--color-primary);
+}
+.grey-txt {
+  color: var(--color-muted);
+}
+.white-txt {
+  color: var(--color-white);
+}
+.dark-orange-txt {
+  color: var(--color-darker-orange);
+}
+.green-txt {
+  color: var(--color-green);
+}
+.blue-txt {
+  color: var(--color-blue);
+}
+.purple-txt {
+  color: var(--color-purple);
+}
+.orange-shadow {
+  box-shadow: 4px 4px 0px 0px var(--color-primary);
+}
+.green-shadow {
+  box-shadow: 4px 4px 0px 0px var(--color-green);
+}
+.purple-shadow {
+  box-shadow: 4px 4px 0px 0px var(--color-purple);
+}
+.blue-shadow {
+  box-shadow: 4px 4px 0px 0px var(--color-blue);
+}
+.orange-shadow,
+.green-shadow,
+.purple-shadow,
+.blue-shadow {
+  transition: box-shadow 0.2s ease-in-out;
+}
+.beige-bg {
+  background-color: var(--color-beige);
+}
+.orange-bg {
+  background-color: var(--color-primary);
+}
+/* ICON SETTINGS */
+.logo {
+  height: 60px;
+}
+.icon {
+  height: 18px;
+  width: 18px;
+}
+.icon-planet {
+  height: 70px;
+  width: 70px;
+  margin-bottom: -10px;
+}
+.planet-icon {
+  width: 150px;
+}
+.icon-game-2,
+.icon-chart,
+.icon-trophy {
+  height: 40px;
+  width: 40px;
+}
+.icon-game{
+  height: 40px;
+  width: 40px;
+}
+.icon-school {
+  height: 16px;
+  width: 16px;
+}
+.icon-star,
+.icon-pencil {
+
+  height: 30px;
+  width: 30px;
+}
+/* ANCHOR ELEMENT SETTINGS */
+.anchor-el:link,
+.anchor-el:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-text);
+  border: none;
+  background: transparent;
+  transition: background-color 0.2s ease;
+}
+.sign-up .anchor-el:link,
+.sign-up .anchor-el:visited {
+  color: var(--color-white);
+}
+.login.anchor-el:link,
+.login.anchor-el:visited {
+  color: var(--color-primary);
+}
+/****************HOVER EFFECTS ****************/
+.push-down-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--color-text);
+  background-color: var(--color-darker-orange);
+}
+.beige-bg.push-down-btn:hover {
+  background-color: var(--color-darker-beige);
+}
+.hover-color-change:hover {
+  background-color: var(--color-peach);
+}
+.first-class-card.orange-shadow:hover {
+  box-shadow: 8px 8px 0px 0px var(--color-primary);
+}
+.third-class-card.green-shadow:hover {
+  box-shadow: 8px 8px 0px 0px var(--color-green);
+}
+.fourth-class-card.purple-shadow:hover {
+  box-shadow: 8px 8px 0px 0px var(--color-purple);
+}
+.second-class-card.blue-shadow:hover {
+  box-shadow: 8px 8px 0px 0px var(--color-blue);
+}
+/* ERROR MESSAGE */
+#error-msg {
+  display: none;
+  font-size: 13px;
+  color: var(--color-red);
+}
+#feedback-msg {
+  justify-content: center;
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 8px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.badge-locked {
+  opacity: 0.4;
+  filter: grayscale(100%);
+  transform: scale(90%);
+}
+
+.badge-earned {
+  opacity: 1;
+  transform: scale(100%);
+}
+
+.locked-label {
+  font-size: 12px;
+}
+
+/* island thumbnail stars */
+
+.thumb-star {
+  stroke: var(--color-text);
+  stroke-width: 2px;
+  stroke-linejoin: round;
+}
+.thumb-star--filled {
+  fill: var(--color-gold);
+}
+.thumb-star--empty {
+  fill: var(--color-pastel-silver);
+}
+
+
+.icon-game-2{
+  color: var(--color-white);
+
+}
+
+/* logout modal */
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(39, 38, 36, 0.7); 
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.custom-modal-box {
+  background-color: var(--color-background);
+  max-width: 400px;
+  text-align: center;
+  padding: 30px;
+  gap: 15px; 
+}

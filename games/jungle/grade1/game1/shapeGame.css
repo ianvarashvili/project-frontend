@@ -1,0 +1,76 @@
+.games-container {
+  max-width: 600px;
+}
+.ui-shape-icon {
+  width: 50px;
+  height: 50px;
+}
+.opts-cont {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.shape-opt {
+  background-color: var(--color-white);
+  padding: 1rem;
+  border: 2px solid var(--color-text);
+  border-radius: 25px 15px 35px 20px/20px 30px 15px 25px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px 0px var(--color-text);
+  transition:
+    transform 150ms,
+    background-color 150ms;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.shape-opt:hover {
+  background-color: var(--color-peach);
+  transform: translateY(-2px);
+}
+.shape-opt:active {
+  transform: translateY(2px);
+}
+svg {
+  stroke: var(--color-text);
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.display-object {
+  width: 100px;
+  height: 100px;
+}
+.fill-orange {
+  fill: var(--color-primary);
+}
+.fill-beige {
+  fill: var(--color-beige);
+}
+.fill-cream {
+  fill: var(--color-peach);
+}
+.fill-white {
+  fill: var(--color-white);
+}
+.prompt-txt {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+.shape-game.cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-peach);
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  min-height: 200px;
+}
+.heading-1 {
+  text-align: center;
+  margin-bottom: 10px;
+}

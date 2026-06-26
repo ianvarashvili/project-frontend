@@ -1,0 +1,138 @@
+.games-container {
+  max-width: 640px;
+}
+.heading-1 {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+/* ── ლეგენდა ── */
+.legend-panel {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.legend-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--color-white);
+  border: 2px solid var(--color-text);
+  border-radius: 15px 255px 15px 225px / 225px 15px 255px 15px;
+  padding: 8px 16px;
+  box-shadow: 4px 4px 0px 0px var(--color-text);
+}
+.legend-value {
+  font-weight: bold;
+  font-size: 1.15rem;
+}
+
+/* ── ფიგურები ── */
+.shape-icon {
+  width: 40px;
+  height: 40px;
+  stroke: var(--color-text);
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.shape-icon.size-lg {
+  width: 60px;
+  height: 60px;
+}
+.shape-triangle {
+  fill: var(--color-primary);
+}
+.shape-square {
+  fill: var(--color-blue);
+}
+.shape-circle {
+  fill: var(--color-green);
+}
+.shape-diamond {
+  fill: var(--color-purple);
+}
+
+/* ── გამოსახულება ── */
+.prompt-txt {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+.equation-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  background-color: var(--color-peach);
+  margin-bottom: 28px;
+  padding: 2rem;
+  min-height: 130px;
+}
+.equation-operator,
+.equation-equals {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-text);
+}
+.equation-question {
+  width: 60px;
+  height: 60px;
+  border: 3px dashed var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+/* ── პასუხები ── */
+.answer-opts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.answer-btn {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-text);
+  border-radius: 25px 15px 35px 20px / 20px 30px 15px 25px;
+  padding: 1rem;
+  font-size: 1.35rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px 0px var(--color-text);
+  transition:
+    transform 150ms,
+    background-color 150ms;
+}
+.answer-btn:hover {
+  background-color: var(--color-pastel-orange);
+  transform: translateY(-2px);
+}
+.answer-correct {
+  background-color: var(--color-pastel-green) !important;
+  border-color: var(--color-green);
+}
+.answer-wrong {
+  background-color: var(--color-pastel-orange) !important;
+  border-color: var(--color-red);
+  animation: shake 0.4s;
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
