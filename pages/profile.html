@@ -12,8 +12,6 @@
   </head>
 
   <body>
-  
-
     <header class="header-container">
       <div class="flexrow">
         <a href="home.html"
@@ -46,12 +44,6 @@
           </svg>
           <span>გასვლა</span>
         </div>
-      </a>
-      <div class="reg-txt sign-up button sketchy-button--sm push-down-btn" id="logout-btn">
-        <svg class="icon">
-          <use href="#icon-log-out"></use>
-        </svg>
-        <span>გასვლა</span>
       </div>
     </header>
     <main>
@@ -77,14 +69,35 @@
                   </svg>
                 </div>
               </div>
-              <div id="edit-error" class="error-msg"></div>
-            </div>
-            <div class="flexrow">
-              <div class="sketchy-button--sm button beige-bg not-clickable-btn">
-                <svg class="icon">
-                  <use href="#icon-school"></use>
-                </svg>
-                <span id="profile-grade"></span>
+              <p class="logged-user-username" id="profile-nickname"></p>
+              <div id="edit-form" style="display: none; margin: 8px 0">
+                <input
+                  type="text"
+                  id="edit-name"
+                  class="reg-txt sketchy-input"
+                  placeholder="სახელი"
+                />
+                <input
+                  type="text"
+                  id="edit-surname"
+                  class="reg-txt sketchy-input"
+                  placeholder="გვარი"
+                />
+                <div class="flexrow" style="gap: 8px; margin-top: 8px">
+                  <div
+                    class="button sketchy-button--sm beige-bg push-down-btn"
+                    onclick="cancelEdit()"
+                  >
+                    გაუქმება
+                  </div>
+                  <div
+                    class="button sketchy-button--sm orange-bg push-down-btn"
+                    onclick="saveEdit()"
+                  >
+                    შენახვა
+                  </div>
+                </div>
+                <div id="edit-error" class="error-msg"></div>
               </div>
               <div class="flexrow">
                 <div
@@ -114,56 +127,17 @@
             <p class="grey-txt">ქულა</p>
           </div>
         </div>
-        <div class="profile-cards flexcolumn">
-          <svg class="icon star">
-            <use href="#icon-star"></use>
-          </svg>
-          <p class="chalk-txt orange-txt" id="profile-points"></p>
-          <p class="grey-txt">ქულა</p>
-        </div>
-      </div>
 
-      <div class="profile-buttons reg-txt flexrow">
-        <div class="sketchy-button--sm button push-down-btn chart-btn active">
-          <svg class="icon-chart-profile">
-            <use href="#icon-chart-profile"></use>
-          </svg>
-          <span>სტატისტიკა</span>
-        </div>
-        <div class="sketchy-button--sm button push-down-btn accomplishments-btn">
-          <svg class="icon-trophy-profile">
-            <use href="#icon-trophy-profile"></use>
-          </svg>
-          <span>მიღწევები</span>
-        </div>
-      </div>
-      <div class="profile-page-changing-container">
-        <div class="statistics">
-          <h2 class="chalk-txt">
+        <div class="profile-buttons reg-txt flexrow">
+          <div class="sketchy-button--sm button push-down-btn chart-btn active">
             <svg class="icon-chart-profile">
               <use href="../assets/sprites.svg#icon-chart-profile"></use>
             </svg>
-            ჩემი სტატისტიკა
-          </h2>
-          <div class="flexrow">
-            <div class="profile-cards stats flexcolumn">
-              <svg class="icon-stats">
-                <use href="#icon-game-console"></use>
-              </svg>
-              <p id="games-played-total" class="chalk-txt">0</p>
-              <p class="grey-txt">თამაშები</p>
-            </div>
-            <div class="profile-cards stats flexcolumn">
-              <svg class="icon-stats">
-                <use href="#icon-flash"></use>
-              </svg>
-              <p id="streak-total" class="chalk-txt">0</p>
-              <p class="grey-txt">streak</p>
-            </div>
+            <span>სტატისტიკა</span>
           </div>
-        </div>
-        <div class="accomplishments">
-          <h2 class="chalk-txt">
+          <div
+            class="sketchy-button--sm button push-down-btn accomplishments-btn"
+          >
             <svg class="icon-trophy-profile">
               <use href="../assets/sprites.svg#icon-trophy-profile"></use>
             </svg>
@@ -263,8 +237,7 @@
     </div>
   </body>
 
-<script src="../js/config.js"></script>
-<script src="../js/auth.js"></script>
-<script src="../js/profile.js"></script>
-
+  <script src="../js/config.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/profile.js"></script>
 </html>
