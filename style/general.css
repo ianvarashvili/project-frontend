@@ -155,11 +155,7 @@ body {
     background-color 0.2s ease;
   cursor: pointer;
 }
-<<<<<<< HEAD
 .not-clickable-btn {
-=======
-.not-clickable-btn{
->>>>>>> f6996c1f25aade95e53d9244868b884f85d16dde
   cursor: default;
 }
 /* COLOR SETTINGS */
