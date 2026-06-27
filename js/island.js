@@ -2,7 +2,7 @@ const GRADE_LABELS = { 1: "I", 2: "II", 3: "III", 4: "IV" };
 
 const ISLAND_LABELS = {
   castle: "ციხე-სიმაგრე",
-  jungle: "ჯუნგლი",
+  jungle: "ჯუნგლები",
   labyrinth: "ლაბირინთი",
 };
 

@@ -85,7 +85,6 @@ function startRound() {
     planetELItem.dataset.roman = options[i];
   }
   feedbackMsg.innerText = "ჯერ გაააქტიურე ხომალდი! დააჭირე მას.";
-  //  showFeedback("ჯერ გაააქტიურე ხომალდი! დააჭირე მას.", true);
 }
 
 function toggleUfo() {
@@ -97,6 +96,7 @@ function toggleUfo() {
     showFeedback("ხომალდი ჩართულია! აირჩიე შესაბამისი პლანეტა!", true);
   } else {
     ufoEl.classList.remove("selected");
+    feedbackMsg.style.color = ""; 
     feedbackMsg.innerText = "ჯერ გაააქტიურე ხომალდი! დააჭირე მას.";
   }
 }
@@ -112,7 +112,6 @@ function checkAns(index) {
     isLock = true;
     planetEL.classList.add("correct");
     showFeedback("ყოჩაღ! სწორად შეუსაბამე!", true);
-
     onCorrect();
     setTimeout(() => {
       startRound();

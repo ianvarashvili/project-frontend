@@ -15,6 +15,23 @@ async function loadLeaderboard() {
     renderPodium(data.top10);
     renderTop10(data.top10);
     renderMyPlace(data.myPlace, data.top10);
+    if (data.newBadge) {
+      const currentBadges = JSON.parse(
+        localStorage.getItem(STORAGE_KEYS.userBadges) || "[]",
+      );
+      if (!currentBadges.includes(data.newBadge)) {
+        currentBadges.push(data.newBadge);
+
+        localStorage.setItem(
+          STORAGE_KEYS.userBadges,
+          JSON.stringify(currentBadges),
+        );
+
+        if (typeof showBadgePopups === "function") {
+          showBadgePopups([data.newBadge]);
+        }
+      }
+    }
   } catch (err) {
     showError("error-msg", "ლიდერბორდი ვერ ჩაიტვირთა");
   } finally {
@@ -113,9 +130,8 @@ function renderMyPlace(myPlace, top10) {
 
   const container = document.getElementById("my-place-container");
   if (!container) return;
-  
+
   container.style.display = "block";
-  
 
   container.innerHTML = `
     <div class="top-10-students flexrow current-user">
