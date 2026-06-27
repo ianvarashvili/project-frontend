@@ -353,3 +353,30 @@ body {
   padding: 30px;
   gap: 15px; 
 }
+
+/* password visibility */
+.password-field-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-field-wrapper input {
+  width: 100%;
+  padding-right: 42px;
+}
+.password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--color-muted);
+}
+.password-toggle-btn:hover {
+  color: var(--color-primary);
+}

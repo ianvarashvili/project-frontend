@@ -1,66 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ავტორიზაცია</title>
     <link rel="icon" type="image/png" href="../assets/fox-logo.png" />
-    <link rel="stylesheet" href="../style/general.css">
-    <link rel="stylesheet" href="../style/home.css">
-    <link rel="stylesheet" href="../style/register.css">
-    <link rel="stylesheet" href="../style/login.css">
+    <link rel="stylesheet" href="../style/general.css" />
+    <link rel="stylesheet" href="../style/home.css" />
+    <link rel="stylesheet" href="../style/register.css" />
+    <link rel="stylesheet" href="../style/login.css" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <header class="header-container reg-txt">
-        <div class="flexrow">
-            <a href="home.html"><img src="../assets/fox-logo.png" alt="our website logo of a fox holding a pen"
-                    class="logo"></a>
-            <p class="chalk-txt"><span class="orange-word h-title">მელიას</span> <br> მათემატიკა</p>
-        </div>
+      <div class="flexrow">
+        <a href="home.html"
+          ><img
+            src="../assets/fox-logo.png"
+            alt="our website logo of a fox holding a pen"
+            class="logo"
+        /></a>
+        <p class="chalk-txt">
+          <span class="orange-word h-title">მელიას</span> <br />
+          მათემატიკა
+        </p>
+      </div>
 
-        <a href="home.html" class="anchor-el">
-            <div class="button sketchy-button--md hover-color-change">
-                <span>მთავარი</span>
-            </div>
-        </a>
+      <a href="home.html" class="anchor-el">
+        <div class="button sketchy-button--md hover-color-change">
+          <span>მთავარი</span>
+        </div>
+      </a>
     </header>
     <main>
-        <div class="sign-in-page-cont reg-txt">
-            <h1 class="chalk-txt ">კვლავ <span class="orange-txt">დაგვიბრუნდი!</span></h1>
-            <p class="grey-txt">შედი შენს ანაგრიშში და განაგრძე სწავლა</p>
-            <div class="form-div reg-txt">
-                <form id="login-form">
-                    <div class="form-group">
-                        <label for="username">ზედმეტსახელი</label>
-                        <input type="text" name="username" id="username" placeholder="მაგ: nino_star"
-                            class="reg-txt sketchy-input">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">პაროლი</label>
-                        <input type="password" id="password" placeholder="მინიმუმ 6 სიმბოლო"
-                            class="reg-txt sketchy-input" required>
-                    </div>
-                    <div id="error-msg" style="display:none;"></div>
-                    <button type="submit"
-                        class="button sign-in-form-btn sketchy-button--md reg-txt form-group push-down-btn"
-                        id="login-btn">შესვლა</button>
-                    <p class="form-subtitle"> <span class="grey-txt">არ გაქვს ანგარიში?</span> <span
-                            class="orange-txt"></span>
-                        <a href="register.html" class="separate-sign-pages anchor-el">დარეგისტირდი აქ</a></span>
-                    </p>
-                </form>
+      <div class="sign-in-page-cont reg-txt">
+        <h1 class="chalk-txt">
+          კვლავ <span class="orange-txt">დაგვიბრუნდი!</span>
+        </h1>
+        <p class="grey-txt">შედი შენს ანაგრიშში და განაგრძე სწავლა</p>
+        <div class="form-div reg-txt">
+          <form id="login-form">
+            <div class="form-group">
+              <label for="username">ზედმეტსახელი</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="მაგ: nino_star"
+                class="reg-txt sketchy-input"
+              />
             </div>
+            <div class="form-group">
+              <label for="password">პაროლი</label>
+              <div class="password-field-wrapper">
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="მინიმუმ 6 სიმბოლო"
+                  class="reg-txt sketchy-input"
+                  required
+                />
+                <button
+                  type="button"
+                  class="password-toggle-btn"
+                  onclick="togglePasswordVisibility('password', this)"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M17.94 17.94A10.94 10.94 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A10.94 10.94 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19M14.12 14.12a3 3 0 11-4.24-4.24"
+                    />
+                    <line x1="1" y1="1" x2="23" y2="23" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div id="error-msg" style="display: none"></div>
+            <button
+              type="submit"
+              class="button sign-in-form-btn sketchy-button--md reg-txt form-group push-down-btn"
+              id="login-btn"
+            >
+              შესვლა
+            </button>
+            <p class="form-subtitle">
+              <span class="grey-txt">არ გაქვს ანგარიში?</span>
+              <span class="orange-txt"></span>
+              <a href="register.html" class="separate-sign-pages anchor-el"
+                >დარეგისტირდი აქ</a
+              >
+            </p>
+          </form>
         </div>
+      </div>
     </main>
     <footer class="sign-in-footer flexrow reg-txt">
-        <p>2026 წელს შექმნილი ქართველი მოსწავლებიისთვის • მელიას მათემატიკა </p>
+      <p>2026 წელს შექმნილი ქართველი მოსწავლებიისთვის • მელიას მათემატიკა</p>
     </footer>
     <script src="../js/config.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/login.js"></script>
-</body>
-
+  </body>
 </html>
