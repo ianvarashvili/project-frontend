@@ -89,7 +89,7 @@
             stroke-linejoin="round"
           />
         </symbol>
-        <symbol id="icon-trophy" viewBox="0 0 24 24">
+               <symbol id="icon-trophy" viewBox="0 0 24 24">
           <path
             d="M8 21h8M12 17v4M7 3H5C4 3 3 4 3 5v2a4 4 0 003 4M17 3h2c1 0 2 1 2 2v2a4 4 0 01-3 4"
             fill="none"

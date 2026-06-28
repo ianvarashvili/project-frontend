@@ -99,7 +99,7 @@ const SOUND_FILES = {
   wrong:   "/assets/sounds/wrong.mp3",
 };
 const SOUND_VOLUMES = {
-  click:   0.1,
+  click:   0.3,
   correct: 0.1,
   wrong:   0.1,  
 };
@@ -119,7 +119,7 @@ function playSound(name) {
   instance.play().catch(() => {}); 
 }
 //btn click
-document.addEventListener("click", (e) => {
-    const btn = e.target.closest("button, .button");
-  if (btn) playSound("click");
-}, true); 
+// document.addEventListener("click", (e) => {
+//      const btn = e.target.closest("button, .button, a");
+//   if (btn) playSound("click");
+// }, true); 

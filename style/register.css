@@ -41,6 +41,7 @@ input[type="radio"]:checked + label {
   border-radius: 50%;
   border: 3px solid transparent;
   transition: border 0.2s;
+  position: relative;
 }
 .avatar-option img {
   width: 64px;
@@ -51,3 +52,37 @@ input[type="radio"]:checked + label {
 .avatar-option.selected {
   border: 3px solid var(--color-primary);
 }
+.grade-section {
+  margin-bottom: 5px;
+}
+#female-avatars {
+  display: flex;
+  flex-wrap: wrap;
+}
+#male-avatars {
+  display: none;
+  flex-wrap: wrap;
+}
+.gender-toggle {
+  display: flex;
+}
+.choose-gender-btn {
+  border: 2px solid var(--color-text);
+  box-shadow: 4px 4px 0px 0px rgba(39, 38, 36, 1);
+  border-radius: 20px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.avatar-group {
+  padding: 14px 0px;
+}
+.male-btn {
+  margin-left: 4px;
+}
+.selected-btn {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: scale(0.95);
+}
+

@@ -220,13 +220,13 @@ body {
 .planet-icon {
   width: 150px;
 }
-.icon-game-2,
+.icon-game,
 .icon-chart,
 .icon-trophy {
   height: 40px;
   width: 40px;
 }
-.icon-game{
+.icon-game {
   height: 40px;
   width: 40px;
 }
@@ -235,8 +235,8 @@ body {
   width: 16px;
 }
 .icon-star,
-.icon-pencil {
-
+.icon-pencil,
+.icon-game-2 {
   height: 30px;
   width: 30px;
 }
@@ -326,12 +326,6 @@ body {
   fill: var(--color-pastel-silver);
 }
 
-
-.icon-game-2{
-  color: var(--color-white);
-
-}
-
 /* logout modal */
 .custom-modal-overlay {
   position: fixed;
@@ -339,7 +333,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(39, 38, 36, 0.7); 
+  background-color: rgba(39, 38, 36, 0.7);
   display: none;
   justify-content: center;
   align-items: center;
@@ -351,7 +345,7 @@ body {
   max-width: 400px;
   text-align: center;
   padding: 30px;
-  gap: 15px; 
+  gap: 15px;
 }
 
 /* password visibility */
@@ -394,4 +388,3 @@ body {
   font-weight: bold;
   z-index: 200;
 }
-

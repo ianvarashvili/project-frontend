@@ -44,6 +44,7 @@ html {
 .introduction-page {
   padding: 100px;
   font-size: 20px;
+  flex-wrap: wrap;
 }
 .introduction-page-cards {
   border: 2px solid var(--color-text);
@@ -90,7 +91,7 @@ html {
 }
 .pencil-div,
 .star-div,
-.target-div {
+.icon-game-2-div {
   background-color: var(--color-primary);
   border-radius: 50%;
   border: 2px solid var(--color-text);
@@ -100,7 +101,7 @@ html {
   justify-content: center;
   align-items: center;
 }
-.target-div {
+.icon-game-2-div {
   background-color: var(--color-beige);
 }
 .star-div {
