@@ -68,7 +68,7 @@ function checkAns(selectedCard, selectedTime) {
     correctAns = true;
     selectedCard.classList.add("correct");
     onCorrect();
-    showFeedback("ყოჩაღ! შენ სწორად გამოიცანი!", true);
+    showFeedback("ყოჩაღ, სწორია!", true);
     setTimeout(() => {
       hideFeedback();
       startRound();

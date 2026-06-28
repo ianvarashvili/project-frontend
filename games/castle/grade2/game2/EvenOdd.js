@@ -57,7 +57,7 @@ function chooseBasket(basketType) {
 
     if (remainingApples === 0) {
       onCorrect();
-     showFeedback("ყოჩაღ! შენ სწორად გაანაწილე ვაშლები!", true);
+     showFeedback("ყოჩაღ, სწორია!", true);
 
       setTimeout(() => {
         

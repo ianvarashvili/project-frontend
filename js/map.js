@@ -61,7 +61,14 @@ function renderUserStats() {
 
   const starsEl = document.getElementById("user-stars");
   const nameEl = document.getElementById("user-name");
-  if (starsEl) starsEl.textContent = `⭐ ${user.stars}`;
+    if (starsEl) {
+    starsEl.innerHTML = `
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2.5l2.7 5.5 6.1.9-4.4 4.2 1 6.1-5.4-2.8-5.4 2.8 1-6.1-4.4-4.2 6.1-.9L12 2.5z"></path>
+        </svg>
+      ${user.stars}
+    `;
+  }
   if (nameEl) nameEl.textContent = user.userName;
 }
 

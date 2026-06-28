@@ -1,0 +1,14 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.cards {
+  text-align: center;
+  gap: 20px;
+  padding: 40px;
+}
+.push-down-btn:hover {
+  color: var(--color-white);
+}

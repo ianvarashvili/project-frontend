@@ -8,6 +8,57 @@ const gameState = {
   timerInterval: null,
   isFinished: false,
 };
+let _bgMusicInstance = null;
+
+function startBgMusic() {
+  if (!isSoundEnabled()) return; 
+    if (_bgMusicInstance) {
+    _bgMusicInstance.play().catch(() => {});
+    return;
+  }
+  _bgMusicInstance = new Audio("/assets/sounds/game_bg.mp3");
+  _bgMusicInstance.loop = true;
+  _bgMusicInstance.volume = 0.25;
+  _bgMusicInstance.play().catch(() => {});
+}
+
+function stopBgMusic() {
+  if (!_bgMusicInstance) return;
+  _bgMusicInstance.pause();
+}
+function isSoundEnabled() {
+  return localStorage.getItem("soundEnabled") !== "false"; 
+}
+
+function toggleSound() {
+  const newState = !isSoundEnabled();
+  localStorage.setItem("soundEnabled", newState);
+
+  if (!newState) {
+    stopBgMusic(); 
+  } else {
+    startBgMusic(); 
+  }
+
+  renderSoundToggleIcon();
+}
+
+function renderSoundToggleIcon() {
+  const btn = document.getElementById("sound-toggle-btn");
+  if (!btn) return;
+
+  const enabled = isSoundEnabled();
+  btn.innerHTML = enabled
+    ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+         <path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"></path>
+       </svg>`
+    : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+         <line x1="23" y1="9" x2="17" y2="15"></line>
+         <line x1="17" y1="9" x2="23" y2="15"></line>
+       </svg>`;
+}
 
 function startGame(config) {
   gameState.userId = localStorage.getItem(STORAGE_KEYS.userId);
@@ -24,14 +75,16 @@ function startGame(config) {
 function handleStartGame() {
   const overlay = document.getElementById("start-overlay");
   if (overlay) overlay.style.display = "none";
-  if (typeof startRound === "function") startRound(); // ← game.js-ში განსაზღვრული
+  if (typeof startRound === "function") startRound(); 
   startTimer();
+  startBgMusic();
 }
 
 //სწორ პასუხზე.
 function onCorrect() {
   gameState.correctCount++;
   updateScoreUI(gameState.correctCount);
+  playSound("correct");
 }
 
 //submitGame()-ს ვიძახებთ
@@ -39,6 +92,7 @@ function endGame() {
   if (gameState.isFinished) return;
   gameState.isFinished = true;
   clearInterval(gameState.timerInterval);
+  stopBgMusic();
   submitGame(gameState);
 }
 
@@ -71,6 +125,7 @@ function showFeedback(msg, isCorrect) {
   el.innerHTML = msg;
   el.style.color = isCorrect ? "var(--color-green)" : "var(--color-red)";
   el.style.display = "block";
+  playSound(isCorrect ? "correct" : "wrong");
 }
 
 function hideFeedback() {
@@ -82,8 +137,8 @@ function hideFeedback() {
 
 const ISLAND_LABELS_HEADER = {
   castle: "ციხე-სიმაგრე",
-  jungle: "ჯუნგლი",
-  labyrinth: "ლაბირინთო",
+  jungle: "ჯუნგლები",
+  labyrinth: "ლაბირინთი",
 };
 
 const GRADE_LABELS_HEADER = { 1: "I", 2: "II", 3: "III", 4: "IV" };
@@ -135,12 +190,28 @@ function renderGameHeader() {
       </div>
     </div>
   `;
+  // renderGameHeader()-ის ბოლოში, addEventListener-ის შემდეგ:
+
+const soundBtn = document.createElement("div");
+soundBtn.id = "sound-toggle-btn";
+soundBtn.className = "button sketchy-button--sm hover-color-change";
+soundBtn.style.cssText = `
+  position: fixed;
+  top: 120px;
+  right: 300px;
+  z-index: 50;
+  background: var(--color-background);
+`;
+soundBtn.onclick = toggleSound;
+document.body.appendChild(soundBtn);
+renderSoundToggleIcon();
 
   document.body.prepend(header);
 
   document.getElementById("game-header-back").addEventListener("click", () => {
     window.location.href = `/pages/island.html?island=${gameState.island}&grade=${gameState.gameGrade}`;
   });
+   renderSoundToggleIcon(); 
 }
 
 function escapeHeaderText(str) {

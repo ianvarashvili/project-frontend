@@ -95,7 +95,7 @@ function checkAns(element, clickedIndex) {
   if (clickedIndex === targetIndexFromLeft) {
     isWaiting = true;
     onCorrect();
-    showFeedback("ყოჩაღ! შენ სწორად გამოიცანი ვარსკვლავის პოზიცია!", true);
+    showFeedback("ყოჩაღ, სწორია!", true);
 
     setTimeout(() => {
       hideFeedback();

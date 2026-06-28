@@ -91,3 +91,35 @@ function showBadgePopups(badges) {
     }, i * 1200);
   });
 }
+
+
+const SOUND_FILES = {
+  click:   "/assets/sounds/click.mp3",
+  correct: "/assets/sounds/correct.mp3",
+  wrong:   "/assets/sounds/wrong.mp3",
+};
+const SOUND_VOLUMES = {
+  click:   0.1,
+  correct: 0.1,
+  wrong:   0.1,  
+};
+const _soundCache = {};
+
+function playSound(name) {
+  if (!isSoundEnabled()) return; 
+  const src = SOUND_FILES[name];
+  if (!src) return;
+
+  if (!_soundCache[name]) {
+    _soundCache[name] = new Audio(src);
+  }
+
+  const instance = _soundCache[name].cloneNode();
+  instance.volume = SOUND_VOLUMES[name] ?? 0.3;
+  instance.play().catch(() => {}); 
+}
+//btn click
+document.addEventListener("click", (e) => {
+    const btn = e.target.closest("button, .button");
+  if (btn) playSound("click");
+}, true); 

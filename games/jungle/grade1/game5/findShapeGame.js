@@ -137,7 +137,7 @@ function checkAns() {
   }
   if (isCorrect) {
     onCorrect();
-    showFeedback("ყოჩაღ! კარგად იცნობ ფიგურებს!", true);
+    showFeedback("ყოჩაღ, სწორია!", true);
 
     setTimeout(() => {
       startRound();

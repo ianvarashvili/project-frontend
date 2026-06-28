@@ -7,9 +7,11 @@ async function submitGame(gameState) {
     correctCount: gameState.correctCount,
     timeLimitSeconds: gameState.timeLimitSeconds,
   };
-
   const loadingEl = document.getElementById("loading-overlay");
   if (loadingEl) loadingEl.style.display = "flex";
+  const resultAudio = new Audio("/assets/sounds/result.mp3");
+  resultAudio.volume = 0.5;
+  resultAudio.play().catch(() => {});
 
   try {
     const data = await apiFetch("/game/submit", {
@@ -18,12 +20,12 @@ async function submitGame(gameState) {
     });
 
     updateLocalStorage(data);
-
     if (loadingEl) loadingEl.style.display = "none";
     showResults(data, gameState);
   } catch (err) {
     if (loadingEl) loadingEl.style.display = "none";
     console.error("Submit error:", err.message);
+    resultAudio.pause();
     goBackToIsland(gameState);
   }
 }
@@ -68,13 +70,13 @@ function showResults(data, gameState) {
     }
   }
 
-const stars = document.querySelectorAll(".result-star");
+  const stars = document.querySelectorAll(".result-star");
   stars.forEach((s) => s.classList.remove("active"));
-  //force the browser to paint the initial state before toggling .active
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       stars.forEach((s, i) => {
-        if (i < data.stars) setTimeout(() => s.classList.add("active"), i * 350);
+        if (i < data.stars)
+          setTimeout(() => s.classList.add("active"), i * 350);
       });
     });
   });
@@ -91,4 +93,3 @@ const stars = document.querySelectorAll(".result-star");
 function goBackToIsland(gameState) {
   window.location.href = `/pages/island.html?island=${gameState.island}&grade=${gameState.gameGrade}`;
 }
-

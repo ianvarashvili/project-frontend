@@ -111,7 +111,7 @@ function checkAns(index) {
   if (chosenVal === currRoman) {
     isLock = true;
     planetEL.classList.add("correct");
-    showFeedback("ყოჩაღ! სწორად შეუსაბამე!", true);
+    showFeedback("ყოჩაღ, სწორია!", true);
 
     onCorrect();
     setTimeout(() => {

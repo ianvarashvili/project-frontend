@@ -140,7 +140,7 @@ function checkAns() {
 
   if (allCorrect) {
     onCorrect();
-    showFeedback("ყოჩაღ! სწორად გადაანაწილე!", true);
+    showFeedback("ყოჩაღ, სწორია!", true);
     setTimeout(() => {
       startRound();
     }, 2000);

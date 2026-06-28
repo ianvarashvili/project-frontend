@@ -82,7 +82,7 @@ function checkAns() {
   }
   if (parsedAns === correctAns) {
       onCorrect(); 
-    showFeedback("ყოჩაღ! სწორად გამოიცანი!", true); 
+    showFeedback("ყოჩაღ, სწორია!", true); 
     setTimeout(() => {
       startRound();
     }, 2000);

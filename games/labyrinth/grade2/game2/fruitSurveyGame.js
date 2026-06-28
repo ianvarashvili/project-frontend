@@ -241,7 +241,7 @@ function checkAnswer(isCorrect, btnEl) {
     answered = true;
     btnEl.classList.add("answer-correct");
     onCorrect();
-    showFeedback("სწორია! კარგად წაიკითხე დიაგრამა!", true);
+    showFeedback("ყოჩაღ, სწორია!", true);
     setTimeout(() => startRound(), 1300);
   } else {
     btnEl.classList.add("answer-wrong");

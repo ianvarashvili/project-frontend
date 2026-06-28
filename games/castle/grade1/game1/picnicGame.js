@@ -80,13 +80,13 @@ function checkAns() {
   if (gameState.isFinished) return;
   if (basketCount === currentQuest.leftInBasket) {
     onCorrect();
-    showFeedback("ყოჩაღ! სწორად გადათვალე! ", true);
+    showFeedback("ყოჩაღ! სწორაია! ", true);
 
     setTimeout(() => {
       hideFeedback();
       startRound();
     }, 2000);
   } else {
-    showFeedback("რაღაც შეცდომაა... თავიდან გადათვალე ", false);
+    showFeedback("რაღაც შეცდომაა... თავიდან გადათვალე", false);
   }
 }

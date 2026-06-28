@@ -106,7 +106,7 @@ function selectFlower(index, flowerEl) {
     beeEl.style.transform = `scale(1.15)`;
     onCorrect();
 
-    showFeedback("ყოჩაღ! შენ სწორად მიიყვანე ფუტკარი!", true);
+    showFeedback("ყოჩაღ, სწორია!", true);
     
 
     setTimeout(() => {

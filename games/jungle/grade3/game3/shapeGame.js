@@ -173,7 +173,7 @@ function checkAns(selectedShape) {
   if (selectedShape === currentItem.shape) {
     correctAns = true;
     onCorrect();
-    showFeedback("ყოჩაღ! შენ სწორად დააკავშირე ფორმები!", true);
+    showFeedback("ყოჩაღ, სწორია!", true);
 
     setTimeout(() => {
       feedbackMsg.style.color = "var(--color-text)";
