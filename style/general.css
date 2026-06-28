@@ -380,3 +380,18 @@ body {
 .password-toggle-btn:hover {
   color: var(--color-primary);
 }
+
+.badge-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--color-gold);
+  color: var(--color-text);
+  border: 2px solid var(--color-text);
+  border-radius: 15px 255px 15px 225px/225px 15px 255px 15px;
+  box-shadow: 4px 4px 0px 0px var(--color-text);
+  padding: 14px 24px;
+  font-weight: bold;
+  z-index: 200;
+}
+

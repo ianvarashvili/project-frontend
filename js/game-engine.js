@@ -78,9 +78,7 @@ function hideFeedback() {
   if (el) el.style.display = "none";
 }
 
-
 //game header
-
 
 const ISLAND_LABELS_HEADER = {
   castle: "ციხე-სიმაგრე",
@@ -91,13 +89,20 @@ const ISLAND_LABELS_HEADER = {
 const GRADE_LABELS_HEADER = { 1: "I", 2: "II", 3: "III", 4: "IV" };
 
 function renderGameHeader() {
+  // add icon link
+  const link = document.createElement("link");
+  link.rel = "icon";
+  link.type = "image/png";
+  link.href = "/assets/fox-logo.png";
+  document.head.appendChild(link);
+
   const userName = localStorage.getItem(STORAGE_KEYS.userName) || "";
-  const points   = localStorage.getItem(STORAGE_KEYS.userPoints) || "0";
-  const stars    = localStorage.getItem(STORAGE_KEYS.userStars) || "0";
-  const avatar   = localStorage.getItem(STORAGE_KEYS.userAvatar) || "1";
+  const points = localStorage.getItem(STORAGE_KEYS.userPoints) || "0";
+  const stars = localStorage.getItem(STORAGE_KEYS.userStars) || "0";
+  const avatar = localStorage.getItem(STORAGE_KEYS.userAvatar) || "1";
 
   const islandLabel = ISLAND_LABELS_HEADER[gameState.island] || "";
-  const gradeLabel  = GRADE_LABELS_HEADER[gameState.gameGrade] || "";
+  const gradeLabel = GRADE_LABELS_HEADER[gameState.gameGrade] || "";
 
   const header = document.createElement("header");
   header.id = "game-page-header";
@@ -149,16 +154,21 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof GAME_STATE !== "undefined") {
     startGame(GAME_STATE);
   }
+
   renderGameHeader();
   const overlay = document.getElementById("start-overlay");
   if (overlay) overlay.style.display = "flex";
 
-    const feedbackEl = document.getElementById("feedback-msg");
+  const feedbackEl = document.getElementById("feedback-msg");
   if (feedbackEl) {
     new MutationObserver(() => {
       if (feedbackEl.style.display === "none") {
         feedbackEl.style.display = "block";
       }
-    }).observe(feedbackEl, { childList: true, characterData: true, subtree: true });
+    }).observe(feedbackEl, {
+      childList: true,
+      characterData: true,
+      subtree: true,
+    });
   }
 });

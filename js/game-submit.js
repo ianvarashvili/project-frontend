@@ -92,14 +92,3 @@ function goBackToIsland(gameState) {
   window.location.href = `/pages/island.html?island=${gameState.island}&grade=${gameState.gameGrade}`;
 }
 
-function showBadgePopups(badges) {
-  badges.forEach((badge, i) => {
-    setTimeout(() => {
-      const popup = document.createElement("div");
-      popup.className = "badge-popup";
-      popup.textContent = "ახალი მიღწევა: " + badge;
-      document.body.appendChild(popup);
-      setTimeout(() => popup.remove(), 3500);
-    }, i * 1200);
-  });
-}

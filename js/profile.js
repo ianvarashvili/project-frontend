@@ -213,3 +213,132 @@ chartBtn.addEventListener("click", function () {
   chartBtn.classList.add("active");
   accompBtn.classList.remove("active");
 });
+
+function showPopups(badges) {
+  badges.forEach((badge, i) => {
+    setTimeout(() => {
+      const popup = document.createElement("div");
+      popup.className = "badge-popup";
+      popup.textContent =badge;
+      document.body.appendChild(popup);
+      setTimeout(() => popup.remove(), 3500);
+    }, i * 1200);
+  });
+}
+
+// Settings Modal
+function openSettingsModal() {
+  document.getElementById("settings-modal").classList.add("visible");
+  showSettingsStep("settings-options");
+}
+
+function closeSettingsModal() {
+  document.getElementById("settings-modal").classList.remove("visible");
+  resetSettingsForms();
+}
+
+function showSettingsStep(stepId) {
+  const box     = document.querySelector("#settings-modal .settings-box");
+  const current = box.querySelector(".settings-step.active");
+  const next    = document.getElementById(stepId);
+  if (!next || current === next) return;
+
+  const isGoingBack = stepId === "settings-options";
+
+  box.style.height = box.offsetHeight + "px"; 
+
+  if (current) {
+    current.classList.remove("active");
+    current.classList.add("exiting");      
+    current.style.transform = isGoingBack ? "translateX(24px)" : "translateX(-24px)";
+    current.style.opacity = "0";
+  }
+
+  next.style.display   = "block";
+  next.style.opacity   = "0";
+  next.style.transform = isGoingBack ? "translateX(-24px)" : "translateX(24px)";
+
+  const targetHeight = box.scrollHeight; 
+
+  requestAnimationFrame(() => {
+    box.style.height = targetHeight + "px";
+    requestAnimationFrame(() => {
+      next.classList.add("active");
+      next.style.transform = "";
+      next.style.opacity = "";
+    });
+  });
+
+  if (current) {
+    setTimeout(() => {
+      current.classList.remove("exiting");
+      current.style.display = "none";
+      current.style.transform = "";
+      current.style.opacity = "";
+    }, 250);
+  }
+}
+
+
+function backToSettingsOptions() {
+  resetSettingsForms();
+  showSettingsStep("settings-options");
+}
+
+function resetSettingsForms() {
+  document.getElementById("current-password").value = "";
+  document.getElementById("new-password").value = "";
+  document.getElementById("delete-confirm-password").value = "";
+  document.getElementById("password-error").style.display = "none";
+  document.getElementById("delete-error").style.display = "none";
+}
+
+// Change Password
+async function savePasswordChange() {
+  const currentPassword = document.getElementById("current-password").value;
+  const newPassword     = document.getElementById("new-password").value;
+  const errorEl         = document.getElementById("password-error");
+
+  if (!currentPassword || !newPassword) {
+    errorEl.textContent   = "გთხოვთ შეავსოთ ორივე ველი";
+    errorEl.style.display = "block";
+    return;
+  }
+
+  try {
+    await apiFetch("/profile/change-password", {
+      method: "PATCH",
+      body: JSON.stringify({ currentPassword, newPassword }),
+    });
+    closeSettingsModal();
+    showPopups(["პაროლი წარმატებით შეიცვალა!"]);
+  } catch (err) {
+    errorEl.textContent   = err.message || "შეცდომა, სცადეთ თავიდან";
+    errorEl.style.display = "block";
+  }
+}
+
+// Delete Account
+async function confirmDeleteAccount() {
+  const password = document.getElementById("delete-confirm-password").value;
+  const errorEl  = document.getElementById("delete-error");
+
+  if (!password) {
+    errorEl.textContent   = "გთხოვთ შეიყვანოთ პაროლი";
+    errorEl.style.display = "block";
+    return;
+  }
+
+  try {
+    await apiFetch("/profile/delete", {
+      method: "DELETE",
+      body: JSON.stringify({ password }),
+    });
+    clearUser();
+    clearUser();
+window.location.href = "/pages/status/deleted.html";
+  } catch (err) {
+    errorEl.textContent   = err.message || "შეცდომა, სცადეთ თავიდან";
+    errorEl.style.display = "block";
+  }
+}

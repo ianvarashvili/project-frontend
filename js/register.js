@@ -30,11 +30,6 @@ function validateRegister({ username, password, name, surname, grade }) {
 
 async function handleRegister(e) {
   e.preventDefault();
-  // const error = validateForm(name, surname, username, password);
-  // if (error) {
-  //   showError("error-msg", error);
-  //   return;
-  // }
   const username = document
     .getElementById("username")
     .value.trim()
@@ -73,7 +68,7 @@ async function handleRegister(e) {
       }),
     });
 
-    window.location.href = `/pages/login.html?registered=1`;
+    window.location.href = `/pages/status/success.html`;
   } catch (err) {
     const friendly =
       REGISTER_ERRORS[err.message] || "სერვერის შეცდომა, სცადეთ თავიდან";

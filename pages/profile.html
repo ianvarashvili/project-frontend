@@ -44,6 +44,27 @@
           </svg>
           <span>გასვლა</span>
         </div>
+        <div
+          class="reg-txt button sketchy-button--sm hover-color-change"
+          onclick="openSettingsModal()"
+          id="settings-btn"
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33h0a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51h0a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82v0a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"
+            />
+          </svg>
+        </div>
       </div>
     </header>
     <main>
@@ -206,7 +227,7 @@
       </div>
     </main>
     <footer class="sign-in-footer flexrow reg-txt">
-      <p>2026 წელს შექმნილი ქართველი მოსწავლებიისთვის • მელიას მათემატიკა</p>
+      <p>2026 წელს შექმნილი ქართველი მოსწავლეებისთვის • მელიას მათემატიკა</p>
     </footer>
     <div id="logout-modal" class="custom-modal-overlay">
       <div class="cards custom-modal-box flexcolumn">
@@ -232,6 +253,182 @@
           >
             გასვლა
           </div>
+        </div>
+      </div>
+    </div>
+    <!-- Settings Modal -->
+    <div id="settings-modal">
+      <div class="settings-box chalk-txt">
+        <div id="settings-options" class="settings-step active">
+          <h2 class="chalk-txt">პარამეტრები</h2>
+          <div class="flexcolumn" style="gap: 12px; margin-top: 16px">
+            <div
+              class="button sketchy-button--md hover-color-change"
+              style="width: 100%"
+              onclick="showSettingsStep('change-password-form')"
+            >
+              პაროლის შეცვლა
+            </div>
+            <div
+              class="button sketchy-button--md white-txt"
+              style="width: 100%; background: var(--color-red)"
+              onclick="showSettingsStep('delete-account-form')"
+            >
+              ექაუნთის წაშლა
+            </div>
+            <div
+              class="button sketchy-button--sm beige-bg push-down-btn"
+              style="margin-top: 8px"
+              onclick="closeSettingsModal()"
+            >
+              დახურვა
+            </div>
+          </div>
+        </div>
+
+        <div id="change-password-form" class="settings-step">
+          <h2 class="chalk-txt">პაროლის შეცვლა</h2>
+          <!-- ძველი პაროლი -->
+          <div class="password-field-wrapper">
+            <input
+              type="password"
+              id="current-password"
+              class="reg-txt sketchy-input"
+              placeholder="ძველი პაროლი"
+              style="margin-top: 12px; width: 100%"
+            />
+            <button
+              type="button"
+              class="password-toggle-btn"
+              onclick="togglePasswordVisibility('current-password', this)"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M17.94 17.94A10.94 10.94 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A10.94 10.94 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19M14.12 14.12a3 3 0 11-4.24-4.24"
+                />
+                <line x1="1" y1="1" x2="23" y2="23" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- ახალი პაროლი -->
+          <div class="password-field-wrapper">
+            <input
+              type="password"
+              id="new-password"
+              class="reg-txt sketchy-input"
+              placeholder="ახალი პაროლი"
+              style="margin-top: 8px; width: 100%"
+            />
+            <button
+              type="button"
+              class="password-toggle-btn"
+              onclick="togglePasswordVisibility('new-password', this)"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M17.94 17.94A10.94 10.94 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A10.94 10.94 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19M14.12 14.12a3 3 0 11-4.24-4.24"
+                />
+                <line x1="1" y1="1" x2="23" y2="23" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="flexrow"
+            style="gap: 8px; margin-top: 12px; justify-content: center"
+          >
+            <div
+              class="button sketchy-button--sm beige-bg push-down-btn"
+              onclick="backToSettingsOptions()"
+            >
+              უკან
+            </div>
+            <div
+              class="button sketchy-button--sm orange-bg push-down-btn white-txt"
+              onclick="savePasswordChange()"
+            >
+              შენახვა
+            </div>
+          </div>
+          <div id="password-error" class="error-msg"></div>
+        </div>
+
+        <div id="delete-account-form" class="settings-step">
+          <h2 class="chalk-txt">ექაუნთის წაშლა</h2>
+          <p class="grey-txt reg-txt" style="margin: 12px 0; font-size: 13px">
+            ეს ქმედება
+            <strong style="color: var(--color-red)">საბოლოოა.</strong> შენი ქულები,
+            ვარსკვლავები და მიღწევები წაშლილი იქნება სამუდამოდ.
+          </p>
+          <div class="password-field-wrapper">
+            <input
+              type="password"
+              id="delete-confirm-password"
+              class="reg-txt sketchy-input"
+              placeholder="დაადასტურე პაროლით"
+              style="width: 100%"
+            />
+            <button
+              type="button"
+              class="password-toggle-btn"
+              onclick="
+                togglePasswordVisibility('delete-confirm-password', this)
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M17.94 17.94A10.94 10.94 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A10.94 10.94 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19M14.12 14.12a3 3 0 11-4.24-4.24"
+                />
+                <line x1="1" y1="1" x2="23" y2="23" />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="flexrow"
+            style="gap: 8px; margin-top: 12px; justify-content: center"
+          >
+            <div
+              class="button sketchy-button--sm beige-bg push-down-btn"
+              onclick="backToSettingsOptions()"
+            >
+              უკან
+            </div>
+            <div
+              class="button sketchy-button--sm push-down-btn white-txt"
+              style="background: var(--color-red)"
+              onclick="confirmDeleteAccount()"
+            >
+              დიახ, წაშალე
+            </div>
+          </div>
+          <div id="delete-error" class="error-msg"></div>
         </div>
       </div>
     </div>

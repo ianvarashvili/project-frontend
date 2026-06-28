@@ -175,5 +175,4 @@ function showLoading(isLoading) {
 document.addEventListener("DOMContentLoaded", () => {
   checkAuth();
   loadLeaderboard();
-  if (data.newBadge) showBadgePopups([data.newBadge]);
 });
