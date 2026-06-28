@@ -11,8 +11,8 @@ const gameState = {
 let _bgMusicInstance = null;
 
 function startBgMusic() {
-  if (!isSoundEnabled()) return; 
-    if (_bgMusicInstance) {
+  if (!isSoundEnabled()) return;
+  if (_bgMusicInstance) {
     _bgMusicInstance.play().catch(() => {});
     return;
   }
@@ -27,7 +27,7 @@ function stopBgMusic() {
   _bgMusicInstance.pause();
 }
 function isSoundEnabled() {
-  return localStorage.getItem("soundEnabled") !== "false"; 
+  return localStorage.getItem("soundEnabled") !== "false";
 }
 
 function toggleSound() {
@@ -35,9 +35,9 @@ function toggleSound() {
   localStorage.setItem("soundEnabled", newState);
 
   if (!newState) {
-    stopBgMusic(); 
+    stopBgMusic();
   } else {
-    startBgMusic(); 
+    startBgMusic();
   }
 
   renderSoundToggleIcon();
@@ -75,7 +75,7 @@ function startGame(config) {
 function handleStartGame() {
   const overlay = document.getElementById("start-overlay");
   if (overlay) overlay.style.display = "none";
-  if (typeof startRound === "function") startRound(); 
+  if (typeof startRound === "function") startRound();
   startTimer();
   startBgMusic();
 }
@@ -190,28 +190,25 @@ function renderGameHeader() {
       </div>
     </div>
   `;
-  // renderGameHeader()-ის ბოლოში, addEventListener-ის შემდეგ:
 
-const soundBtn = document.createElement("div");
-soundBtn.id = "sound-toggle-btn";
-soundBtn.className = "button sketchy-button--sm hover-color-change";
-soundBtn.style.cssText = `
+  const soundBtn = document.createElement("div");
+  soundBtn.id = "sound-toggle-btn";
+  soundBtn.className = "button sketchy-button--sm hover-color-change";
+  soundBtn.style.cssText = `
   position: fixed;
   top: 120px;
   right: 300px;
   z-index: 50;
   background: var(--color-background);
 `;
-soundBtn.onclick = toggleSound;
-document.body.appendChild(soundBtn);
-renderSoundToggleIcon();
-
+  soundBtn.onclick = toggleSound;
+  document.body.appendChild(soundBtn);
+  renderSoundToggleIcon();
   document.body.prepend(header);
 
   document.getElementById("game-header-back").addEventListener("click", () => {
     window.location.href = `/pages/island.html?island=${gameState.island}&grade=${gameState.gameGrade}`;
   });
-   renderSoundToggleIcon(); 
 }
 
 function escapeHeaderText(str) {
