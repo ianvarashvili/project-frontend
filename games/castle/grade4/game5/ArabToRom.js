@@ -8,7 +8,7 @@ const GAME_STATE = {
 let currArabic = 0;
 let currRoman = "";
 let ufoSelected = false;
-let isLock = false;
+let lastArabic = null;
 
 const ufoEl = document.getElementById("ufo");
 const ufoNumEl = document.getElementById("ufo-num");
@@ -44,7 +44,7 @@ function convertToRom(num) {
 function startRound() {
   feedbackMsg.style.color = "";
   ufoSelected = false;
-  isLock = false;
+  gameState.isFinished = false;
   ufoEl.classList.remove("selected");
 
   for (let i = 0; i < 3; i++) {
@@ -52,7 +52,12 @@ function startRound() {
     planetEL.className = "planet-item";
   }
 
-  currArabic = Math.floor(Math.random() * 100) + 1;
+  do {
+    currArabic = Math.floor(Math.random() * 100) + 1;
+  } while (lastArabic !== null && currArabic === lastArabic);
+
+  lastArabic = currArabic;
+
   currRoman = convertToRom(currArabic);
   ufoNumEl.textContent = currArabic;
 
@@ -84,32 +89,33 @@ function startRound() {
     planetELTxt.textContent = options[i];
     planetELItem.dataset.roman = options[i];
   }
-  feedbackMsg.innerText = "ჯერ გაააქტიურე ხომალდი! დააჭირე მას.";
+  feedbackMsg.innerText =
+    "ჯერ გაააქტიურე ხომალდი მასზე დაჭერით და აირჩიე პლანეტა!";
 }
 
 function toggleUfo() {
   if (gameState.isFinished) return;
-  if (isLock) return;
   ufoSelected = !ufoSelected;
   if (ufoSelected) {
     ufoEl.classList.add("selected");
-    showFeedback("ხომალდი ჩართულია! აირჩიე შესაბამისი პლანეტა!", true);
+    // showFeedback("ხომალდი ჩართულია! აირჩიე შესაბამისი პლანეტა!", true);
   } else {
     ufoEl.classList.remove("selected");
     feedbackMsg.style.color = "";
-    feedbackMsg.innerText = "ჯერ გაააქტიურე ხომალდი! დააჭირე მას.";
+    feedbackMsg.innerText =
+      "ჯერ გაააქტიურე ხომალდი მასზე დაჭერით და აირჩიე პლანეტა!";
   }
 }
 
 function checkAns(index) {
   if (gameState.isFinished) return;
-  if (!ufoSelected || isLock) return;
+  if (!ufoSelected) return;
 
   const planetEL = document.getElementById(`planet-${index}`);
   const chosenVal = planetEL.dataset.roman;
 
   if (chosenVal === currRoman) {
-    isLock = true;
+    gameState.isFinished = true;
     planetEL.classList.add("correct");
     showFeedback("ყოჩაღ, სწორია!", true);
 

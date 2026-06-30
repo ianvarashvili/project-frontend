@@ -1,5 +1,5 @@
 const REGISTER_ERRORS = {
-  "username უკვე არსებობს": "ეს სახელი დაკავებულია, სცადეთ სხვა",
+  "username უკვე არსებობს": "ეს ზედმეტსახელი დაკავებულია, სცადეთ სხვა",
   "კლასი უნდა იყოს 1-4": "კლასი უნდა იყოს 1-დან 4-მდე",
 };
 const NAME_REGEX = /^[ა-ჰa-zA-Z\s]{2,30}$/;
@@ -17,7 +17,7 @@ function validateRegister({ username, password, name, surname, grade }) {
   if (!USERNAME_REGEX.test(username))
     return "ზედმეტსახელი: მხოლოდ ინგლისური ასოები, რიცხვები და _ (3-20)";
   if (!PASSWORD_REGEX.test(password))
-    return "პაროლი: ქართული ასოები დაუშვებელია (6-30 სიმბოლო)";
+    return "პაროლი: უნდა შედგებოდეს 6-30 ინგლისური სიმბოლოსგან";
 
   const gradeNum = parseInt(grade, 10);
   if (![1, 2, 3, 4].includes(gradeNum)) {
@@ -157,16 +157,6 @@ function initAvatarPicker() {
       maleBtn.classList.add("selected-btn");
     });
   }
-
-  // document.addEventListener("click", (e) => {
-  //   const clickedOpt = e.target.closest(".avatar-option");
-  //   if (clickedOpt) {
-  //     document.querySelectorAll(".avatar-option").forEach((opt) => {
-  //       opt.classList.remove("selected");
-  //     });
-  //     clickedOpt.classList.add = "selected";
-  //   }
-  // });
 
   const options = document.querySelectorAll(".avatar-option");
   options.forEach((opt) => {

@@ -10,6 +10,7 @@ let sourceUnit = "";
 let targetUnit = "";
 let targetVal = 0;
 let currVal = 0;
+let lastTargetVal = 0;
 
 const balloon = document.getElementById("balloon");
 const promptLabel = document.getElementById("prompt-label");
@@ -21,27 +22,32 @@ const units = { მმ: 1, სმ: 10, დმ: 100 };
 const unitKeys = ["მმ", "სმ", "დმ"];
 
 function startRound() {
+  gameState.isFinished = false;
   feedbackMsg.style.color = "";
   currVal = 0;
   balloon.classList.remove("pop", "dance");
   updateBalloonSize();
   hideFeedback();
 
-  let randVal = Math.floor(Math.random() * 3);
-  let targVal = Math.floor(Math.random() * 3);
-  while (randVal === targVal) {
-    targVal = Math.floor(Math.random() * 3);
-  }
+  do {
+    let randVal = Math.floor(Math.random() * 3);
+    let targVal = Math.floor(Math.random() * 3);
+    while (randVal === targVal) {
+      targVal = Math.floor(Math.random() * 3);
+    }
 
-  sourceUnit = unitKeys[randVal];
-  targetUnit = unitKeys[targVal];
+    sourceUnit = unitKeys[randVal];
+    targetUnit = unitKeys[targVal];
 
-  const baseNumbers = [1, 2, 3, 4, 5, 6];
-  const base = baseNumbers[Math.floor(Math.random() * baseNumbers.length)];
-  const totalValMm = base * units[sourceUnit] * units[targetUnit];
+    const baseNumbers = [1, 2, 3, 4, 5, 6];
+    const base = baseNumbers[Math.floor(Math.random() * baseNumbers.length)];
+    const totalValMm = base * units[sourceUnit] * units[targetUnit];
 
-  sourceVal = totalValMm / units[sourceUnit];
-  targetVal = totalValMm / units[targetUnit];
+    sourceVal = totalValMm / units[sourceUnit];
+    targetVal = totalValMm / units[targetUnit];
+  } while (targetVal === lastTargetVal);
+
+  lastTargetVal = targetVal;
 
   promptLabel.innerHTML = `ბუშტის სიმაღლე უნდა იყოს ${sourceVal} ${sourceUnit} შეგიძლია ${targetUnit}-ში გამოთვალო?`;
 
@@ -82,6 +88,7 @@ function updateBalloonSize() {
 function checkAns() {
   if (gameState.isFinished || currVal === 0) return;
   if (currVal === targetVal) {
+    gameState.isFinished = true;
     onCorrect();
     showFeedback("ყოჩაღ! სწორად გამოიცანი!", true);
 

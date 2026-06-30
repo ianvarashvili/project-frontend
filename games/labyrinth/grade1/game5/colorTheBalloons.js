@@ -14,7 +14,8 @@ const blueBtn = document.getElementById("blue-btn");
 let numBlue = 0;
 let numRed = 0;
 let currentBrush = "red";
-let isRoundActive = true;
+let lastAns1 = null;
+let lastAns2 = null;
 
 function generateBalloon() {
   return `
@@ -46,18 +47,25 @@ function generateExpr(target) {
 }
 
 function startRound() {
-  isRoundActive = true;
-   feedbackMsg.style.color = "";
+  gameState.isFinished = false;
+  feedbackMsg.style.color = "";
   feedbackMsg.textContent = "გამოთვალე, შეადარე და გააფერადე!";
   ballCont.innerHTML = "";
   selectBrush("red");
 
-  let ans1 = Math.floor(Math.random() * 5) + 2;
-  let ans2 = Math.floor(Math.random() * 5) + 2;
+  let ans1, ans2;
 
-  while (ans1 === ans2) {
+  do {
+    ans1 = Math.floor(Math.random() * 5) + 2;
     ans2 = Math.floor(Math.random() * 5) + 2;
-  }
+  } while (
+    ans1 === ans2 ||
+    (ans1 === lastAns1 && ans2 === lastAns2) ||
+    (ans1 === lastAns2 && ans2 == lastAns1)
+  );
+
+  lastAns1 = ans1;
+  lastAns2 = ans2;
 
   const expr1 = generateExpr(ans1);
   const expr2 = generateExpr(ans2);
@@ -85,7 +93,7 @@ function startRound() {
 }
 
 function handeBallClick(card) {
-  if (!isRoundActive || gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   if (card.classList.contains(currentBrush)) {
     card.classList.remove("blue", "red");
@@ -96,28 +104,27 @@ function handeBallClick(card) {
 }
 
 function resetBalloons() {
-  if (!isRoundActive || gameState.isFinished) return;
+  if (gameState.isFinished) return;
   const cards = document.querySelectorAll(".balloon-card");
   cards.forEach((card) => card.classList.remove("blue", "red"));
   feedbackMsg.textContent = "ამოხსენი ორივე მაგალითი";
 }
 
 function checkAns(selectedSign) {
-  if (!isRoundActive || gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   const actualRed = document.querySelectorAll(".balloon-card.red").length;
   const actualBlue = document.querySelectorAll(".balloon-card.blue").length;
 
   if (actualBlue === numBlue && actualRed === numRed) {
-    isRoundActive = false;
+    gameState.isFinished = true;
     onCorrect();
-    showFeedback("ყოჩაღ! სწორად გამოიცანი!",true);
+    showFeedback("ყოჩაღ! სწორად გამოიცანი!", true);
 
     setTimeout(() => {
       startRound();
     }, 2000);
   } else {
-    showFeedback("შეცდომაა... კარგად დაფიქრდი!",false);
+    showFeedback("შეცდომაა... კარგად დაფიქრდი!", false);
   }
 }
-

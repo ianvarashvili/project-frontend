@@ -218,13 +218,20 @@ const feedbackMsg = document.getElementById("feedback-msg");
 
 let grid = Array.from({ length: rows }, () => Array(columns).fill(null));
 let currLevelIndex = Math.floor(Math.random() * levels.length);
+let lastRound = null;
 
 function startRound() {
-  if (gameState.isFinished) return;
+  gameState.isFinished = false;
   feedbackMsg.style.color = "";
   gridCont.innerHTML = '<div class="symmetry-line"></div>';
-  const currentPattern = levels[currLevelIndex].pattern;
 
+  do {
+    currLevelIndex = Math.floor(Math.random() * levels.length);
+  } while (currLevelIndex === lastRound);
+
+  lastRound = currLevelIndex;
+
+  const currentPattern = levels[currLevelIndex].pattern;
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < columns; c++) {
       const cell = document.createElement("div");
@@ -272,15 +279,14 @@ function checkAns() {
   }
 
   if (isCorrect) {
+    gameState.isFinished = true;
     onCorrect();
     showFeedback("ყოჩაღ! სწორად გამოიცანი!", true);
-    const prevLevelIndex = currLevelIndex;
-    while (currLevelIndex === prevLevelIndex) {
-      currLevelIndex = Math.floor(Math.random() * levels.length);
-    }
 
     setTimeout(() => {
-      showFeedback("გააფერადე მარჯვენა მხარე ისე, რომ მარცხენას სიმეტრიული იყოს", true);
+      resetGrid();
+      feedbackMsg.textContent =
+        "გააფერადე მარჯვენა მხარე ისე, რომ მარცხენას სიმეტრიული იყოს";
       startRound();
     }, 2000);
   } else {

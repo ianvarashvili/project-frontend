@@ -88,8 +88,8 @@ const promptLabel = document.getElementById("prompt-label");
 const optionsEl = document.getElementById("answer-options");
 const feedbackEl = document.getElementById("feedback-msg");
 
-let answered = false;
 let currentChart = null;
+let lastQuest = null;
 
 function getRandNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -101,7 +101,7 @@ function shuffled(arr) {
 
 function startRound() {
   if (feedbackEl) feedbackEl.style.color = "";
-  answered = false;
+  gameState.isFinished = false;
 
   const picks = shuffled(FRUITS).slice(0, 3);
 
@@ -151,7 +151,13 @@ function renderBarColumn(fruit, value) {
 
 function generateQuestion() {
   const types = ["max", "specific", "total", "compare"];
-  const type = types[getRandNum(0, types.length - 1)];
+  let type;
+
+  do {
+    type = types[getRandNum(0, types.length - 1)];
+  } while (type === lastQuest);
+
+  lastQuest = type;
 
   if (type === "max") return askMax();
   if (type === "specific") return askSpecific();
@@ -235,10 +241,10 @@ function renderOptions(opts) {
 }
 
 function checkAnswer(isCorrect, btnEl) {
-  if (answered || gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   if (isCorrect) {
-    answered = true;
+    gameState.isFinished = true;
     btnEl.classList.add("answer-correct");
     onCorrect();
     showFeedback("ყოჩაღ, სწორია!", true);

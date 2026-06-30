@@ -9,6 +9,7 @@ let currentQuest = null;
 let basketCount = 0;
 let plateCount = 0;
 let targetAnswer = 0;
+let lastTotal = null;
 
 const basketGrid = document.getElementById("basket-fruits");
 const plateGrid = document.getElementById("plate-fruits");
@@ -23,14 +24,20 @@ function getRandNum(min, max) {
 }
 
 function genRandQuest() {
-  const denominator = getRandNum(2, 5);
-  const multiplier = getRandNum(2, 4);
-  const total = denominator * multiplier;
+  let total, denominator, multiplier;
+  do {
+    denominator = getRandNum(2, 5);
+    multiplier = getRandNum(2, 4);
+    total = denominator * multiplier;
+  } while (lastTotal !== null && lastTotal === total);
+  lastTotal = total;
+
   const color = fruitColors[Math.floor(Math.random() * fruitColors.length)];
   return { total, denominator, color };
 }
 
 function startRound() {
+  gameState.isFinished = false;
   feedbackMsg.style.color = "";
   currentQuest = genRandQuest();
   targetAnswer = currentQuest.total / currentQuest.denominator;
@@ -75,6 +82,7 @@ function updateCounters() {
 function checkAns() {
   if (gameState.isFinished) return;
   if (plateCount === targetAnswer) {
+    gameState.isFinished = true;
     onCorrect();
     showFeedback(
       `სწორია! ${currentQuest.total}-ის 1/${currentQuest.denominator} = ${targetAnswer}!`,

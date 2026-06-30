@@ -21,29 +21,26 @@ const starSVG = `
 `;
 
 let currentItem = null;
-let correctAns = false;
 
 const optCont = document.getElementById("options-cont");
 const promptLabel = document.getElementById("prompt-label");
 const objVisCont = document.getElementById("obj-visual-cont");
 
 function startRound() {
-  const isRightToLeft = Math.random() < 0.5;
+  let isRightToLeft;
+  let randomShape;
 
-  let randomShape = Math.floor(Math.random() * 5) + 1;
-
-  if (currentItem) {
-    while (randomShape === currentItem.shape) {
-      randomShape = Math.floor(Math.random() * 5) + 1;
-    }
-  }
+  do {
+    isRightToLeft = Math.random() < 0.5;
+    randomShape = Math.floor(Math.random() * 5) + 1;
+  } while (currentItem && randomShape === currentItem.shape);
 
   currentItem = {
     shape: randomShape,
     svg: "",
   };
 
-  correctAns = false;
+  gameState.isFinished = false;
 
   for (let i = 0; i < 5; i++) {
     let currentPosition;
@@ -71,9 +68,9 @@ function startRound() {
 }
 
 function checkAns(selectedShape) {
- if (correctAns || gameState.isFinished) return;
+  if (gameState.isFinished) return;
   if (selectedShape === currentItem.shape) {
-    correctAns = true;
+    gameState.isFinished = true;
     onCorrect();
     showFeedback("ყოჩაღ, სწორია!", true);
     setTimeout(() => {

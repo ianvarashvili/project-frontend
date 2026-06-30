@@ -8,6 +8,7 @@ const GAME_STATE = {
 
 let targetWeight = 0;
 let currentWeight = 0;
+let lastWeight = null;
 
 const resetBtn = document.getElementById("btn-reset");
 const feedbackMsg = document.getElementById("feedback-msg");
@@ -47,12 +48,18 @@ const svgTemplates = {
 };
 
 function startRound() {
+  gameState.isFinished = false;
   feedbackMsg.style.color = "";
   if (feedbackMsg) {
     feedbackMsg.textContent =
       "დააჭირე საგნებს, რომელთა მოთავსებაც გინდა სატვირთოზე";
   }
-  targetWeight = Math.floor(Math.random() * 91) + 10;
+
+  do {
+    targetWeight = Math.floor(Math.random() * 91) + 10;
+  } while (lastWeight !== null && targetWeight === lastWeight);
+
+  lastWeight = currentWeight;
   currentWeight = 0;
 
   inventory[20] = Math.floor(targetWeight / 20) + 1;
@@ -103,6 +110,7 @@ function checkAns() {
   if (gameState.isFinished) return;
 
   if (currentWeight === targetWeight) {
+    gameState.isFinished = true;
     onCorrect();
     showFeedback("სწორია!", true);
     document
@@ -122,7 +130,7 @@ function checkAns() {
 function unloadTruck() {
   if (gameState.isFinished) return;
   document.getElementById("truck-bed").innerHTML = "";
-  feedbackMsg.style.color = ""; 
+  feedbackMsg.style.color = "";
   feedbackMsg.textContent = `დააჭირე საგნებს, რომელთა მოთავსებაც გინდა სატვირთოზე`;
 
   currentWeight = 0;

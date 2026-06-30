@@ -12,7 +12,7 @@ const starSVG = `<svg class="game-item star-item" width="70" height="70" viewBox
 
 let starTotal = 0;
 let targetIndexFromLeft = 0;
-let isWaiting = false;
+let lastDirection = null;
 
 const optCont = document.getElementById("options-cont");
 const feedbackMsg = document.getElementById("feedback-msg");
@@ -54,7 +54,7 @@ function convertToRom(num) {
 
 function startRound() {
   feedbackMsg.style.color = "";
-  isWaiting = false;
+  gameState.isFinished = false;
   if (objVisCont) objVisCont.innerHTML = "";
   if (feedbackMsg) {
     feedbackMsg.innerText =
@@ -66,7 +66,13 @@ function startRound() {
   const targetPosition = Math.floor(Math.random() * starTotal) + 1;
   const romanNum = convertToRom(targetPosition);
 
-  const isRightToLeft = Math.random() < 0.5;
+  // const isRightToLeft = Math.random() < 0.5;
+  let isRightToLeft;
+  do {
+    isRightToLeft = Math.random() < 0.5;
+  } while (lastDirection === isRightToLeft);
+
+  lastDirection = isRightToLeft;
 
   if (isRightToLeft) {
     targetIndexFromLeft = starTotal - targetPosition;
@@ -90,10 +96,10 @@ function startRound() {
 }
 
 function checkAns(element, clickedIndex) {
-  if (gameState.isFinished || isWaiting) return;
+  if (gameState.isFinished) return;
 
   if (clickedIndex === targetIndexFromLeft) {
-    isWaiting = true;
+    gameState.isFinished = true;
     onCorrect();
     showFeedback("ყოჩაღ, სწორია!", true);
 

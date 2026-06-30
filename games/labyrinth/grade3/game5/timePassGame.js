@@ -1,8 +1,8 @@
 const GAME_STATE = {
-  gameId: "labyrinth_g3_game5", 
+  gameId: "labyrinth_g3_game5",
   island: "labyrinth",
   gameGrade:
-    parseInt(new URLSearchParams(window.location.search).get("grade"), 10) || 3, 
+    parseInt(new URLSearchParams(window.location.search).get("grade"), 10) || 3,
   timeLimitSeconds: 50,
 };
 const startHourHand = document.getElementById("start-hour-hand");
@@ -13,6 +13,7 @@ const optionsCont = document.getElementById("options-box");
 const feedbackMsg = document.getElementById("feedback-msg");
 
 let correctDuration = "";
+let lastQuestDur = null;
 
 function formatDuration(totalMins) {
   const hrs = Math.floor(totalMins / 60);
@@ -28,17 +29,23 @@ function formatDuration(totalMins) {
 }
 
 function startRound() {
+  gameState.isFinished = false;
   optionsCont.innerHTML = "";
-  feedbackMsg.style.color = ""; 
+  feedbackMsg.style.color = "";
   feedbackMsg.textContent =
     "რა დრო გავიდა მეცადინეობის დაწყებიდან დამთავრებამდე?";
 
   let startHour = Math.floor(Math.random() * 12) + 1;
   let startMin = Math.floor(Math.random() * 12) * 5;
 
-  let randHours = Math.floor(Math.random() * 3);
-  let randMins = (Math.floor(Math.random() * 11) + 1) * 5;
-  let duration = randHours * 60 + randMins;
+  let randHours, randMins, duration;
+  do {
+    randHours = Math.floor(Math.random() * 3);
+    randMins = (Math.floor(Math.random() * 11) + 1) * 5;
+    duration = randHours * 60 + randMins;
+  } while (duration === lastQuestDur);
+
+  lastQuestDur = duration;
 
   correctDuration = formatDuration(duration);
 
@@ -83,17 +90,17 @@ function startRound() {
 }
 
 function checkAns(selectedCard, selectedDuration) {
-    if (gameState.isFinished) return;   
+  if (gameState.isFinished) return;
   if (selectedDuration === correctDuration) {
+    gameState.isFinished = true;
     selectedCard.classList.add("correct");
-      onCorrect();                                
+    onCorrect();
     showFeedback("ყოჩაღ! შენ სწორად გამოიცანი!", true);
     setTimeout(() => {
       startRound();
     }, 2000);
   } else {
     selectedCard.classList.add("wrong");
-    showFeedback("რაღაც შეცდომაა... კარგად დააკვირდი ისრებს", false); 
+    showFeedback("რაღაც შეცდომაა... კარგად დააკვირდი ისრებს", false);
   }
 }
-

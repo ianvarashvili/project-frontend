@@ -30,8 +30,8 @@ const compareOptions = document.getElementById("compare-options");
 const feedbackEl = document.getElementById("feedback-msg");
 
 let roundType = null;
-let answered = false;
 let buildTarget = 0;
+let lastQuest = null;
 
 function getRandNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -42,8 +42,13 @@ function shuffled(arr) {
 }
 
 function startRound() {
-  answered = false;
-  roundType = Math.random() < 0.5 ? "build" : "compare";
+  gameState.isFinished = false;
+
+  do {
+    roundType = Math.random() < 0.5 ? "build" : "compare";
+  } while (roundType === lastQuest);
+
+  lastQuest = roundType;
 
   if (feedbackEl) {
     feedbackEl.style.color = "";
@@ -70,12 +75,12 @@ function startBuildRound() {
 }
 
 function checkBuild(value, fillEl, trackEl) {
-  if (answered || gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   fillEl.style.height = value + "%";
 
   if (value === buildTarget) {
-    answered = true;
+    gameState.isFinished = true;
     trackEl.classList.add("bar-correct");
     onCorrect();
     showFeedback(`სწორია! ${buildTarget} დღე — ზუსტად მოხერხდა!`, true);
@@ -136,10 +141,10 @@ function renderCompareOptions(correctDiff) {
 }
 
 function checkCompare(selected, correctDiff, btnEl) {
-  if (answered || gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   if (selected === correctDiff) {
-    answered = true;
+    gameState.isFinished = true;
     btnEl.classList.add("compare-correct");
     onCorrect();
     showFeedback(`სწორია! სხვაობა არის ${correctDiff}`, true);

@@ -7,7 +7,8 @@ const GAME_STATE = {
 };
 let correctHour = 0;
 let correctMin = 0;
-let correctAns = false;
+let lastHour = null;
+let lastMin = null;
 
 const hourHand = document.getElementById("hour-hand");
 const minuteHand = document.getElementById("minute-hand");
@@ -21,12 +22,18 @@ function formatTime(h, m) {
 }
 
 function startRound() {
+  gameState.isFinished = false;
   feedbackMsg.style.color = "";
   optionsCont.innerHTML = "";
   feedbackMsg.textContent = "შეუსაბამე ელექტროსაათი კედლის საათს.";
-  correctAns = false;
-  correctHour = Math.floor(Math.random() * 24);
-  correctMin = Math.random() < 0.5 ? 0 : 30;
+
+  do {
+    correctHour = Math.floor(Math.random() * 24);
+    correctMin = Math.random() < 0.5 ? 0 : 30;
+  } while (correctHour === lastHour && correctMin === lastMin);
+
+  lastHour = correctHour;
+  lastMin = correctMin;
 
   let displayHour = correctHour % 12;
   let minuteDeg = correctMin * 6;
@@ -59,11 +66,11 @@ function startRound() {
 }
 
 function checkAns(selectedCard, selectedTime) {
-  if (gameState.isFinished || correctAns) return;
+  if (gameState.isFinished) return;
   let correcTimeStr = formatTime(correctHour, correctMin);
 
   if (selectedTime === correcTimeStr) {
-    correctAns = true;
+    gameState.isFinished = true;
     selectedCard.classList.add("correct");
     onCorrect();
     showFeedback("ყოჩაღ, სწორია!", true);

@@ -77,7 +77,7 @@ function buildPodiumCard(entry, place) {
       <img src="../assets/avatars/avatar-${entry.avatarId}.jpeg"
            alt="${escapeHtml(entry.name)}" class="leaderboard-user-pfp"
            onerror="this.src='../assets/fox-logo.png'">
-      <p class="chalk-txt">${escapeHtml(entry.name)}</p>
+      <p class="chalk-txt reg-txt">${escapeHtml(entry.name)} ${escapeHtml(entry.surname || "")}</p>
       <p class="grey-txt">@${escapeHtml(entry.username || "")}</p>
       <div class="chalk-txt top-3-score-frame flexrow"> 
       <svg class="icon">
@@ -111,7 +111,7 @@ function buildTop10Row(entry) {
              alt="${escapeHtml(entry.name)}" class="leaderboard-user-pfp"
              onerror="this.src='../assets/fox-logo.png'">
         <div>
-          <p>${escapeHtml(entry.name)}</p>
+          <p class="reg-txt">${escapeHtml(entry.name)} ${escapeHtml(entry.surname || "")}</p>
           <p class="reg-txt grey-txt">@${escapeHtml(entry.username || "")}</p>
         </div>
       </div>
@@ -141,7 +141,8 @@ function renderMyPlace(myPlace, top10) {
              alt="${escapeHtml(myPlace.name)}" class="leaderboard-user-pfp"
              onerror="this.src='../assets/fox-logo.png'">
         <div>
-          <p>${escapeHtml(myPlace.name)} <span class="grey-txt reg-txt">(შენ)</span></p>
+  
+          <p >${escapeHtml(myPlace.name)} ${escapeHtml(myPlace.surname || "")} <span class="grey-txt reg-txt">(შენ)</span></p>
           <p class="reg-txt grey-txt">@${escapeHtml(myPlace.username || "")}</p>
         </div>
       </div>

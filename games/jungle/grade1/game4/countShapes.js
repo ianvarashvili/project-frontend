@@ -12,7 +12,7 @@ const feedbackMsg = document.getElementById("feedback-msg");
 const gameInstruction = document.getElementById("game-instruction");
 
 let correctAns = 0;
-let lastQuestKey = "";
+let lastQuest = "";
 
 const shapesData = [
   {
@@ -105,10 +105,10 @@ const questionsPool = [
   { key: "rectangles", text: "სულ რამდენი მართკუთხედია სურათზე?" },
   { key: "squaresAndRect", text: "სულ რამდენი ოთხკუთხედია სურათზე?" },
   { key: "circles", text: "სულ რამდენი წრეა სურათზე?" },
-
 ];
 
 function startRound() {
+  gameState.isFinished = false;
   feedbackMsg.style.color = "";
   userAns.value = "";
   userAns.focus();
@@ -119,9 +119,9 @@ function startRound() {
   let question;
   do {
     question = questionsPool[Math.floor(Math.random() * questionsPool.length)];
-  } while (question.key === lastQuestKey);
+  } while (question.key === lastQuest);
 
-  lastQuestKey = question.key;
+  lastQuest = question.key;
 
   gameInstruction.textContent = question.text;
   correctAns = currentShape.answers[question.key];
@@ -139,15 +139,16 @@ function checkAns() {
   }
 
   if (parsedAns === correctAns) {
+    gameState.isFinished = true;
     onCorrect();
-    showFeedback(`ყოჩაღ! სწორად დაითვალე!`,true);
+    showFeedback(`ყოჩაღ! სწორად დაითვალე!`, true);
     setTimeout(() => {
       feedbackMsg.textContent = "კარგად დააკვირდი, შეიძლება საერთოდ არ იყოს";
 
       startRound();
     }, 2000);
   } else {
-    showFeedback("რაღაც შეცდომაა... თავიდან გადათვალე!",false);
+    showFeedback("რაღაც შეცდომაა... თავიდან გადათვალე!", false);
   }
 }
 

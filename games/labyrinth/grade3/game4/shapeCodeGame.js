@@ -14,8 +14,8 @@ const SHAPES = [
 ];
 
 let SHAPE_VALUES = {};
-let answered = false;
 let currentExpression = null;
+let lastAnswer = null;
 
 const legendPanel = document.getElementById("legend-panel");
 const equationCard = document.getElementById("equation-card");
@@ -75,52 +75,60 @@ function buildExpression() {
   const SHAPE_COUNT = 3;
   const OP_POOL = ["+", "-", "×", "÷"];
 
-  const picks = pickShapes(SHAPE_COUNT);
-  const ops = [];
-  const coeffs = [];
+  let finalExpr = null;
 
-  const firstCoeff = Math.random() < 0.35 ? getRandNum(2, 3) : 1;
-  coeffs.push(firstCoeff);
+  do {
+    const picks = pickShapes(SHAPE_COUNT);
+    const ops = [];
+    const coeffs = [];
 
-  let terms = [{ sign: "+", value: SHAPE_VALUES[picks[0].id] * firstCoeff }];
+    const firstCoeff = Math.random() < 0.35 ? getRandNum(2, 3) : 1;
+    coeffs.push(firstCoeff);
 
-  for (let i = 1; i < picks.length; i++) {
-    const value = SHAPE_VALUES[picks[i].id];
-    let op = OP_POOL[Math.floor(Math.random() * OP_POOL.length)];
+    let terms = [{ sign: "+", value: SHAPE_VALUES[picks[0].id] * firstCoeff }];
 
-    const lastTerm = terms[terms.length - 1];
-    const runningTotal = terms.reduce(
+    for (let i = 1; i < picks.length; i++) {
+      const value = SHAPE_VALUES[picks[i].id];
+      let op = OP_POOL[Math.floor(Math.random() * OP_POOL.length)];
+
+      const lastTerm = terms[terms.length - 1];
+      const runningTotal = terms.reduce(
+        (sum, t) => sum + (t.sign === "-" ? -t.value : t.value),
+        0,
+      );
+
+      if (op === "×" && lastTerm.value * value > 200) op = "+";
+      if (op === "÷" && (value === 0 || lastTerm.value % value !== 0)) op = "+";
+      if (op === "-" && runningTotal - value < 0) op = "+";
+
+      coeffs.push(1);
+      ops.push(op);
+
+      if (op === "×") {
+        lastTerm.value *= value;
+      } else if (op === "÷") {
+        lastTerm.value /= value;
+      } else if (op === "-") {
+        terms.push({ sign: "-", value });
+      } else {
+        terms.push({ sign: "+", value });
+      }
+    }
+
+    const answer = terms.reduce(
       (sum, t) => sum + (t.sign === "-" ? -t.value : t.value),
       0,
     );
 
-    if (op === "×" && lastTerm.value * value > 200) op = "+";
-    if (op === "÷" && (value === 0 || lastTerm.value % value !== 0)) op = "+";
-    if (op === "-" && runningTotal - value < 0) op = "+";
+    finalExpr = { shapes: picks, ops, coeffs, answer };
+  } while (lastAnswer !== null && finalExpr.answer === lastAnswer);
 
-    coeffs.push(1);
-    ops.push(op);
+  lastAnswer = finalExpr.answer;
 
-    if (op === "×") {
-      lastTerm.value *= value;
-    } else if (op === "÷") {
-      lastTerm.value /= value;
-    } else if (op === "-") {
-      terms.push({ sign: "-", value });
-    } else {
-      terms.push({ sign: "+", value });
-    }
-  }
-
-  const answer = terms.reduce(
-    (sum, t) => sum + (t.sign === "-" ? -t.value : t.value),
-    0,
-  );
-
-  return { shapes: picks, ops, coeffs, answer };
+  return finalExpr;
 }
 function startRound() {
-  answered = false;
+  gameState.isFinished = false;
   currentExpression = buildExpression();
 
   if (feedbackMsg) {
@@ -177,10 +185,10 @@ function renderOptions(correctAnswer) {
 }
 
 function checkAnswer(selected, correctAnswer, btnEl) {
-  if (answered || gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   if (selected === correctAnswer) {
-    answered = true;
+    gameState.isFinished = true;
     btnEl.classList.add("answer-correct");
     onCorrect();
     showFeedback("ყოჩაღ! სწორი", true);

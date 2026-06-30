@@ -18,7 +18,6 @@ const feedbackMsg = document.getElementById("feedback-msg");
 const groups = document.querySelectorAll(".path-group");
 
 let correctAns = null;
-let isAnimating = false;
 
 function generateRound() {
   const paths = [];
@@ -52,12 +51,12 @@ function generateRound() {
 }
 
 function startRound() {
+  gameState.isFinished = false;
   butterfly.classList.remove("animate-fly");
   butterfly.style.offsetPath = `path('${pathCurves[0]}')`;
   butterfly.style.offsetDistance = "6%";
   feedbackMsg.style.color = "";
   feedbackMsg.innerHTML = `დააჭირე ყველაზე მოკლე გზას, დააკვირდი <span class="orange-txt">საზომ ერთეულებს`;
-  isAnimating = false;
 
   const currentRoundData = generateRound();
   const minMM = Math.min(...currentRoundData.map((p) => p.mm));
@@ -80,7 +79,7 @@ function checkAns(selectedIndex) {
   const selectedGroup = groups[selectedIndex];
 
   if (selectedIndex === correctAns) {
-    isAnimating = true;
+    gameState.isFinished = true;
     selectedGroup.classList.add("correct");
     onCorrect();
     showFeedback("ყოჩაღ! ეს ყველაზე მოკლე გზაა!", true);

@@ -16,12 +16,6 @@ const STORAGE_KEYS = {
   progressCache: "progressCache"
 };
 
-const ISLANDS = {
-  castle: { label: "ციხე-სიმაგრე", requiredGames: 0 },
-  jungle: { label: "ჯუნგლი", requiredGames: 3 },
-  labyrinth: { label: "ლაბირინთი", requiredGames: 3 },
-};
-
 const STAR_THRESHOLDS = { three: 15, two: 8 };
 
 const RANK_THRESHOLDS = [

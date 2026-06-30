@@ -1,16 +1,16 @@
 const GAME_STATE = {
-  gameId:           "labyrinth_g1_game2",  
-  island:           "labyrinth",           
-  gameGrade:        parseInt(           
-    new URLSearchParams(window.location.search).get("grade"), 10
-  ) || 1,
-  timeLimitSeconds: 30,                 
+  gameId: "labyrinth_g1_game2",
+  island: "labyrinth",
+  gameGrade:
+    parseInt(new URLSearchParams(window.location.search).get("grade"), 10) || 1,
+  timeLimitSeconds: 30,
 };
 
 const FRUITS = ["apple", "pear", "watermelon"];
 
 let correctAns = null;
-let isTimeoutActive = false;
+let lastCorrectAns = null;
+let lastFruitA = null;
 
 const patternCont = document.getElementById("pattern-cont");
 const optionsCont = document.getElementById("options-cont");
@@ -26,16 +26,20 @@ function generateFruit(fruitType) {
 
 function startRound() {
   feedbackMsg.style.color = "";
-  isTimeoutActive = false;
+  gameState.isFinished = false;
   patternCont.innerHTML = "";
   optionsCont.innerHTML = "";
-  
 
-  const shuffledFruits = [...FRUITS].sort(() => Math.random() - 0.5);
+  let fruitA, fruitB, fruitC;
+  do {
+    const shuffledFruits = [...FRUITS].sort(() => Math.random() - 0.5);
+    fruitA = shuffledFruits[0];
+    fruitB = shuffledFruits[1];
+    fruitC = shuffledFruits[2];
+  } while (fruitA === lastFruitA && fruitB === lastCorrectAns);
 
-  const fruitA = shuffledFruits[0];
-  const fruitB = shuffledFruits[1];
-  const fruitC = shuffledFruits[2];
+  lastFruitA = fruitA;
+  lastCorrectAns = fruitB;
 
   const sequence = [fruitA, fruitB, fruitA, fruitB, fruitA];
   correctAns = fruitB;
@@ -70,11 +74,11 @@ function startRound() {
 }
 
 function checkAns(selectedFruit, buttonEl) {
-  if (gameState.isFinished || isTimeoutActive) return;
+  if (gameState.isFinished) return;
 
   if (selectedFruit === correctAns) {
-    isTimeoutActive = true;
-    onCorrect(); 
+    gameState.isFinished = true;
+    onCorrect();
     showFeedback("სწორია! ", true);
 
     const missingBox = document.querySelector(".missing-box");
@@ -86,8 +90,7 @@ function checkAns(selectedFruit, buttonEl) {
       startRound();
     }, 2000);
   } else {
-    showFeedback("რაღაც შეცდომაა... თავიდან სცადე!", false); 
+    showFeedback("რაღაც შეცდომაა... თავიდან სცადე!", false);
     buttonEl.classList.add("wrong");
   }
 }
-

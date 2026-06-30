@@ -45,7 +45,7 @@ const gridEl = document.getElementById("cards-grid");
 const feedbackEl = document.getElementById("feedback-msg");
 
 let currentRound = null;
-let answered = false;
+let lastQuest = null;
 
 function getRandNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -55,11 +55,16 @@ function shuffled(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 function startRound() {
-  answered = false;
+  gameState.isFinished = false;
 
   const fruit = FRUIT_ICONS[getRandNum(0, FRUIT_ICONS.length - 1)];
 
-  const majorityIsOdd = Math.random() < 0.5;
+  let majorityIsOdd;
+  do {
+    majorityIsOdd = Math.random() < 0.5;
+  } while (majorityIsOdd === lastQuest);
+
+  lastQuest = majorityIsOdd;
 
   const evens = [2, 4, 6, 8, 10];
   const odds = [3, 5, 7, 9, 11];
@@ -118,12 +123,12 @@ function renderGrid() {
 }
 
 function checkAns(index) {
-  if (answered || gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   const cards = gridEl.querySelectorAll(".count-card");
 
   if (index === currentRound.oddIndex) {
-    answered = true;
+    gameState.isFinished = true;
     onCorrect();
     cards[index].classList.add("card-correct");
 

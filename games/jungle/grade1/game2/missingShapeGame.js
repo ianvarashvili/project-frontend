@@ -14,7 +14,6 @@ const shapeDrawings = {
 };
 
 let currentQuest = null;
-let correctAns = false;
 
 const shapeCont = document.getElementById("shapes-cont");
 const optCont = document.getElementById("options-cont");
@@ -22,12 +21,14 @@ const feedbackMsg = document.getElementById("feedback-msg");
 
 function startRound() {
   feedbackMsg.style.color = "";
-  correctAns = false;
+  gameState.isFinished = false;
   feedbackMsg.innerHTML = `გაითვალისწინე, ფიგურები დალაგებულია <span class="orange-txt">წვეროების რაოდენობის</span> მიხედვით.`;
 
   const vertexSizes = [3, 4, 5, 6];
-  const hiddenVertex =
-    vertexSizes[Math.floor(Math.random() * vertexSizes.length)];
+  let hiddenVertex;
+  do {
+    hiddenVertex = vertexSizes[Math.floor(Math.random() * vertexSizes.length)];
+  } while (currentQuest && hiddenVertex === currentQuest.hidden);
 
   currentQuest = { hidden: hiddenVertex };
 
@@ -59,10 +60,10 @@ function generateOptions(correctVal) {
 }
 
 function checkAns(selectedVertex) {
-  if (correctAns || gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   if (selectedVertex === currentQuest.hidden) {
-    correctAns = true;
+    gameState.isFinished = true;
 
     const target = document.getElementById("missing-target");
     target.className = "shape-box";

@@ -1,10 +1,9 @@
 const GAME_STATE = {
-  gameId:           "jungle_g1_game1",
-  island:           "jungle",         
-  gameGrade:        parseInt(         
-    new URLSearchParams(window.location.search).get("grade"), 10
-  ) || 1,
-  timeLimitSeconds: 30, 
+  gameId: "jungle_g1_game1",
+  island: "jungle",
+  gameGrade:
+    parseInt(new URLSearchParams(window.location.search).get("grade"), 10) || 1,
+  timeLimitSeconds: 30,
 };
 
 const items = [
@@ -82,7 +81,6 @@ const items = [
 ];
 
 let currentItem = null;
-let correctAns = false;
 
 const optCont = document.getElementById("options-cont");
 const promptLabel = document.getElementById("prompt-label");
@@ -90,15 +88,14 @@ const objVisCont = document.getElementById("obj-visual-cont");
 const feedbackMsg = document.getElementById("feedback-msg");
 
 function startRound() {
-  let picker = items[Math.floor(Math.random() * items.length)];
-  if (currentItem && items.length > 1) {
-    while (picker.name === currentItem.name) {
-      picker = items[Math.floor(Math.random() * items.length)];
-    }
-  }
+  let picker;
+  do {
+    picker = items[Math.floor(Math.random() * items.length)];
+  } while (currentItem && picker.name === currentItem.name);
 
   currentItem = picker;
-  correctAns = false;
+
+  gameState.isFinished = false;
   if (feedbackMsg) {
     feedbackMsg.innerText = "აირჩიე სწორი ფორმა!";
     feedbackMsg.style.color = "";
@@ -110,20 +107,17 @@ function startRound() {
 }
 
 function checkAns(selectedShape) {
-  if (correctAns) return;
   if (gameState.isFinished) return;
 
   if (selectedShape === currentItem.shape) {
-    correctAns = true;
-onCorrect();
-showFeedback("ყოჩაღ, სწორია!", true);
+    gameState.isFinished = true;
+    onCorrect();
+    showFeedback("ყოჩაღ, სწორია!", true);
 
     setTimeout(() => {
       startRound();
     }, 2000);
   } else {
-   showFeedback("რაღაც შეცდომაა... თავიდან სცადე", false);
+    showFeedback("რაღაც შეცდომაა... თავიდან სცადე", false);
   }
 }
-
-

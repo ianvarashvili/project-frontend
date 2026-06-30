@@ -134,3 +134,10 @@ main {
   object-fit: cover;
   border: 2px solid var(--color-primary);
 }
+@keyframes penalty-flash {
+  0%, 100% { color: inherit; }
+  50%      { color: var(--color-red); transform: scale(1.2); }
+}
+.time-penalty-flash {
+  animation: penalty-flash 0.4s ease;
+}

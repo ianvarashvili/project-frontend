@@ -37,47 +37,49 @@ const gridEl = document.getElementById("shapes-grid");
 const feedbackEl = document.getElementById("feedback-msg");
 
 let currentRound = null;
-let answered = false;
+let lastFeedbackText = "";
 
 function startRound() {
   if (feedbackEl) feedbackEl.style.color = "";
-  answered = false;
+  gameState.isFinished = false;
 
-  const colors = [...PALETTE].sort(() => Math.random() - 0.5).slice(0, 4);
+  let colors, ruleType, items, oddIndex, feedbackText;
+  do {
+    colors = [...PALETTE].sort(() => Math.random() - 0.5).slice(0, 4);
+    ruleType = Math.random() < 0.6 ? "type" : "dim";
 
-  const ruleType = Math.random() < 0.6 ? "type" : "dim";
-  let items, oddIndex, feedbackText;
+    if (ruleType === "type") {
+      const group = ALL_SHAPES[Math.floor(Math.random() * ALL_SHAPES.length)];
+      const oddPool = ALL_SHAPES.filter((s) => s.id !== group.id);
+      const odd = oddPool[Math.floor(Math.random() * oddPool.length)];
 
-  if (ruleType === "type") {
-    const group = ALL_SHAPES[Math.floor(Math.random() * ALL_SHAPES.length)];
-    const oddPool = ALL_SHAPES.filter((s) => s.id !== group.id);
-    const odd = oddPool[Math.floor(Math.random() * oddPool.length)];
+      items = [
+        { shape: group, color: colors[0] },
+        { shape: group, color: colors[1] },
+        { shape: group, color: colors[2] },
+        { shape: odd, color: colors[3], isOdd: true },
+      ];
+      feedbackText = `სწორია! ყველა ${group.nameKa} იყო!`;
+    } else {
+      const groupIs2D = Math.random() < 0.5;
+      const groupPool = groupIs2D ? SHAPES_2D : SHAPES_3D;
+      const oddPool = groupIs2D ? SHAPES_3D : SHAPES_2D;
 
-    items = [
-      { shape: group, color: colors[0] },
-      { shape: group, color: colors[1] },
-      { shape: group, color: colors[2] },
-      { shape: odd, color: colors[3], isOdd: true },
-    ];
-    feedbackText = `სწორია! ყველა ${group.nameKa} იყო!`;
-  } else {
-    const groupIs2D = Math.random() < 0.5;
-    const groupPool = groupIs2D ? SHAPES_2D : SHAPES_3D;
-    const oddPool = groupIs2D ? SHAPES_3D : SHAPES_2D;
+      const [s1, s2, s3] = [...groupPool].sort(() => Math.random() - 0.5);
+      const odd = oddPool[Math.floor(Math.random() * oddPool.length)];
 
-    const [s1, s2, s3] = [...groupPool].sort(() => Math.random() - 0.5);
-    const odd = oddPool[Math.floor(Math.random() * oddPool.length)];
-
-    items = [
-      { shape: s1, color: colors[0] },
-      { shape: s2, color: colors[1] },
-      { shape: s3, color: colors[2] },
-      { shape: odd, color: colors[3], isOdd: true },
-    ];
-    feedbackText = groupIs2D
-      ? "სწორია! ყველა ბრტყელი ფიგურა იყო!"
-      : "სწორია! ყველა სივრცული ფიგურა იყო!";
-  }
+      items = [
+        { shape: s1, color: colors[0] },
+        { shape: s2, color: colors[1] },
+        { shape: s3, color: colors[2] },
+        { shape: odd, color: colors[3], isOdd: true },
+      ];
+      feedbackText = groupIs2D
+        ? "სწორია! ყველა ბრტყელი ფიგურა იყო!"
+        : "სწორია! ყველა სივრცული ფიგურა იყო!";
+    }
+  } while (feedbackText === lastFeedbackText);
+  lastFeedbackText = feedbackText;
 
   items = items.sort(() => Math.random() - 0.5);
   oddIndex = items.findIndex((i) => i.isOdd);
@@ -105,11 +107,11 @@ function renderGrid() {
 }
 
 function checkAns(index) {
-  if (answered || gameState.isFinished) return;
+  if (gameState.isFinished) return;
   const cards = gridEl.querySelectorAll(".shape-card");
 
   if (index === currentRound.oddIndex) {
-    answered = true;
+    gameState.isFinished = true;
     onCorrect();
     cards[index].classList.add("card-correct");
     showFeedback(currentRound.feedbackText, true);

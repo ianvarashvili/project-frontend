@@ -10,6 +10,7 @@ let currentQuest = null;
 let basketCount = 0;
 let plateCount = 0;
 let targetAnswer = 0;
+let lastQuest = null;
 
 const basketGrid = document.getElementById("basket-fruits");
 const plateGrid = document.getElementById("plate-fruits");
@@ -24,19 +25,29 @@ function getRandNum(min, max) {
 }
 
 function genRandQuest() {
-  const total = getRandNum(5, 15);
-  const leftInBasket = getRandNum(1, total - 1);
-  const color = fruitColors[Math.floor(Math.random() * fruitColors.length)];
+  let total, leftInBasket, color;
+  do {
+    total = getRandNum(5, 15);
+    leftInBasket = getRandNum(1, total - 1);
+    color = fruitColors[Math.floor(Math.random() * fruitColors.length)];
+  } while (
+    lastQuest &&
+    lastQuest.total === total &&
+    lastQuest.leftInBasket === leftInBasket
+  );
+
   return { total, leftInBasket, color };
 }
 
 function startRound() {
+  gameState.isFinished = false;
   if (feedbackMsg) {
     feedbackMsg.innerText =
       "დააწკაპუნე ვაშლს მეგობრის თეფშზე გადასატანად ან კალათაში დასაბრუნებლად";
     feedbackMsg.style.color = "";
     feedbackMsg.style.display = "block";
   }
+  lastQuest = currentQuest;
   currentQuest = genRandQuest();
   targetAnswer = currentQuest.total - currentQuest.leftInBasket;
   questTxt.innerHTML = `მიეცი მეგობარს კალათიდან იმდენი ვაშლი, რომ კალათაში დარჩეს <span class='num orange-txt'>${currentQuest.leftInBasket}</span> ცალი.`;
@@ -79,6 +90,7 @@ function updateCounters() {
 function checkAns() {
   if (gameState.isFinished) return;
   if (basketCount === currentQuest.leftInBasket) {
+    gameState.isFinished = true;
     onCorrect();
     showFeedback("ყოჩაღ! სწორაია! ", true);
 

@@ -14,8 +14,8 @@ const SHAPES = [
 ];
 
 let SHAPE_VALUES = {};
-let answered = false;
 let currentExpression = null;
+let lastAnswer = null;
 
 const legendPanel = document.getElementById("legend-panel");
 const equationCard = document.getElementById("equation-card");
@@ -72,10 +72,9 @@ function buildExpression() {
   const allowSubtraction = grade >= 3;
   const shapeCount = grade >= 4 ? 3 : 2;
 
-  const picks = pickShapes(shapeCount);
-  const ops = [];
+  let finalExpr = null;
 
-  while (true) {
+  do {
     const picks = pickShapes(shapeCount);
     const ops = [];
     let total = SHAPE_VALUES[picks[0].id];
@@ -91,13 +90,20 @@ function buildExpression() {
     }
 
     if (total <= 20) {
-      return { shapes: picks, ops, answer: total };
+      finalExpr = { shapes: picks, ops, answer: total };
     }
-  }
+  } while (
+    finalExpr === null ||
+    (lastAnswer != null && finalExpr.answer === lastAnswer)
+  );
+
+  lastAnswer = finalExpr.answer;
+
+  return finalExpr;
 }
 
 function startRound() {
-  answered = false;
+  gameState.isFinished = false;
   currentExpression = buildExpression();
 
   if (feedbackMsg) {
@@ -147,10 +153,10 @@ function renderOptions(correctAnswer) {
 }
 
 function checkAnswer(selected, correctAnswer, btnEl) {
-  if (answered || gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   if (selected === correctAnswer) {
-    answered = true;
+    gameState.isFinished = true;
     btnEl.classList.add("answer-correct");
     onCorrect();
     showFeedback("ყოჩაღ! სწორია", true);

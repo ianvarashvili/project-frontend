@@ -12,18 +12,24 @@ let remainingApples = 10;
 let applesCont = document.getElementById("apples-cont");
 let evenAppPlaces = document.getElementById("even-apple-places");
 let oddAppPlaces = document.getElementById("odd-apple-places");
-const feedbackMsg = document.getElementById("feedback-msg"); 
+const feedbackMsg = document.getElementById("feedback-msg");
 
 function startRound() {
-  feedbackMsg.style.color = "";
+  gameState.isFinished = false;
   applesCont.innerHTML = "";
   evenAppPlaces.innerHTML = "";
   oddAppPlaces.innerHTML = "";
   selectedApple = null;
   remainingApples = 10;
 
-  for (let i = 0; i < 10; i++) {
+  let uniqueApples = new Set();
+
+  do {
     let num = Math.floor(Math.random() * 50) + 1;
+    uniqueApples.add(num);
+  } while (uniqueApples.size < 10);
+
+  uniqueApples.forEach((num) => {
     let apple = document.createElement("div");
     let x = 10;
     apple.className = "apple-btn";
@@ -35,9 +41,8 @@ function startRound() {
       selectedApple = apple;
       apple.classList.add("selected");
     };
-
     applesCont.appendChild(apple);
-  }
+  });
 }
 
 function chooseBasket(basketType) {
@@ -56,6 +61,7 @@ function chooseBasket(basketType) {
     remainingApples--;
 
     if (remainingApples === 0) {
+      gameState.isFinished = true;
       onCorrect();
       showFeedback("ყოჩაღ, სწორია!", true);
 

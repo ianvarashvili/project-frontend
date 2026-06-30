@@ -1,7 +1,8 @@
 const GAME_STATE = {
-  gameId:           "labyrinth_g2_game5",
-  island:           "labyrinth",
-  gameGrade:        parseInt(new URLSearchParams(window.location.search).get("grade"), 10) || 2,
+  gameId: "labyrinth_g2_game5",
+  island: "labyrinth",
+  gameGrade:
+    parseInt(new URLSearchParams(window.location.search).get("grade"), 10) || 2,
   timeLimitSeconds: 30,
 };
 const canvCont = document.getElementById("canvas-cont");
@@ -46,7 +47,8 @@ function drawTermometer(temp, label) {
 }
 
 function startRound() {
-   feedbackMsg.style.color = "";
+  gameState.isFinished = false;
+  feedbackMsg.style.color = "";
   feedbackMsg.innerHTML = `შეიყვანე რიცხვი <span class="orange-txt">კლავიატურიდან</span> ან გამოიყენე <span
                     class="orange-txt">ისრები</span> `;
   userAns.value = "";
@@ -73,16 +75,17 @@ function startRound() {
 }
 
 function checkAns() {
-  if (gameState.isFinished) return;  
+  if (gameState.isFinished) return;
   const parsedAns = parseInt(userAns.value);
 
   if (isNaN(parsedAns)) {
-    showFeedback("ჩაწერე რიცხვი!", false); 
+    showFeedback("ჩაწერე რიცხვი!", false);
     return;
   }
   if (parsedAns === correctAns) {
-      onCorrect(); 
-    showFeedback("ყოჩაღ, სწორია!", true); 
+    gameState.isFinished = true;
+    onCorrect();
+    showFeedback("ყოჩაღ, სწორია!", true);
     setTimeout(() => {
       startRound();
     }, 2000);
@@ -94,4 +97,3 @@ function checkAns() {
 userAns.addEventListener("keypress", (e) => {
   if (e.key === "Enter") checkAns();
 });
-

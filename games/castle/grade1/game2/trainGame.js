@@ -7,7 +7,7 @@ const GAME_STATE = {
 };
 
 let correctAns = 0;
-let isAnimating = false;
+let lastRound = null;
 
 const train = document.getElementById("train");
 const w1 = document.getElementById("w1");
@@ -19,7 +19,14 @@ const feedbackMsg = document.getElementById("feedback-msg");
 function startRound() {
   feedbackMsg.style.color = "";
   const types = ["plus1", "plus2", "plus5", "minus1", "minus2", "minus5"];
-  const chosenType = types[Math.floor(Math.random() * types.length)];
+
+  let chosenType;
+
+  do {
+    chosenType = types[Math.floor(Math.random() * types.length)];
+  } while (chosenType === lastRound);
+
+  lastRound = chosenType;
 
   let num1, num2, num3;
 
@@ -99,10 +106,10 @@ function startRound() {
 }
 
 function checkAnswer(selected, buttonElement) {
-  if (gameState.isFinished || isAnimating) return;
+  if (gameState.isFinished) return;
 
   if (selected === correctAns) {
-    isAnimating = true;
+    gameState.isFinished = true;
     onCorrect();
     showFeedback("სწორია!", true);
 
@@ -119,11 +126,11 @@ function checkAnswer(selected, buttonElement) {
           "ამოიცანი რიცხვების კანონზომიერება და გაუშვი მატარებელი";
 
         train.classList.remove("enter-stage");
-        isAnimating = false;
+        gameState.isFinished = false;
       }, 100);
     }, 500);
   } else {
-      showFeedback("რაღაც შეცდომაა... თავიდან სცადე!", false);
+    showFeedback("რაღაც შეცდომაა... თავიდან სცადე!", false);
 
     buttonElement.style.backgroundColor = "rgba(226,89,33,0.2)";
     buttonElement.style.borderColor = "var(--color-primary)";

@@ -32,14 +32,13 @@ const shapesData = [
 ];
 
 function startRound() {
-  if (gameState.isFinished) return;
+  gameState.isFinished = false;
   feedbackMsg.style.color = "";
   feedbackMsg.textContent = "";
   userAns.value = "";
   userAns.focus();
 
   let shape;
-
   do {
     shape = shapesData[Math.floor(Math.random() * shapesData.length)];
   } while (shape.name === lastShapeName);
@@ -107,6 +106,7 @@ function checkAns() {
 
   if (parsedAns === correctAns) {
     showFeedback("ყოჩაღ! სწორად იპოვე!", true);
+    gameState.isFinished = true;
     onCorrect();
     setTimeout(() => {
       startRound();

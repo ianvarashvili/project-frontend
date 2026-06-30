@@ -8,7 +8,7 @@ const GAME_STATE = {
 
 let BeeSelected = false;
 let correctAns = 0;
-let isMoving = false;
+let lastQuest = null;
 
 const beeEl = document.getElementById("bee");
 const expResult = document.getElementById("result-board");
@@ -22,7 +22,7 @@ function startRound() {
   }
 
   BeeSelected = false;
-  isMoving = false;
+  gameState.isFinished = false;
 
   beeEl.classList.remove("selected");
   beeEl.style.left = "30px";
@@ -32,20 +32,24 @@ function startRound() {
   const flowers = document.querySelectorAll(".flower");
   flowers.forEach((f) => f.classList.remove("wrong"));
 
-  const isMult = Math.random() > 0.5;
-  let num1, num2, displayTxt;
+  let num1, num2, displayTxt, isMult;
+  do {
+    const isMult = Math.random() > 0.5;
 
-  if (isMult) {
-    num1 = Math.floor(Math.random() * 12) + 1;
-    num2 = Math.floor(Math.random() * 8) + 1;
-    correctAns = num1 * num2;
-    displayTxt = `${num1} ⋅ ${num2}`;
-  } else {
-    correctAns = Math.floor(Math.random() * 10) + 1;
-    num2 = Math.floor(Math.random() * 10) + 1;
-    num1 = correctAns * num2;
-    displayTxt = `${num1} ÷ ${num2}`;
-  }
+    if (isMult) {
+      num1 = Math.floor(Math.random() * 12) + 1;
+      num2 = Math.floor(Math.random() * 8) + 1;
+      correctAns = num1 * num2;
+      displayTxt = `${num1} ⋅ ${num2}`;
+    } else {
+      correctAns = Math.floor(Math.random() * 10) + 1;
+      num2 = Math.floor(Math.random() * 10) + 1;
+      num1 = correctAns * num2;
+      displayTxt = `${num1} ÷ ${num2}`;
+    }
+  } while (lastQuest !== null && displayTxt === lastQuest);
+
+  lastQuest = displayTxt;
 
   expResult.textContent = displayTxt;
 
@@ -66,7 +70,7 @@ function startRound() {
 }
 
 function toggleBee() {
-  if (gameState.isFinished || isMoving) return;
+  if (gameState.isFinished) return;
 
   BeeSelected = !BeeSelected;
 
@@ -78,12 +82,12 @@ function toggleBee() {
 }
 
 function selectFlower(index, flowerEl) {
-  if (gameState.isFinished || !BeeSelected || isMoving) return;
+  if (gameState.isFinished || !BeeSelected) return;
 
   const chosenVal = parseInt(flowerEl.dataset.value);
 
   if (chosenVal === correctAns) {
-    isMoving = true;
+    gameState.isFinished = true;
     const flowerRect = flowerEl.getBoundingClientRect();
     const fieldRect = document
       .querySelector(".games-container")

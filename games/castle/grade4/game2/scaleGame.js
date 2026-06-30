@@ -6,7 +6,7 @@ const GAME_STATE = {
   timeLimitSeconds: 30,
 };
 let correctAns;
-let isWaiting = false;
+let lastRightTxt = null;
 
 const beam = document.getElementById("beam");
 const optCont = document.getElementById("options-cont");
@@ -15,7 +15,7 @@ const feedbackMsg = document.getElementById("feedback-msg");
 
 function startRound() {
   feedbackMsg.style.color = "";
-  isWaiting = false;
+  gameState.isFinished = false;
 
   if (feedbackMsg) {
     feedbackMsg.innerText = "აირჩიე სწორი რიცხვი სასწორის გასათანაბრებლად";
@@ -28,34 +28,36 @@ function startRound() {
   beam.style.transform = "rotate(15deg)";
   optCont.innerHTML = "";
 
-  const gameMode = Math.floor(Math.random() * 3);
-  let rightTxt = "";
-  let leftTxt = "";
-  let leftUnit = "";
-
-  if (gameMode === 0) {
-    let kg = Math.floor(Math.random() * 9) + 1;
-    rightTxt = `${kg} კგ`;
-
+  let gameMode, rightTxt, leftTxt, leftUnit;
+  do {
+    gameMode = Math.floor(Math.random() * 3);
+    rightTxt = "";
     leftTxt = "";
-    leftUnit = "გ";
-    correctAns = kg * 1000;
-  } else if (gameMode === 1) {
-    let ton = Math.floor(Math.random() * 5) + 1;
-    rightTxt = `${ton} ტ`;
+    leftUnit = "";
 
-    leftTxt = "";
-    leftUnit = "კგ";
-    correctAns = ton * 1000;
-  } else {
-    let kg = Math.floor(Math.random() * 4) + 1;
-    let g = (Math.floor(Math.random() * 9) + 1) * 100;
+    if (gameMode === 0) {
+      let kg = Math.floor(Math.random() * 9) + 1;
+      rightTxt = `${kg} კგ`;
+      leftTxt = "";
+      leftUnit = "გ";
+      correctAns = kg * 1000;
+    } else if (gameMode === 1) {
+      let ton = Math.floor(Math.random() * 5) + 1;
+      rightTxt = `${ton} ტ`;
+      leftTxt = "";
+      leftUnit = "კგ";
+      correctAns = ton * 1000;
+    } else {
+      let kg = Math.floor(Math.random() * 4) + 1;
+      let g = (Math.floor(Math.random() * 9) + 1) * 100;
+      rightTxt = `${kg * 1000 + g}გ`;
+      leftTxt = `${kg} კგ +`;
+      leftUnit = "გ";
+      correctAns = g;
+    }
+  } while (lastRightTxt !== null && rightTxt === lastRightTxt);
 
-    rightTxt = `${kg * 1000 + g}გ`;
-    leftTxt = `${kg} კგ +`;
-    leftUnit = "გ";
-    correctAns = g;
-  }
+  lastRightTxt = rightTxt;
 
   document.getElementById("left-text").innerText = leftTxt;
   document.getElementById("left-unit").innerText = leftUnit;
@@ -85,11 +87,11 @@ function startRound() {
 }
 
 function checkAns(val) {
-  if (gameState.isFinished || isWaiting) return;
+  if (gameState.isFinished) return;
   dropTarget.innerText = val;
 
   if (val === correctAns) {
-    isWaiting = true;
+    gameState.isFinished = true;
     beam.style.transform = "rotate(0deg)";
     dropTarget.style.backgroundColor = "var(--color-green)";
     onCorrect();
@@ -110,7 +112,7 @@ function checkAns(val) {
 }
 function resetPlates() {
   setTimeout(() => {
-    if (!isWaiting && !gameState.isFinished) {
+    if (!gameState.isFinished) {
       document.getElementById("drop-target").innerText = "?";
       document.getElementById("beam").style.transform = "rotate(15deg)";
       if (feedbackMsg) {

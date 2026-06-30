@@ -54,8 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
 });
 
-
-
 function goToMap(grade) {
   window.location.href = `map.html?grade=${grade}`;
 }

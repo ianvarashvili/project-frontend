@@ -63,22 +63,28 @@ const toysDatabase = [
 
 let targetPrice = 0;
 let currentPaidTotal = 0;
-
+let lastToyName = null;
+let lastToyPrice = null;
 
 function startRound() {
-
+  gameState.isFinished = false;
   currentPaidTotal = 0;
   userTotal.innerText = currentPaidTotal;
 
-   feedbackMsg.style.color = "";
+  feedbackMsg.style.color = "";
   feedbackMsg.innerHTML = "დააჭირე შენს საფულეში ფულს გადასახდელად";
 
-  const activeToy =
-    toysDatabase[Math.floor(Math.random() * toysDatabase.length)];
+  let activeToy;
+  do {
+    activeToy = toysDatabase[Math.floor(Math.random() * toysDatabase.length)];
+    targetPrice =
+      Math.floor(
+        Math.random() * (activeToy.maxPrice - activeToy.minPrice + 1),
+      ) + activeToy.minPrice;
+  } while (activeToy.name === lastToyName || targetPrice === lastToyPrice);
 
-  targetPrice =
-    Math.floor(Math.random() * (activeToy.maxPrice - activeToy.minPrice + 1)) +
-    activeToy.minPrice;
+  lastToyName = activeToy.name;
+  lastToyPrice = targetPrice;
 
   toyTitle.innerText = activeToy.name;
   toyPrice.innerText = `${targetPrice} ლარი`;
@@ -91,26 +97,25 @@ function addMoney(amount) {
   userTotal.innerText = currentPaidTotal;
 }
 function resetCurrAmount() {
-   if (gameState.isFinished) return;
+  if (gameState.isFinished) return;
   currentPaidTotal = 0;
   userTotal.innerText = currentPaidTotal;
-  
+
   feedbackMsg.textContent = "დააჭირე შენს საფულეში ფულს გადასახდელად";
 }
 function checkAns() {
-   if (gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   if (currentPaidTotal === targetPrice) {
-  onCorrect();
-  showFeedback("ყოჩაღ! შენ იყიდე სათამაშო!", true);
+    gameState.isFinished = true;
+    onCorrect();
+    showFeedback("ყოჩაღ! შენ იყიდე სათამაშო!", true);
     setTimeout(() => {
       startRound();
     }, 2000);
   } else if (currentPaidTotal > targetPrice) {
-      showFeedback("ზედმეტი მოგივიდა", false); 
+    showFeedback("ზედმეტი მოგივიდა", false);
   } else {
-   showFeedback("ცოტა დაგაკლდა!", false); 
+    showFeedback("ცოტა დაგაკლდა!", false);
   }
 }
-
-

@@ -22,6 +22,7 @@ const pool = document.getElementById("shapes-pool");
 const feedbackMsg = document.getElementById("feedback-msg");
 
 function startRound() {
+  gameState.isFinished = false;
   feedbackMsg.style.color = "";
   document
     .querySelectorAll(".box .box-content")
@@ -99,6 +100,7 @@ function checkAns() {
   });
 
   if (allCorrect) {
+    gameState.isFinished = true;
     onCorrect();
     showFeedback("ყოჩაღ! სწორად გადაანაწილე!", true);
     setTimeout(() => {

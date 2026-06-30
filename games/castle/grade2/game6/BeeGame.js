@@ -1,15 +1,14 @@
 const GAME_STATE = {
-  gameId:           "castle_g2_game6",  
-  island:           "castle",           
-  gameGrade:        parseInt(           
-    new URLSearchParams(window.location.search).get("grade"), 10
-  ) || 1,
-  timeLimitSeconds: 30,                 
+  gameId: "castle_g2_game6",
+  island: "castle",
+  gameGrade:
+    parseInt(new URLSearchParams(window.location.search).get("grade"), 10) || 1,
+  timeLimitSeconds: 30,
 };
 
 let BeeSelected = false;
 let correctAns = 0;
-let isMoving = false;
+let lastQuest = null;
 
 const beeEl = document.getElementById("bee");
 const expResult = document.getElementById("result-board");
@@ -23,7 +22,7 @@ function startRound() {
   }
 
   BeeSelected = false;
-  isMoving = false;
+  gameState.isFinished = false;
 
   beeEl.classList.remove("selected");
   beeEl.style.left = "25px";
@@ -33,20 +32,25 @@ function startRound() {
   const flowers = document.querySelectorAll(".flower");
   flowers.forEach((f) => f.classList.remove("wrong"));
 
-  const isAddition = Math.random() > 0.5;
-  let num1, num2, displayTxt;
+  let num1, num2, displayTxt, isAddition;
 
-  if (isAddition) {
-    num1 = Math.floor(Math.random() * 60) + 1;
-    num2 = Math.floor(Math.random() * 40) + 1;
-    correctAns = num1 + num2;
-    displayTxt = `${num1} + ${num2}`;
-  } else {
-    correctAns = Math.floor(Math.random() * 50) + 1;
-    num2 = Math.floor(Math.random() * 50) + 1;
-    num1 = correctAns + num2;
-    displayTxt = `${num1} - ${num2}`;
-  }
+  do {
+    isAddition = Math.random() > 0.5;
+
+    if (isAddition) {
+      num1 = Math.floor(Math.random() * 60) + 1;
+      num2 = Math.floor(Math.random() * 40) + 1;
+      correctAns = num1 + num2;
+      displayTxt = `${num1} + ${num2}`;
+    } else {
+      correctAns = Math.floor(Math.random() * 50) + 1;
+      num2 = Math.floor(Math.random() * 50) + 1;
+      num1 = correctAns + num2;
+      displayTxt = `${num1} - ${num2}`;
+    }
+  } while (displayTxt === lastQuest);
+
+  lastQuest = displayTxt;
 
   expResult.textContent = displayTxt;
 
@@ -67,7 +71,7 @@ function startRound() {
 }
 
 function toggleBee() {
-  if (gameState.isFinished || isMoving) return;
+  if (gameState.isFinished) return;
 
   BeeSelected = !BeeSelected;
 
@@ -79,12 +83,12 @@ function toggleBee() {
 }
 
 function selectFlower(index, flowerEl) {
-  if (gameState.isFinished || !BeeSelected || isMoving) return;
+  if (gameState.isFinished || !BeeSelected) return;
 
   const chosenVal = parseInt(flowerEl.dataset.value);
 
   if (chosenVal === correctAns) {
-    isMoving = true;
+    gameState.isFinished = true;
     const flowerRect = flowerEl.getBoundingClientRect();
     const fieldRect = document
       .querySelector(".games-container")
@@ -107,13 +111,12 @@ function selectFlower(index, flowerEl) {
     onCorrect();
 
     showFeedback("ყოჩაღ, სწორია!", true);
-    
 
     setTimeout(() => {
       startRound();
     }, 2000);
   } else {
-  showFeedback("რაღაც შეცდომაა... თავიდან სცადე! ", false);
+    showFeedback("რაღაც შეცდომაა... თავიდან სცადე! ", false);
     flowerEl.classList.add("wrong");
     BeeSelected = false;
     beeEl.classList.remove("selected");

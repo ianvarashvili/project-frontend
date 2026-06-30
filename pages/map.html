@@ -1,175 +1,182 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>კუნძულების რუკა</title>
+    <link rel="icon" type="image/png" href="../assets/fox-logo.png" />
+    <link rel="stylesheet" href="../style/general.css" />
+    <link rel="stylesheet" href="../style/map.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>კუნძულების რუკა</title>
-  <link rel="icon" type="image/png" href="../assets/fox-logo.png" />
-  <link rel="stylesheet" href="../style/general.css" />
-  <link rel="stylesheet" href="../style/map.css" />
-</head>
+  <body>
+    <header class="map-header header-container">
+      <div class="flexrow">
+        <a href="home.html">
+          <img
+            src="../assets/fox-logo.png"
+            alt="our website logo of a fox holding a pen"
+            class="logo"
+          />
+        </a>
+        <p class="chalk-txt">
+          <span class="orange-txt h-title">მელიას</span> <br />
+          მათემატიკა
+        </p>
+      </div>
 
-<body>
-  <header class="map-header header-container">
-    <div class="flexrow">
-      <a href="home.html">
-        <img src="../assets/fox-logo.png" alt="our website logo of a fox holding a pen" class="logo" />
-      </a>
-      <p class="chalk-txt">
-        <span class="orange-txt h-title">მელიას</span> <br />
-        მათემატიკა
-      </p>
-    </div>
-
-    <div class="flexrow">
-      <span id="user-name" class="chalk-txt"></span>
-      <span id="user-stars" class="reg-txt"></span>
-      <a href="home.html" class="anchor-el">
-        <div class="reg-txt button sketchy-button--sm hover-color-change">
-          ← უკან
+      <div class="flexrow">
+        <span id="user-name" class="chalk-txt"></span>
+        <span id="user-stars" class="reg-txt"></span>
+        <a href="home.html" class="anchor-el">
+          <div class="reg-txt button sketchy-button--sm hover-color-change">
+            ← უკან
+          </div>
+        </a>
+      </div>
+    </header>
+    <main>
+      <div class="chalk-txt">
+        <div class="map-title">
+          <h1>კუნძულების <span class="orange-txt">რუკა</span></h1>
+          <span id="grade-title" class="grade-badge button sketchy-button--sm">
+            <span class="cabin-sketch-txt" id="grade-number"></span> კლასი
+          </span>
         </div>
-      </a>
-    </div>
-  </header>
-  <main>
-    <div class="chalk-txt">
-      <div class="map-title">
-        <h1>კუნძულების <span class="orange-txt">რუკა</span></h1>
-        <span id="grade-title" class="grade-badge button sketchy-button--sm">
-          <span class="cabin-sketch-txt" id="grade-number"></span> კლასი
-        </span>
-      </div>
-    </div>
-
-    <div class="islands-cont chalk-txt">
-      <div class="island-wrapper unlocked" id="island-castle">
-        <div class="island-label">ციხე-სიმაგრე</div>
-        <svg class="island-svg" width="180" height="200" viewBox="0 0 180 200" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <!-- island base -->
-          <ellipse cx="90" cy="175" rx="75" ry="22" fill="#8B6914" opacity="0.3" />
-          <ellipse cx="90" cy="172" rx="72" ry="18" fill="#C8941A" />
-          <ellipse cx="90" cy="168" rx="68" ry="14" fill="#E2B84A" />
-          <!-- grass -->
-          <ellipse cx="90" cy="158" rx="65" ry="18" fill="#5A8A3C" />
-          <ellipse cx="90" cy="153" rx="60" ry="12" fill="#6FAF47" />
-          <!-- castle body -->
-          <rect x="55" y="90" width="70" height="65" rx="3" fill="#C8C0B0" />
-          <rect x="55" y="90" width="70" height="65" rx="3" stroke="#8A8070" stroke-width="1.5" />
-          <!-- castle towers -->
-          <rect x="45" y="75" width="26" height="80" rx="2" fill="#D4CCBC" />
-          <rect x="109" y="75" width="26" height="80" rx="2" fill="#D4CCBC" />
-          <rect x="45" y="75" width="26" height="80" rx="2" stroke="#8A8070" stroke-width="1.5" />
-          <rect x="109" y="75" width="26" height="80" rx="2" stroke="#8A8070" stroke-width="1.5" />
-          <!-- battlements left -->
-          <rect x="45" y="65" width="7" height="12" rx="1" fill="#D4CCBC" stroke="#8A8070" stroke-width="1" />
-          <rect x="55" y="65" width="7" height="12" rx="1" fill="#D4CCBC" stroke="#8A8070" stroke-width="1" />
-          <rect x="63" y="65" width="8" height="12" rx="1" fill="#D4CCBC" stroke="#8A8070" stroke-width="1" />
-          <!-- battlements right -->
-          <rect x="109" y="65" width="7" height="12" rx="1" fill="#D4CCBC" stroke="#8A8070" stroke-width="1" />
-          <rect x="119" y="65" width="7" height="12" rx="1" fill="#D4CCBC" stroke="#8A8070" stroke-width="1" />
-          <rect x="126" y="65" width="9" height="12" rx="1" fill="#D4CCBC" stroke="#8A8070" stroke-width="1" />
-          <!-- battlements center -->
-          <rect x="63" y="80" width="8" height="11" rx="1" fill="#C8C0B0" stroke="#8A8070" stroke-width="1" />
-          <rect x="76" y="80" width="8" height="11" rx="1" fill="#C8C0B0" stroke="#8A8070" stroke-width="1" />
-          <rect x="89" y="80" width="8" height="11" rx="1" fill="#C8C0B0" stroke="#8A8070" stroke-width="1" />
-          <rect x="102" y="80" width="10" height="11" rx="1" fill="#C8C0B0" stroke="#8A8070" stroke-width="1" />
-          <!-- gate -->
-          <path d="M78 155 L78 125 Q90 115 102 125 L102 155 Z" fill="#6B5030" />
-          <!-- windows -->
-          <rect x="60" y="100" width="12" height="16" rx="6" fill="#87CEEB" stroke="#8A8070" stroke-width="1" />
-          <rect x="108" y="100" width="12" height="16" rx="6" fill="#87CEEB" stroke="#8A8070" stroke-width="1" />
-          <!-- flag -->
-          <line x1="90" y1="78" x2="90" y2="52" stroke="#8A8070" stroke-width="1.5" />
-          <path d="M90 52 L106 58 L90 64 Z" fill="#E25921" />
-        </svg>
       </div>
 
-      <div class="island-wrapper unlocked" id="island-jungle">
-        <div class="island-label">ჯუნგლები</div>
-        <svg class="island-svg" width="180" height="210" viewBox="0 0 180 210" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <!-- island base -->
-          <ellipse cx="90" cy="185" rx="75" ry="22" fill="#5A3A0A" opacity="0.3" />
-          <ellipse cx="90" cy="182" rx="72" ry="18" fill="#8B6914" />
-          <ellipse cx="90" cy="178" rx="68" ry="14" fill="#A67C1A" />
-          <!-- grass -->
-          <ellipse cx="90" cy="168" rx="65" ry="18" fill="#2D6A1F" />
-          <ellipse cx="90" cy="163" rx="60" ry="12" fill="#3D8A28" />
-          <!-- big tree center -->
-          <rect x="85" y="100" width="10" height="65" fill="#5C3A1E" />
-          <circle cx="90" cy="88" r="32" fill="#2D8A20" />
-          <circle cx="68" cy="100" r="22" fill="#3AAA2A" />
-          <circle cx="112" cy="100" r="22" fill="#3AAA2A" />
-          <circle cx="90" cy="75" r="24" fill="#4ABB35" />
-          <!-- small trees -->
-          <rect x="42" y="135" width="7" height="30" fill="#5C3A1E" />
-          <circle cx="45" cy="125" r="16" fill="#2D8A20" />
-          <circle cx="45" cy="118" r="12" fill="#4ABB35" />
-          <rect x="130" y="138" width="7" height="27" fill="#5C3A1E" />
-          <circle cx="134" cy="128" r="15" fill="#2D8A20" />
-          <circle cx="134" cy="121" r="11" fill="#4ABB35" />
-          <!-- vines -->
-          <path d="M75 110 Q65 130 70 150" stroke="#2D6A1F" stroke-width="2" fill="none" />
-          <path d="M105 115 Q115 135 110 155" stroke="#2D6A1F" stroke-width="2" fill="none" />
-          <!-- fruits -->
-          <circle cx="72" cy="95" r="4" fill="#FF6B35" />
-          <circle cx="108" cy="92" r="4" fill="#FFB800" />
-          <circle cx="90" cy="65" r="4" fill="#FF6B35" />
-        </svg>
-      </div>
+      <div class="islands-cont chalk-txt">
+        <div class="island-wrapper unlocked" id="island-castle">
+          <div class="island-label">ციხე-სიმაგრე</div>
+          <svg
+            class="island-svg"
+            width="180"
+            height="200"
+            viewBox="0 0 180 200"
+          >
+            <use href="../assets/map.svg#island-castle"></use>
+          </svg>
+        </div>
 
-      <div class="island-wrapper unlocked" id="island-labyrinth">
-        <div class="island-label">ლაბირინთი</div>
-        <svg class="island-svg" width="180" height="200" viewBox="0 0 180 200" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <!-- island base -->
-          <ellipse cx="90" cy="175" rx="75" ry="22" fill="#2A2A4A" opacity="0.3" />
-          <ellipse cx="90" cy="172" rx="72" ry="18" fill="#3A3A6A" />
-          <ellipse cx="90" cy="168" rx="68" ry="14" fill="#4A4A8A" />
-          <!-- ground -->
-          <ellipse cx="90" cy="158" rx="65" ry="18" fill="#5A5A9A" />
-          <ellipse cx="90" cy="153" rx="60" ry="12" fill="#6A6AAA" />
-          <!-- maze walls -->
-          <rect x="40" y="80" width="100" height="75" rx="4" fill="#4A4A7A" stroke="#8A8ACA" stroke-width="1.5" />
-          <!-- outer walls -->
-          <rect x="40" y="80" width="100" height="8" fill="#5A5A9A" />
-          <rect x="40" y="147" width="100" height="8" fill="#5A5A9A" />
-          <rect x="40" y="80" width="8" height="75" fill="#5A5A9A" />
-          <rect x="132" y="80" width="8" height="75" fill="#5A5A9A" />
-          <!-- maze inner walls -->
-          <rect x="55" y="95" width="50" height="7" rx="1" fill="#7A7ABA" />
-          <rect x="75" y="95" width="7" height="30" rx="1" fill="#7A7ABA" />
-          <rect x="95" y="112" width="45" height="7" rx="1" fill="#7A7ABA" />
-          <rect x="55" y="119" width="33" height="7" rx="1" fill="#7A7ABA" />
-          <rect x="95" y="126" width="7" height="22" rx="1" fill="#7A7ABA" />
-          <rect x="55" y="134" width="50" height="7" rx="1" fill="#7A7ABA" />
-          <!-- entrance -->
-          <rect x="40" y="112" width="8" height="18" rx="1" fill="#4A4A7A" />
-          <!-- exit star -->
-          <circle cx="120" cy="140" r="5" fill="#FFD700" />
-          <text x="116" y="144" font-size="8" fill="#FFD700">★</text>
-          <!-- mysterious glow -->
-          <circle cx="90" cy="118" r="25" fill="#8A8AFF" opacity="0.08" />
-          <!-- tower -->
-          <rect x="110" y="55" width="22" height="28" rx="2" fill="#5A5A9A" stroke="#8A8ACA" stroke-width="1" />
-          <rect x="110" y="48" width="6" height="10" rx="1" fill="#6A6AAA" stroke="#8A8ACA" stroke-width="1" />
-          <rect x="118" y="48" width="6" height="10" rx="1" fill="#6A6AAA" stroke="#8A8ACA" stroke-width="1" />
-          <rect x="126" y="48" width="6" height="10" rx="1" fill="#6A6AAA" stroke="#8A8ACA" stroke-width="1" />
-          <circle cx="121" cy="62" r="4" fill="#FFD700" opacity="0.8" />
-        </svg>
-      </div>
-    </div>
-  </main>
-  <footer class="map-footer">
-    <p class="reg-txt">
-      2026 წელს შექმნილი ქართველი მოსწავლეებისთვის • მელიას მათემატიკა
-    </p>
-  </footer>
-  <script src="../js/config.js"></script>
-  <script src="../js/auth.js"></script>
-  <script src="../js/map.js"></script>
-</body>
+        <div class="island-wrapper unlocked" id="island-jungle">
+          <div class="island-label">ჯუნგლები</div>
+          <svg
+            class="island-svg"
+            width="180"
+            height="200"
+            viewBox="0 0 180 200"
+          >
+            <use href="../assets/map.svg#island-jungle"></use>
+          </svg>
+        </div>
 
+        <div class="island-wrapper unlocked" id="island-labyrinth">
+          <div class="island-label">ლაბირინთი</div>
+          <svg
+            class="island-svg"
+            width="180"
+            height="200"
+            viewBox="0 0 180 200"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <!-- island base -->
+            <ellipse
+              cx="90"
+              cy="175"
+              rx="75"
+              ry="22"
+              fill="#2A2A4A"
+              opacity="0.3"
+            />
+            <ellipse cx="90" cy="172" rx="72" ry="18" fill="#3A3A6A" />
+            <ellipse cx="90" cy="168" rx="68" ry="14" fill="#4A4A8A" />
+            <!-- ground -->
+            <ellipse cx="90" cy="158" rx="65" ry="18" fill="#5A5A9A" />
+            <ellipse cx="90" cy="153" rx="60" ry="12" fill="#6A6AAA" />
+            <!-- maze walls -->
+            <rect
+              x="40"
+              y="80"
+              width="100"
+              height="75"
+              rx="4"
+              fill="#4A4A7A"
+              stroke="#8A8ACA"
+              stroke-width="1.5"
+            />
+            <!-- outer walls -->
+            <rect x="40" y="80" width="100" height="8" fill="#5A5A9A" />
+            <rect x="40" y="147" width="100" height="8" fill="#5A5A9A" />
+            <rect x="40" y="80" width="8" height="75" fill="#5A5A9A" />
+            <rect x="132" y="80" width="8" height="75" fill="#5A5A9A" />
+            <!-- maze inner walls -->
+            <rect x="55" y="95" width="50" height="7" rx="1" fill="#7A7ABA" />
+            <rect x="75" y="95" width="7" height="30" rx="1" fill="#7A7ABA" />
+            <rect x="95" y="112" width="45" height="7" rx="1" fill="#7A7ABA" />
+            <rect x="55" y="119" width="33" height="7" rx="1" fill="#7A7ABA" />
+            <rect x="95" y="126" width="7" height="22" rx="1" fill="#7A7ABA" />
+            <rect x="55" y="134" width="50" height="7" rx="1" fill="#7A7ABA" />
+            <!-- entrance -->
+            <rect x="40" y="112" width="8" height="18" rx="1" fill="#4A4A7A" />
+            <!-- exit star -->
+            <circle cx="120" cy="140" r="5" fill="#FFD700" />
+            <text x="116" y="144" font-size="8" fill="#FFD700">★</text>
+            <!-- mysterious glow -->
+            <circle cx="90" cy="118" r="25" fill="#8A8AFF" opacity="0.08" />
+            <!-- tower -->
+            <rect
+              x="110"
+              y="55"
+              width="22"
+              height="28"
+              rx="2"
+              fill="#5A5A9A"
+              stroke="#8A8ACA"
+              stroke-width="1"
+            />
+            <rect
+              x="110"
+              y="48"
+              width="6"
+              height="10"
+              rx="1"
+              fill="#6A6AAA"
+              stroke="#8A8ACA"
+              stroke-width="1"
+            />
+            <rect
+              x="118"
+              y="48"
+              width="6"
+              height="10"
+              rx="1"
+              fill="#6A6AAA"
+              stroke="#8A8ACA"
+              stroke-width="1"
+            />
+            <rect
+              x="126"
+              y="48"
+              width="6"
+              height="10"
+              rx="1"
+              fill="#6A6AAA"
+              stroke="#8A8ACA"
+              stroke-width="1"
+            />
+            <circle cx="121" cy="62" r="4" fill="#FFD700" opacity="0.8" />
+          </svg>
+        </div>
+      </div>
+    </main>
+    <footer class="map-footer">
+      <p class="reg-txt">
+        2026 წელს შექმნილი ქართველი მოსწავლეებისთვის • მელიას მათემატიკა
+      </p>
+    </footer>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/map.js"></script>
+  </body>
 </html>

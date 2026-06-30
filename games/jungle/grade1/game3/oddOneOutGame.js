@@ -28,13 +28,16 @@ const gridEl = document.getElementById("shapes-grid");
 const feedbackEl = document.getElementById("feedback-msg");
 
 let currentRound = null;
-let answered = false;
 
 function startRound() {
   if (feedbackEl) feedbackEl.style.color = "";
-  answered = false;
+  gameState.isFinished = false;
 
-  const groupShape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
+  let groupShape;
+  do {
+    groupShape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
+  } while (currentRound && groupShape.id === currentRound.groupShape.id);
+
   const oddPool = SHAPES.filter((s) => s.id !== groupShape.id);
   const oddShape = oddPool[Math.floor(Math.random() * oddPool.length)];
 
@@ -73,12 +76,12 @@ function renderGrid() {
 }
 
 function checkAns(index) {
-  if (answered || gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   const cards = gridEl.querySelectorAll(".shape-card");
 
   if (index === currentRound.oddIndex) {
-    answered = true;
+    gameState.isFinished = true;
     onCorrect();
     cards[index].classList.add("card-correct");
     showFeedback(`სწორია! ყველა ${currentRound.groupShape.nameKa} იყო!`, true);

@@ -51,11 +51,18 @@ function isOverLap(x, y) {
 }
 
 function startRound() {
+  gameState.isFinished = false;
   feedbackMsg.style.color = "";
   shapeCont.innerHTML = "";
   placedShapes = [];
 
-  currentTask = tasks[Math.floor(Math.random() * tasks.length)];
+  let nextTask;
+  do {
+    nextTask = tasks[Math.floor(Math.random() * tasks.length)];
+  } while (currentTask && nextTask.id === currentTask.id);
+
+  currentTask = nextTask;
+
   feedbackMsg.textContent = currentTask.text;
   feedbackMsg.style.color = "var(--color-text)";
   const boxWidth = shapeCont.clientWidth;
@@ -136,6 +143,7 @@ function checkAns() {
     return;
   }
   if (isCorrect) {
+    gameState.isFinished = true;
     onCorrect();
     showFeedback("ყოჩაღ, სწორია!", true);
 

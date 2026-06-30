@@ -9,7 +9,7 @@ const gameCont = document.getElementById("game-cont");
 const feedbackMsg = document.getElementById("feedback-msg");
 
 let correctSign = "";
-let isRoundActive = true;
+let lastRoundMode = null;
 
 function generateFraction(numerator, denominator) {
   let blocksHtml = "";
@@ -22,11 +22,16 @@ function generateFraction(numerator, denominator) {
 
 function startRound() {
   feedbackMsg.style.color = "";
-  isRoundActive = true;
+  gameState.isFinished = false;
   feedbackMsg.textContent = "გაიხსენე წილადების შედარება";
   gameCont.innerHTML = "";
 
-  const isOpMode = Math.random() > 0.5;
+  let isOpMode;
+  do {
+    isOpMode = Math.random() > 0.5;
+  } while (isOpMode === lastRoundMode);
+
+  lastRoundMode = isOpMode;
 
   if (!isOpMode) {
     const denominators = [2, 3, 4, 6, 8];
@@ -105,12 +110,12 @@ function startRound() {
 }
 
 function checkAns(selectedSign) {
-  if (!isRoundActive || gameState.isFinished) return;
+  if (gameState.isFinished) return;
   const slot = document.getElementById("target-slot");
 
   if (selectedSign === correctSign) {
     onCorrect();
-    isRoundActive = false;
+    gameState.isFinished = true;
     slot.textContent = correctSign;
     slot.classList.add("active-sign");
     showFeedback("ყოჩაღ! სწორად გამოიცანი!", true);

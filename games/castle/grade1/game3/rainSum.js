@@ -1,10 +1,9 @@
 const GAME_STATE = {
-  gameId:           "castle_g1_game3",  
-  island:           "castle",           
-  gameGrade:        parseInt(           
-    new URLSearchParams(window.location.search).get("grade"), 10
-  ) || 1,
-  timeLimitSeconds: 30,                 
+  gameId: "castle_g1_game3",
+  island: "castle",
+  gameGrade:
+    parseInt(new URLSearchParams(window.location.search).get("grade"), 10) || 1,
+  timeLimitSeconds: 30,
 };
 
 let currentItem = null;
@@ -23,17 +22,16 @@ function shuffle(array) {
 }
 function startRound() {
   if (feedbackMsg) {
-    feedbackMsg.innerText = "წვიმის წვეთების ჯამით ღრუბელში მოცემული რიცხვი უნდა მიიღო.";
+    feedbackMsg.innerText =
+      "წვიმის წვეთების ჯამით ღრუბელში მოცემული რიცხვი უნდა მიიღო.";
     feedbackMsg.style.color = "";
     feedbackMsg.style.display = "block";
   }
-  let total = Math.floor(Math.random() * 16) + 5;
 
-  if (currentItem) {
-    while (total === currentItem.total) {
-      total = Math.floor(Math.random() * 16) + 5;
-    }
-  }
+  let total;
+  do {
+    total = Math.floor(Math.random() * 16) + 5;
+  } while (currentItem && total === currentItem.total);
 
   let knownDropVal = Math.floor(Math.random() * (total + 1));
   let hiddenDropVal = total - knownDropVal;
@@ -72,7 +70,6 @@ function generateOptions(correctVal, total) {
     }
   }
 
-
   shuffle(options);
 
   options.forEach((num) => {
@@ -95,7 +92,7 @@ function checkAns(selectedShape) {
     } else {
       dropRight.innerText = currentItem.shape;
     }
-    onCorrect(); 
+    onCorrect();
     showFeedback("სწორია!", true);
 
     setTimeout(() => {
@@ -105,4 +102,3 @@ function checkAns(selectedShape) {
     showFeedback("რაღაც შეცდომაა...", false);
   }
 }
-

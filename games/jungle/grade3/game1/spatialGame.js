@@ -7,12 +7,11 @@ const GAME_STATE = {
 };
 
 let correctAns;
-let isWaiting = false;
-
 let isDragging = false;
 let lastX, lastY;
 let rotateX = -20;
 let rotateY = 30;
+let lastRound = "";
 
 const shapesData = [
   {
@@ -118,7 +117,7 @@ const feedbackMsg = document.getElementById("feedback-msg");
 
 function startRound() {
   feedbackMsg.style.color = "";
-  isWaiting = false;
+  gameState.isFinished = false;
 
   const shapeCont = document.getElementById("shape-container");
   const optCont = document.getElementById("options-cont");
@@ -135,16 +134,21 @@ function startRound() {
   }
   optCont.innerHTML = "";
 
-  const randomShape = shapesData[Math.floor(Math.random() * shapesData.length)];
+  let randomShape, randomQuestion, currentRoundKey;
+  do {
+    randomShape = shapesData[Math.floor(Math.random() * shapesData.length)];
 
-  //თუ ცილინდრია, კითხვა ყოველთვის მოდის წახნაგებზე
-  let randomQuestion;
-  if (randomShape.id === "cylinder") {
-    randomQuestion = questionsData.find((q) => q.key === "faces");
-  } else {
-    randomQuestion =
-      questionsData[Math.floor(Math.random() * questionsData.length)];
-  }
+    //თუ ცილინდრია, კითხვა ყოველთვის მოდის ფუძეზე
+    if (randomShape.id === "cylinder") {
+      randomQuestion = questionsData.find((q) => q.key === "faces");
+    } else {
+      randomQuestion =
+        questionsData[Math.floor(Math.random() * questionsData.length)];
+    }
+    currentRoundKey = `${randomShape.id}_${randomQuestion.key}`;
+  } while (currentRoundKey === lastRound);
+
+  lastRound = currentRoundKey;
 
   let questionWord = randomQuestion.word;
   if (randomShape.id === "cylinder" && randomQuestion.key === "faces") {
@@ -182,9 +186,9 @@ function startRound() {
 }
 
 function checkAns(val, btnElement) {
-  if (gameState.isFinished || isWaiting) return;
+  if (gameState.isFinished) return;
   if (val === correctAns) {
-    isWaiting = true;
+    gameState.isFinished = true;
     btnElement.style.backgroundColor = "var(--color-green, #4CAF50)";
     btnElement.style.color = "white";
 
@@ -222,7 +226,7 @@ document.addEventListener("mousedown", (e) => {
 });
 
 document.addEventListener("mousemove", (e) => {
-  if (!isDragging || isWaiting || gameState.isFinished) return;
+  if (!isDragging || gameState.isFinished) return;
   const dx = e.clientX - lastX;
   const dy = e.clientY - lastY;
 

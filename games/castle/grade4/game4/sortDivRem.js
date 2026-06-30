@@ -65,6 +65,7 @@ function createPencilSVG(text, p) {
 }
 
 function startRound() {
+  gameState.isFinished = false;
   feedbackMsg.style.color = "";
   document
     .querySelectorAll(".box .box-content")
@@ -121,7 +122,7 @@ document.querySelectorAll(".box").forEach((box) => {
 function checkAns() {
   if (gameState.isFinished) return;
   if (pool.querySelectorAll(".shape-card").length > 0) {
-    showFeedback("ჯერ ყველა ფანქარი გადაანაწილე!", false)
+    showFeedback("ჯერ ყველა ფანქარი გადაანაწილე!", false);
     return;
   }
   let allCorrect = true;
@@ -139,6 +140,7 @@ function checkAns() {
   });
 
   if (allCorrect) {
+    gameState.isFinished = true;
     onCorrect();
     showFeedback("ყოჩაღ, სწორია!", true);
     setTimeout(() => {

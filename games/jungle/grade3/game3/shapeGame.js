@@ -145,7 +145,6 @@ const items = [
 ];
 
 let currentItem = null;
-let correctAns = false;
 
 const optCont = document.getElementById("options-cont");
 const promptLabel = document.getElementById("prompt-label");
@@ -154,24 +153,22 @@ const feedbackMsg = document.getElementById("feedback-msg");
 
 function startRound() {
   feedbackMsg.style.color = "";
-  let picker = items[Math.floor(Math.random() * items.length)];
-  if (currentItem && items.length > 1) {
-    while (picker.name === currentItem.name) {
-      picker = items[Math.floor(Math.random() * items.length)];
-    }
-  }
+  let picker;
+  do {
+    picker = items[Math.floor(Math.random() * items.length)];
+  } while (currentItem && picker.name === currentItem.name);
 
   currentItem = picker;
-  correctAns = false;
+  gameState.isFinished = false;
   feedbackMsg.style.color = "var(--color-text)";
   promptLabel.innerText = `აირჩიე სწორი ფორმა ${currentItem.name}`;
   objVisCont.innerHTML = currentItem.svg;
 }
 
 function checkAns(selectedShape) {
-  if (correctAns || gameState.isFinished) return;
+  if (gameState.isFinished) return;
   if (selectedShape === currentItem.shape) {
-    correctAns = true;
+    gameState.isFinished = true;
     onCorrect();
     showFeedback("ყოჩაღ, სწორია!", true);
 

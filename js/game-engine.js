@@ -5,6 +5,7 @@ const gameState = {
   gameGrade: null,
   correctCount: 0,
   timeLimitSeconds: 60,
+  timeLeft: 60,
   timerInterval: null,
   isFinished: false,
 };
@@ -80,7 +81,7 @@ function handleStartGame() {
   startBgMusic();
 }
 
-//სწორ პასუხზე.
+//სწორ პასუხზე
 function onCorrect() {
   gameState.correctCount++;
   updateScoreUI(gameState.correctCount);
@@ -97,13 +98,13 @@ function endGame() {
 }
 
 function startTimer() {
-  let timeLeft = gameState.timeLimitSeconds;
-  updateTimerUI(timeLeft);
+  gameState.timeLeft = gameState.timeLimitSeconds;
+  updateTimerUI(gameState.timeLeft);
 
   gameState.timerInterval = setInterval(() => {
-    timeLeft--;
-    updateTimerUI(Math.max(0, timeLeft));
-    if (timeLeft <= 0) endGame();
+    gameState.timeLeft--;
+    updateTimerUI(Math.max(0, gameState.timeLeft));
+    if (gameState.timeLeft <= 0) endGame();
   }, 1000);
 }
 
@@ -114,6 +115,19 @@ function updateTimerUI(seconds) {
   el.classList.toggle("timer-warning", seconds <= 10);
 }
 
+function applyTimePenalty(seconds = 5) {
+  if (gameState.isFinished) return;
+
+  gameState.timeLeft = Math.max(0, gameState.timeLeft - seconds);
+  updateTimerUI(gameState.timeLeft);
+
+  const el = document.getElementById("timer-display");
+  if (el) {
+    el.classList.add("time-penalty-flash");
+    setTimeout(() => el.classList.remove("time-penalty-flash"), 400);
+  }
+  if (gameState.timeLeft <= 0) endGame();
+}
 function updateScoreUI(count) {
   const el = document.getElementById("score-display");
   if (el) el.textContent = count;
@@ -126,6 +140,9 @@ function showFeedback(msg, isCorrect) {
   el.style.color = isCorrect ? "var(--color-green)" : "var(--color-red)";
   el.style.display = "block";
   playSound(isCorrect ? "correct" : "wrong");
+  if (!isCorrect) {
+    applyTimePenalty(5);
+  }
 }
 
 function hideFeedback() {

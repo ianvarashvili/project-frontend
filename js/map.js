@@ -17,7 +17,7 @@ function onIslandClick(island, grade) {
   }
 
   const el = document.getElementById(`island-${island}`);
-  if (el?.classList.contains("locked")) return;
+  if (!el) return;
 
   window.location.href = `/pages/island.html?island=${island}&grade=${grade}`;
 }
@@ -34,27 +34,6 @@ function renderGradeTitle(grade) {
   if (el) el.textContent = labels[grade];
 }
 
-async function loadProgress() {
-  try {
-    const data = await apiFetch("/progress");
-    renderIslandStates(data);
-  } catch (err) {
-    console.warn("Progress ვერ ჩაიტვირთა:", err.message);
-  }
-}
-
-function renderIslandStates(islands) {
-  if (!islands) return;
-
-  ISLAND_IDS.forEach((island) => {
-    const el = document.getElementById(`island-${island}`);
-    if (!el) return;
-
-    const isUnlocked = islands[island]?.unlocked ?? false;
-    el.classList.remove("locked", "unlocked");
-    el.classList.add(isUnlocked ? "unlocked" : "locked");
-  });
-}
 function renderUserStats() {
   const user = getStoredUser();
   if (!user) return;
@@ -81,6 +60,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem(STORAGE_KEYS.firebaseToken);
   if (token) {
     renderUserStats();
-    loadProgress();
   }
 });

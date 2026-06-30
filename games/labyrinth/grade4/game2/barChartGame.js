@@ -38,8 +38,8 @@ const compareOptions = document.getElementById("compare-options");
 const feedbackEl = document.getElementById("feedback-msg");
 
 let roundType = null;
-let answered = false;
 let buildTarget = 0;
+let lastQuest = null;
 
 function getRandNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -58,8 +58,13 @@ function multiplesOfTen(count, excludeList = []) {
 }
 
 function startRound() {
-  answered = false;
-  roundType = Math.random() < 0.5 ? "build" : "compare";
+  gameState.isFinished = false;
+
+  do {
+    roundType = Math.random() < 0.5 ? "build" : "compare";
+  } while (roundType === lastQuest);
+
+  lastQuest = roundType;
 
   if (feedbackEl) {
     feedbackEl.style.color = "";
@@ -112,12 +117,12 @@ function startBuildRound() {
 }
 
 function checkBuild(value, fillEl, trackEl) {
-  if (answered || gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   fillEl.style.height = value + "%";
 
   if (value === buildTarget) {
-    answered = true;
+    gameState.isFinished = true;
     trackEl.classList.add("bar-correct");
     onCorrect();
     showFeedback(`სწორია! სწორი პასუხი იყო ${buildTarget}!`, true);
@@ -144,7 +149,7 @@ function startCompareRound() {
   let promptHtml;
 
   if (qType === "multiplier") {
-    // ორი კატეგორია 
+    // ორი კატეგორია
     const small = getRandNum(1, 3) * 10;
     const multiplier = getRandNum(2, 3);
     const big = small * multiplier;
@@ -170,7 +175,7 @@ function startCompareRound() {
     correctAnswer = a - b;
     promptHtml = `რამდენით მეტი დღე იყო <span class="orange-txt">${picks[0].label}</span>, ვიდრე <span class="orange-txt">${picks[1].label}</span>?`;
   } else if (qType === "avg2") {
-    // ნებისმიერი 2 ათეულის ჯამი ლუწია 
+    // ნებისმიერი 2 ათეულის ჯამი ლუწია
     const [a, b, c] = multiplesOfTen(3);
     values = [a, b, c];
     correctAnswer = (a + b) / 2;
@@ -237,10 +242,10 @@ function renderCompareOptions(correct, qType) {
 }
 
 function checkCompare(selected, correctAnswer, btnEl) {
-  if (answered || gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   if (selected === correctAnswer) {
-    answered = true;
+    gameState.isFinished = true;
     btnEl.classList.add("compare-correct");
     onCorrect();
     showFeedback(`სწორია! პასუხია ${correctAnswer}`, true);

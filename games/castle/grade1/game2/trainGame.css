@@ -10,7 +10,6 @@
   justify-content: center;
   width: 100%;
   max-width: 600px;
-  /* margin-bottom: 10px; */
   font-size: 1.4rem;
   font-weight: bold;
 }
@@ -103,8 +102,7 @@
 }
 .wagon.missing-num {
   border-style: dashed;
-  background-color: var(--color-peachy);
-  color: var(--color-primary);
+  color: var(--color-white);
   font-size: 2.5rem;
 }
 .options-zone {

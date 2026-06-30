@@ -7,7 +7,7 @@ const GAME_STATE = {
 };
 
 let correctAns = 0;
-let isAnimating = false;
+let lastRound = null;
 
 const train = document.getElementById("train");
 const w1 = document.getElementById("w1");
@@ -27,7 +27,13 @@ function startRound() {
     "minus2",
     "minus5",
   ];
-  const chosenType = types[Math.floor(Math.random() * types.length)];
+  let chosenType;
+
+  do {
+    chosenType = types[Math.floor(Math.random() * types.length)];
+  } while (chosenType === lastRound);
+
+  lastRound = chosenType;
 
   let num1, num2, num3;
 
@@ -111,10 +117,10 @@ function startRound() {
 }
 
 function checkAnswer(selected, buttonElement) {
-  if (isAnimating || gameState.isFinished) return;
+  if (gameState.isFinished) return;
 
   if (selected === correctAns) {
-    isAnimating = true;
+    gameState.isFinished = true;
     showFeedback("სწორია!", true);
     onCorrect();
 
@@ -131,7 +137,7 @@ function checkAnswer(selected, buttonElement) {
           "ამოიცანი რიცხვების კანონზომიერება და გაუშვი მატარებელი";
 
         train.classList.remove("enter-stage");
-        isAnimating = false;
+        gameState.isFinished = false;
       }, 100);
     }, 500);
   } else {
