@@ -184,8 +184,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const form = document.getElementById("register-form");
   if (form) form.addEventListener("submit", handleRegister);
-
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("registered")) {
-  }
 });

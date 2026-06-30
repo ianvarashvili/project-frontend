@@ -335,7 +335,6 @@ async function confirmDeleteAccount() {
       body: JSON.stringify({ password }),
     });
     clearUser();
-    clearUser();
 window.location.href = "/pages/status/deleted.html";
   } catch (err) {
     errorEl.textContent   = err.message || "შეცდომა, სცადეთ თავიდან";
