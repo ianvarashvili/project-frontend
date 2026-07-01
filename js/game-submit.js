@@ -8,7 +8,25 @@ async function submitGame(gameState) {
     timeLimitSeconds: gameState.timeLimitSeconds,
   };
   const loadingEl = document.getElementById("loading-overlay");
-  if (loadingEl) loadingEl.style.display = "flex";
+  if (loadingEl) {
+    loadingEl.style.display = "flex";
+    loadingEl.innerHTML = `
+    <div class="result-box" style="text-align:center;">
+      <div id="lottie-result" style="width:180px;height:180px;margin:0 auto;"></div>
+      <p class="chalk-txt">შედეგი იგზავნება...</p>
+    </div>
+  `;
+    if (typeof lottie !== "undefined") {
+      lottie.loadAnimation({
+        container: document.getElementById("lottie-result"),
+        renderer: "canvas",
+        loop: true,
+        autoplay: true,
+        path: "/assets/animations/fox-result.json",
+      });
+    }
+  }
+
   const resultAudio = new Audio("/assets/sounds/result.mp3");
   resultAudio.volume = 0.5;
   resultAudio.play().catch(() => {});

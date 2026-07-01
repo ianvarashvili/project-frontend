@@ -235,6 +235,11 @@ function escapeHeaderText(str) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  //lottie animation 
+  const lottieScript = document.createElement("script");
+  lottieScript.src = "https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js";
+  document.head.appendChild(lottieScript);
+  
   checkAuth();
   if (typeof GAME_STATE !== "undefined") {
     startGame(GAME_STATE);

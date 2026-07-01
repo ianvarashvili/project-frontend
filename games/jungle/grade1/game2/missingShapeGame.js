@@ -69,11 +69,16 @@ function checkAns(selectedVertex) {
     target.className = "shape-box";
     target.innerHTML = shapeDrawings[currentQuest.hidden];
     onCorrect();
-    feedbackMsg.innerHTML = `სწორია! ეს არის <span class='orange-txt'>${currentQuest.hidden}</span>-კუთხედი`;
+    showFeedback(
+      `სწორია! ეს არის <span class='orange-txt'>${currentQuest.hidden}</span>-კუთხედი`,
+      true,
+    );
+
     setTimeout(() => {
       startRound();
     }, 2000);
   } else {
-    feedbackMsg.innerHTML = `რაღაც შეცდომაა... კარგად გადათვალე <span class="orange-txt">წვეროების რაოდენობა</span>.`;
+    showFeedback(`რაღაც შეცდომაა... კარგად გადათვალე <span class="orange-txt">წვეროების რაოდენობა</span>.`, false);
+
   }
 }

@@ -7,19 +7,19 @@ const GAME_STATE = {
 };
 
 const SHAPES_2D = [
-  { id: "circle", nameKa: "წრეები", dim: "2d" },
-  { id: "triangle", nameKa: "სამკუთხედები", dim: "2d" },
-  { id: "square", nameKa: "კვადრატები", dim: "2d" },
-  { id: "rectangle", nameKa: "მართკუთხედები", dim: "2d" },
-  { id: "pentagon", nameKa: "ხუთკუთხედები", dim: "2d" },
-  { id: "hexagon", nameKa: "ექვსკუთხედები", dim: "2d" },
+  { id: "circle", nameKa: "წრე", dim: "2d" },
+  { id: "triangle", nameKa: "სამკუთხედი", dim: "2d" },
+  { id: "square", nameKa: "კვადრატი", dim: "2d" },
+  { id: "rectangle", nameKa: "მართკუთხედი", dim: "2d" },
+  { id: "pentagon", nameKa: "ხუთკუთხედი", dim: "2d" },
+  { id: "hexagon", nameKa: "ექვსკუთხედი", dim: "2d" },
 ];
 
 const SHAPES_3D = [
-  { id: "cube", nameKa: "კუბები", dim: "3d" },
-  { id: "sphere", nameKa: "სფეროები", dim: "3d" },
-  { id: "pyramid", nameKa: "პირამიდები", dim: "3d" },
-  { id: "cylinder", nameKa: "ცილინდრები", dim: "3d" },
+  { id: "cube", nameKa: "კუბი", dim: "3d" },
+  { id: "sphere", nameKa: "სფერო", dim: "3d" },
+  { id: "pyramid", nameKa: "პირამიდა", dim: "3d" },
+  { id: "cylinder", nameKa: "ცილინდრი", dim: "3d" },
 ];
 
 const ALL_SHAPES = [...SHAPES_2D, ...SHAPES_3D];
@@ -87,7 +87,7 @@ function startRound() {
   currentRound = { items, oddIndex, feedbackText };
 
   if (feedbackEl) {
-    feedbackEl.innerHTML = 'ვინ <span class="orange-txt">არ ჯდება?</span>';
+    feedbackEl.innerHTML = 'რომელია <span class="orange-txt">ზედმეტი?</span>';
     feedbackEl.style.color = "";
     feedbackEl.style.display = "block";
   }

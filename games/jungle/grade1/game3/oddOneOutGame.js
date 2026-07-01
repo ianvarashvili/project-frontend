@@ -7,12 +7,12 @@ const GAME_STATE = {
 };
 
 const SHAPES = [
-  { id: "circle", nameKa: "წრეები", nameSing: "წრე" },
-  { id: "triangle", nameKa: "სამკუთხედები", nameSing: "სამკუთხედი" },
-  { id: "square", nameKa: "კვადრატები", nameSing: "კვადრატი" },
-  { id: "rectangle", nameKa: "მართკუთხედები", nameSing: "მართკუთხედი" },
-  { id: "pentagon", nameKa: "ხუთკუთხედები", nameSing: "ხუთკუთხედი" },
-  { id: "hexagon", nameKa: "ექვსკუთხედები", nameSing: "ექვსკუთხედი" },
+  { id: "circle", nameKa: "წრე", nameSing: "წრე" },
+  { id: "triangle", nameKa: "სამკუთხედი", nameSing: "სამკუთხედი" },
+  { id: "square", nameKa: "კვადრატი", nameSing: "კვადრატი" },
+  { id: "rectangle", nameKa: "მართკუთხედი", nameSing: "მართკუთხედი" },
+  { id: "pentagon", nameKa: "ხუთკუთხედი", nameSing: "ხუთკუთხედი" },
+  { id: "hexagon", nameKa: "ექვსკუთხედი", nameSing: "ექვსკუთხედი" },
 ];
 
 const PALETTE = [
@@ -55,7 +55,7 @@ function startRound() {
   currentRound = { items, oddIndex, groupShape };
 
   if (feedbackEl) {
-    feedbackEl.innerHTML = 'ვინ <span class="orange-txt">არ ჯდება?</span>';
+    feedbackEl.innerHTML = 'რომელია <span class="orange-txt">ზედმეტი?</span>';
     feedbackEl.style.color = "";
     feedbackEl.style.display = "block";
   }
