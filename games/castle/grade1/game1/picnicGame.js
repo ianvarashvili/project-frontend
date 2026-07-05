@@ -92,7 +92,7 @@ function checkAns() {
   if (basketCount === currentQuest.leftInBasket) {
     gameState.isFinished = true;
     onCorrect();
-    showFeedback("ყოჩაღ! სწორაია! ", true);
+    showFeedback("ყოჩაღ! სწორია! ", true);
 
     setTimeout(() => {
       hideFeedback();

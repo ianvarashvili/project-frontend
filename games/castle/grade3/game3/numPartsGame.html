@@ -46,162 +46,6 @@
               points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
             ></polygon>
           </symbol>
-          <symbol id="icon-package" viewBox="0 0 40 40">
-            <rect
-              x="2"
-              y="2"
-              width="36"
-              height="36"
-              rx="6"
-              fill="#e5cfa3"
-              stroke="#272624"
-              stroke-width="2"
-            />
-            <rect
-              x="2"
-              y="30"
-              width="36"
-              height="8"
-              rx="2"
-              fill="#bfa573"
-              opacity="0.4"
-            />
-            <line
-              x1="20"
-              y1="2"
-              x2="20"
-              y2="38"
-              stroke="#a67c52"
-              stroke-width="3"
-            />
-            <line
-              x1="2"
-              y1="20"
-              x2="38"
-              y2="20"
-              stroke="#a67c52"
-              stroke-width="1.5"
-              stroke-dasharray="3,2"
-            />
-          </symbol>
-          <symbol id="icon-suitcase" viewBox="0 0 50 40">
-            <path
-              d="M17 8 V3 H33 V8"
-              fill="none"
-              stroke="#272624"
-              stroke-width="2.5"
-              stroke-linecap="round"
-            />
-            <rect
-              x="3"
-              y="8"
-              width="44"
-              height="29"
-              rx="6"
-              fill="#dd9668"
-              stroke="#272624"
-              stroke-width="2"
-            />
-            <rect
-              x="3"
-              y="29"
-              width="44"
-              height="8"
-              rx="2"
-              fill="#bc7547"
-              opacity="0.4"
-            />
-            <circle cx="14" cy="14" r="2" fill="#272624" />
-            <circle cx="36" cy="14" r="2" fill="#272624" />
-            <rect x="6" y="18" width="6" height="19" fill="#bc7547" rx="1" />
-            <rect x="38" y="18" width="6" height="19" fill="#bc7547" rx="1" />
-          </symbol>
-          <symbol id="icon-sack" viewBox="0 0 50 45">
-            <path
-              d="M16 14 C10 25 7 41 25 41 C43 41 40 25 34 14 C31 9 19 9 16 14 Z"
-              fill="#a78bfa"
-              stroke="#272624"
-              stroke-width="2"
-            />
-            <path
-              d="M16 14 C20 18 30 18 34 14 C32 10 18 10 16 14 Z"
-              fill="#7c3aed"
-              opacity="0.3"
-            />
-            <ellipse
-              cx="25"
-              cy="13"
-              rx="7"
-              ry="2.5"
-              fill="#f59e0b"
-              stroke="#272624"
-              stroke-width="1.5"
-            />
-          </symbol>
-          <symbol
-            id="icon-big-box"
-            width="48"
-            height="42"
-            viewBox="0 0 60 50"
-            style="animation: dropIn 0.2s ease"
-          >
-            <rect
-              x="3"
-              y="3"
-              width="54"
-              height="44"
-              rx="8"
-              fill="#34d399"
-              stroke="#272624"
-              stroke-width="2"
-            />
-            <rect
-              x="3"
-              y="35"
-              width="54"
-              height="12"
-              rx="2"
-              fill="#059669"
-              opacity="0.3"
-            />
-            <rect
-              x="9"
-              y="9"
-              width="42"
-              height="32"
-              rx="4"
-              fill="none"
-              stroke="#059669"
-              stroke-width="2"
-              stroke-dasharray="4,4"
-            />
-            <line
-              x1="3"
-              y1="3"
-              x2="57"
-              y2="47"
-              stroke="#272624"
-              stroke-width="1.5"
-              opacity="0.7"
-            />
-            <line
-              x1="57"
-              y1="3"
-              x2="3"
-              y2="47"
-              stroke="#272624"
-              stroke-width="1.5"
-              opacity="0.7"
-            />
-            <circle
-              cx="30"
-              cy="25"
-              r="5"
-              fill="#34d399"
-              stroke="#272624"
-              stroke-width="2"
-            />
-          </symbol>
         </defs>
       </svg>
     </defs>
@@ -242,28 +86,30 @@
         <div class="inventory" id="inventory">
           <div class="box-card" data-value="1">
             <svg>
-              <use href="#icon-sack"></use>
+              <use href="../../../../assets/game_assets.svg#icon-package"></use>
             </svg>
-            <span>ზურგჩანთა (1 კგ)</span>
+            <span>საჩუქარი (1 კგ)</span>
             <div class="box-count">დარჩა: <span id="count-1">0</span></div>
           </div>
           <div class="box-card" data-value="5">
             <svg>
-              <use href="#icon-package"></use>
+              <use href="../../../../assets/game_assets.svg#icon-sack"></use>
             </svg>
-            <span>ამანათი (5 კგ)</span>
+            <span>ზურგჩანთა (5 კგ)</span>
             <div class="box-count">დარჩა: <span id="count-5">0</span></div>
           </div>
           <div class="box-card" data-value="10">
             <svg>
-              <use href="#icon-suitcase"></use>
+              <use
+                href="../../../../assets/game_assets.svg#icon-suitcase"
+              ></use>
             </svg>
             <span>ჩემოდანი (10 კგ)</span>
             <div class="box-count">დარჩა: <span id="count-10">0</span></div>
           </div>
           <div class="box-card" data-value="20">
             <svg>
-              <use href="#icon-big-box"></use>
+              <use href="../../../../assets/game_assets.svg#icon-big-box"></use>
             </svg>
             <span>დიდი ყუთი (20 კგ)</span>
             <div class="box-count">დარჩა: <span id="count-20">0</span></div>

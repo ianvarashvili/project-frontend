@@ -40,7 +40,7 @@ function startRound() {
       num1 = Math.floor(Math.random() * 12) + 1;
       num2 = Math.floor(Math.random() * 8) + 1;
       correctAns = num1 * num2;
-      displayTxt = `${num1} ⋅ ${num2}`;
+      displayTxt = `${num1} × ${num2}`;
     } else {
       correctAns = Math.floor(Math.random() * 10) + 1;
       num2 = Math.floor(Math.random() * 10) + 1;

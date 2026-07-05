@@ -51,7 +51,7 @@ function startRound() {
     htmlCode = `
             <svg class="perimeter-svg" viewBox="0 0 240 240">
               <path d="M 120,50 L 200,190 L 40,190 Z" />
-              <text x="135" y="215" class="side-label">${side} სმ</text>
+              <text x="135" y="215" class="side-label" text-anchor="middle">${side} სმ</text>
             </svg>
           `;
   } else if (shape.name === "კვადრატი") {

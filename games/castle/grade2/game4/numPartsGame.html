@@ -1,181 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>რიცხვითი თანრიგები</title>
-          <link rel="stylesheet" href="../../../../style/general.css" />
+    <link rel="stylesheet" href="../../../../style/general.css" />
     <link rel="stylesheet" href="../../../../style/games-general.css" />
-    <link rel="stylesheet" href="numPartsGame.css">
+    <link rel="stylesheet" href="numPartsGame.css" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <defs>
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-            <defs>
-                <symbol id="icon-time" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline>
-                </symbol>
-                <symbol id="icon-check" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </symbol>
-                <symbol id="result-star" viewBox="0 0 24 24">
-                    <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                    </polygon>
-                </symbol>
-                <symbol id="icon-package" viewBox="0 0 40 40">
-                    <rect x="2" y="2" width="36" height="36" rx="6" fill="#e5cfa3" stroke="#272624" stroke-width="2" />
-                    <rect x="2" y="30" width="36" height="8" rx="2" fill="#bfa573" opacity="0.4" />
-                    <line x1="20" y1="2" x2="20" y2="38" stroke="#a67c52" stroke-width="3" />
-                    <line x1="2" y1="20" x2="38" y2="20" stroke="#a67c52" stroke-width="1.5" stroke-dasharray="3,2" />
-                </symbol>
-                <symbol id="icon-suitcase" viewBox="0 0 50 40">
-                    <path d="M17 8 V3 H33 V8" fill="none" stroke="#272624" stroke-width="2.5" stroke-linecap="round" />
-                    <rect x="3" y="8" width="44" height="29" rx="6" fill="#dd9668" stroke="#272624" stroke-width="2" />
-                    <rect x="3" y="29" width="44" height="8" rx="2" fill="#bc7547" opacity="0.4" />
-                    <circle cx="14" cy="14" r="2" fill="#272624" />
-                    <circle cx="36" cy="14" r="2" fill="#272624" />
-                    <rect x="6" y="18" width="6" height="19" fill="#bc7547" rx="1" />
-                    <rect x="38" y="18" width="6" height="19" fill="#bc7547" rx="1" />
-                </symbol>
-                <symbol id="icon-sack" viewBox="0 0 50 45">
-                    <path d="M16 14 C10 25 7 41 25 41 C43 41 40 25 34 14 C31 9 19 9 16 14 Z" fill="#a78bfa"
-                        stroke="#272624" stroke-width="2" />
-                    <path d="M16 14 C20 18 30 18 34 14 C32 10 18 10 16 14 Z" fill="#7c3aed" opacity="0.3" />
-                    <ellipse cx="25" cy="13" rx="7" ry="2.5" fill="#f59e0b" stroke="#272624" stroke-width="1.5" />
-                </symbol>
-                <symbol id="icon-big-box" width="48" height="42" viewBox="0 0 60 50"
-                    style="animation: dropIn 0.2s ease;">
-                    <rect x="3" y="3" width="54" height="44" rx="8" fill="#34d399" stroke="#272624" stroke-width="2" />
-                    <rect x="3" y="35" width="54" height="12" rx="2" fill="#059669" opacity="0.3" />
-                    <rect x="9" y="9" width="42" height="32" rx="4" fill="none" stroke="#059669" stroke-width="2"
-                        stroke-dasharray="4,4" />
-                    <line x1="3" y1="3" x2="57" y2="47" stroke="#272624" stroke-width="1.5" opacity="0.7" />
-                    <line x1="57" y1="3" x2="3" y2="47" stroke="#272624" stroke-width="1.5" opacity="0.7" />
-                    <circle cx="30" cy="25" r="5" fill="#34d399" stroke="#272624" stroke-width="2" />
-                </symbol>
-            </defs>
-        </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+        <defs>
+          <symbol
+            id="icon-time"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </symbol>
+          <symbol
+            id="icon-check"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </symbol>
+          <symbol id="result-star" viewBox="0 0 24 24">
+            <polygon
+              points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+            ></polygon>
+          </symbol>
+        </defs>
+      </svg>
     </defs>
     <main>
-        <div class="games-container chalk-txt">
-            <h1 class="orange-txt">შეავსე სატვირთო!</h1>
-            <div class="game-hud">
-                <div class="hud-stat">
-                    <svg>
-                        <use href="#icon-time"></use>
-                    </svg>
-                    <span id="timer-display">60 წმ</span>
-                </div>
+      <div class="games-container chalk-txt">
+        <h1 class="orange-txt">შეავსე სატვირთო!</h1>
+        <div class="game-hud">
+          <div class="hud-stat">
+            <svg>
+              <use href="#icon-time"></use>
+            </svg>
+            <span id="timer-display">60 წმ</span>
+          </div>
 
-                <div class="hud-stat">
-                    <svg>
-                        <use href="#icon-check"></use>
-                    </svg>
-                    <span class="reg-txt">სწორი: <span id="score-display">0</span> </span>
-                </div>
-            </div>
-            <div class="loading-zone">
-                <h2 id="quest-txt">
-                    სატვირთოს ზუსტად <span class="orange-txt" id="target-weight">1</span>კგ-ს წაღება უნდა
-                </h2>
-                <div class="truck-cont">
-                    <div class="truck-bed" id="truck-bed"></div>
-                    <div class="truck-cabin"></div>
-
-                </div>
-            </div>
-            <h3 id="feedback-msg">დააჭირე საგნებს, რომელთა მოთავსებაც გინდა სატვირთოზე</h3>
-
-            <div class="inventory" id="inventory">
-                <div class="box-card" data-value="1">
-                    <svg>
-                        <use href="#icon-sack"></use>
-                    </svg>
-                    <span>ზურგჩანთა (1 კგ)</span>
-                    <div class="box-count">დარჩა: <span id="count-1">0</span></div>
-                </div>
-                <div class="box-card " data-value="5">
-                    <svg>
-                        <use href="#icon-package"></use>
-                    </svg>
-                    <span>ამანათი (5 კგ)</span>
-                    <div class="box-count">დარჩა: <span id="count-5">0</span></div>
-                </div>
-                <div class="box-card " data-value="10">
-                    <svg>
-                        <use href="#icon-suitcase"></use>
-                    </svg>
-                    <span>ჩემოდანი (10 კგ)</span>
-                    <div class="box-count">დარჩა: <span id="count-10">0</span></div>
-                </div>
-                <div class="box-card" data-value="20">
-                    <svg>
-                        <use href="#icon-big-box"></use>
-                    </svg>
-                    <span>დიდი ყუთი (20 კგ)</span>
-                    <div class="box-count">დარჩა: <span id="count-20">0</span></div>
-                </div>
-            </div>
-
-            <div class="flexrow truck-action-btns">
-                <div class="button sketchy-button--md " id="btn-reset">საბარგულის გასუფთავება</div>
-                <div class="button sketchy-button--md orange-bg white-txt" onclick="checkAns()">გაუშვი სატვირთო!
-                </div>
-            </div>
-
+          <div class="hud-stat">
+            <svg>
+              <use href="#icon-check"></use>
+            </svg>
+            <span class="reg-txt"
+              >სწორი: <span id="score-display">0</span>
+            </span>
+          </div>
         </div>
+        <div class="loading-zone">
+          <h2 id="quest-txt">
+            სატვირთოს ზუსტად
+            <span class="orange-txt" id="target-weight">1</span>კგ-ს წაღება უნდა
+          </h2>
+          <div class="truck-cont">
+            <div class="truck-bed" id="truck-bed"></div>
+            <div class="truck-cabin"></div>
+          </div>
+        </div>
+        <h3 id="feedback-msg">
+          დააჭირე საგნებს, რომელთა მოთავსებაც გინდა სატვირთოზე
+        </h3>
+
+        <div class="inventory" id="inventory">
+          <div class="box-card" data-value="1">
+            <svg>
+              <use href="../../../../assets/game_assets.svg#icon-package"></use>
+            </svg>
+            <span>საჩუქარი (1 კგ)</span>
+            <div class="box-count">დარჩა: <span id="count-1">0</span></div>
+          </div>
+          <div class="box-card" data-value="5">
+            <svg>
+              <use href="../../../../assets/game_assets.svg#icon-sack"></use>
+            </svg>
+            <span>ზურგჩანთა (5 კგ)</span>
+            <div class="box-count">დარჩა: <span id="count-5">0</span></div>
+          </div>
+          <div class="box-card" data-value="10">
+            <svg>
+              <use
+                href="../../../../assets/game_assets.svg#icon-suitcase"
+              ></use>
+            </svg>
+            <span>ჩემოდანი (10 კგ)</span>
+            <div class="box-count">დარჩა: <span id="count-10">0</span></div>
+          </div>
+          <div class="box-card" data-value="20">
+            <svg>
+              <use href="../../../../assets/game_assets.svg#icon-big-box"></use>
+            </svg>
+            <span>დიდი ყუთი (20 კგ)</span>
+            <div class="box-count">დარჩა: <span id="count-20">0</span></div>
+          </div>
+        </div>
+
+        <div class="flexrow truck-action-btns">
+          <div class="button sketchy-button--md" id="btn-reset">
+            საბარგულის გასუფთავება
+          </div>
+          <div
+            class="button sketchy-button--md orange-bg white-txt"
+            onclick="checkAns()"
+          >
+            გაუშვი სატვირთო!
+          </div>
+        </div>
+      </div>
     </main>
     <div id="start-overlay">
-        <div class="result-box">
-            <h2 class="chalk-txt">შეავსე სატვირთო!</h2>
-            <p class="reg-txt grey-txt overlay-subtitle">გაქვს 30 წამი - გადათვალე ვაშლები!</p>
-            <div class="button sketchy-button--lg orange-bg push-down-btn chalk-txt" onclick="handleStartGame()">
-                დაწყება
-            </div>
+      <div class="result-box">
+        <h2 class="chalk-txt">შეავსე სატვირთო!</h2>
+        <p class="reg-txt grey-txt overlay-subtitle">
+          გაქვს 30 წამი - გადათვალე ვაშლები!
+        </p>
+        <div
+          class="button sketchy-button--lg orange-bg push-down-btn chalk-txt"
+          onclick="handleStartGame()"
+        >
+          დაწყება
         </div>
+      </div>
     </div>
 
     <div id="result-overlay">
-        <div class="result-box">
-            <h2 class="chalk-txt">დრო ამოიწურა!</h2>
-            <p id="result-count" class="reg-txt"></p>
-            <p id="result-improved" class="reg-txt"></p>
-            <h3 class="chalk-txt heading-3">ქულა: <strong id="result-score" class="orange-txt"></strong></h3>
+      <div class="result-box">
+        <h2 class="chalk-txt">დრო ამოიწურა!</h2>
+        <p id="result-count" class="reg-txt"></p>
+        <p id="result-improved" class="reg-txt"></p>
+        <h3 class="chalk-txt heading-3">
+          ქულა: <strong id="result-score" class="orange-txt"></strong>
+        </h3>
 
-            <div class="result-star-container">
-                <svg class="result-star">
-                    <use href="#result-star"></use>
-                </svg>
-                <svg class="result-star">
-                    <use href="#result-star"></use>
-                </svg>
-                <svg class="result-star">
-                    <use href="#result-star"></use>
-                </svg>
-            </div>
-
-            <div class="rep-map-btns">
-                <button id="btn-replay" class="button sketchy-button--md push-down-btn chalk-txt">თავიდან
-                    დაწყება</button>
-                <button id="btn-map"
-                    class="button sketchy-button--md push-down-btn chalk-txt orange-bg white-txt">კუნძულზე
-                    დაბრუნება</button>
-            </div>
+        <div class="result-star-container">
+          <svg class="result-star">
+            <use href="#result-star"></use>
+          </svg>
+          <svg class="result-star">
+            <use href="#result-star"></use>
+          </svg>
+          <svg class="result-star">
+            <use href="#result-star"></use>
+          </svg>
         </div>
+
+        <div class="rep-map-btns">
+          <button
+            id="btn-replay"
+            class="button sketchy-button--md push-down-btn chalk-txt"
+          >
+            თავიდან დაწყება
+          </button>
+          <button
+            id="btn-map"
+            class="button sketchy-button--md push-down-btn chalk-txt orange-bg white-txt"
+          >
+            კუნძულზე დაბრუნება
+          </button>
+        </div>
+      </div>
     </div>
 
     <div id="loading-overlay">
-        <div class="result-box chalk-txt">
-            შედეგი იგზავნება...
-        </div>
+      <div class="result-box chalk-txt">შედეგი იგზავნება...</div>
     </div>
 
     <footer></footer>
@@ -186,6 +194,5 @@
     <script src="../../../../js/auth.js"></script>
     <script src="../../../../js/game-engine.js"></script>
     <script src="../../../../js/game-submit.js"></script>
-</body>
-
+  </body>
 </html>
