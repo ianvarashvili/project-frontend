@@ -86,7 +86,7 @@ function startRound() {
     const wrapper = document.createElement("div");
     wrapper.className = "wrapper";
     wrapper.innerHTML = starSVG;
-    wrapper.dataset.index = 1;
+    wrapper.dataset.index = i;
 
     wrapper.onclick = function () {
       checkAns(this, i);

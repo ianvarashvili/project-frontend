@@ -3,7 +3,7 @@ const GAME_STATE = {
   island: "labyrinth",
   gameGrade:
     parseInt(new URLSearchParams(window.location.search).get("grade"), 10) || 2,
-  timeLimitSeconds: 45,
+  timeLimitSeconds: 60,
 };
 
 const FRUITS = [

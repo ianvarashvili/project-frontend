@@ -3,7 +3,7 @@ const GAME_STATE = {
   island: "castle",
   gameGrade:
     parseInt(new URLSearchParams(window.location.search).get("grade"), 10) || 1,
-  timeLimitSeconds: 30,
+  timeLimitSeconds: 60,
 };
 
 let selectedApple = null;
