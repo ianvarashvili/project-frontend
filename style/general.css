@@ -64,6 +64,11 @@ body {
   font-family: "Cabin-Sketch";
   src: url(../fonts/CabinSketch-Regular.ttf);
 }
+
+@font-face {
+  font-family: "Kalam";
+  src: url(../fonts/Kalam.ttf);
+}
 /* FLEX */
 .flexcolumn {
   display: flex;
@@ -112,11 +117,19 @@ body {
 .cabin-sketch-txt {
   font-family: "Cabin-Sketch";
 }
+.kalam-txt {
+  font-family: "kalam";
+}
+
 .hover-color-change {
   transform: background-color 0.2s ease;
 }
 .h-title {
   font-size: 26px;
+  font-family: "Kalam";
+}
+.h-title-2 {
+  font-size: 28px;
 }
 /* BUTTONS STYLE */
 .sketchy-button--sm {
