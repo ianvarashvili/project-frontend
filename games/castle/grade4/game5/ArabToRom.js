@@ -98,7 +98,7 @@ function toggleUfo() {
   ufoSelected = !ufoSelected;
   if (ufoSelected) {
     ufoEl.classList.add("selected");
-    // showFeedback("ხომალდი ჩართულია! აირჩიე შესაბამისი პლანეტა!", true);
+    feedbackMsg.innerText ="ხომალდი ჩართულია! აირჩიე შესაბამისი პლანეტა";
   } else {
     ufoEl.classList.remove("selected");
     feedbackMsg.style.color = "";

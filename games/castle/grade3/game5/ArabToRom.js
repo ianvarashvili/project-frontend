@@ -98,10 +98,11 @@ function toggleUfo() {
   ufoSelected = !ufoSelected;
   if (ufoSelected) {
     ufoEl.classList.add("selected");
+           feedbackMsg.innerText ="ხომალდი ჩართულია! აირჩიე შესაბამისი პლანეტა";
   } else {
     ufoEl.classList.remove("selected");
     feedbackMsg.style.color = "";
-    feedbackMsg.innerText =
+ feedbackMsg.innerText =
       "ჯერ გაააქტიურე ხომალდი მასზე დაჭერით და აირჩიე პლანეტა!";
   }
 }
