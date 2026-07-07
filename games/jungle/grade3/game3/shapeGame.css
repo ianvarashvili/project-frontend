@@ -40,8 +40,9 @@ svg {
   stroke-linejoin: round;
 }
 .display-object {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 10px;
 }
 .fill-orange {
   fill: var(--color-primary);

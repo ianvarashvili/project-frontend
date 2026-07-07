@@ -162,7 +162,7 @@
     <header></header>
     <main>
       <div class="games-container chalk-txt">
-        <h1 class="heading-1" id="feedback-msg">
+        <h1 class="heading-1">
           აირჩიე სწორი <span class="orange-txt">ფორმა!</span>
         </h1>
         <div class="game-hud">
@@ -183,8 +183,10 @@
           </div>
         </div>
         <div class="shape-game cards" id="item-card">
-          <div class="prompt-txt" id="prompt-label">იტვირთება...</div>
+          <h2 id="feedback-msg">აირჩიე სწორი ფორმა</h2>
           <div id="obj-visual-cont"></div>
+          <div class="prompt-txt" id="prompt-label">იტვირთება...</div>
+          
         </div>
 
         <div class="opts-cont" id="options-cont">
@@ -234,14 +236,13 @@
     </main>
     <div id="start-overlay">
       <div class="result-box">
-        <h2 class="chalk-txt">შეუსაბამე სწორი ფორმა ნივთებს!</h2>
-        <p class="reg-txt grey-txt" style="margin: 16px 0 24px 0">
-          გაქვს 30 წამი — იპოვე მსგავსება!
+        <h2 class="chalk-txt">აირჩიე სწორი ფორმა!</h2>
+        <p class="reg-txt grey-txt overlay-subtitle">
+          გაქვს 30 წამი - შეუსაბამე ფორმები საგნებს!
         </p>
         <div
           class="button sketchy-button--lg orange-bg push-down-btn chalk-txt"
           onclick="handleStartGame()"
-          style="margin: 0 auto; width: 80%"
         >
           დაწყება
         </div>

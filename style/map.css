@@ -34,7 +34,7 @@
   transform: translateY(-8px);
 }
 .island-label {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 .island-sublabel {
@@ -45,13 +45,17 @@
   font-size: 1.4rem;
 }
 .island-svg {
-  animation: float 4s ease-in-out infinite;
+  margin-top: 50px;
+  height: 300px;
+  width: 300px;
+  animation: float 3s ease-in-out infinite;
 }
 #island-jungle .island-svg {
   animation-delay: 0.8s;
+  margin-top: 4px;
 }
 #island-labyrinth .island-svg {
-  animation-delay: 1.6s;
+  animation-delay: 1s;
 }
 @keyframes float {
   0%,

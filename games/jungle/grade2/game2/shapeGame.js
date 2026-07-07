@@ -95,7 +95,6 @@ function startRound() {
 
   currentItem = picker;
   gameState.isFinished = false;
-  // სათაურის/ფედბექის საწყის ეტაპზე დაბრუნება ახალი რაუნდისას
   if (feedbackMsg) {
     feedbackMsg.innerText = "აირჩიე სწორი ფორმა!";
     feedbackMsg.style.color = "";

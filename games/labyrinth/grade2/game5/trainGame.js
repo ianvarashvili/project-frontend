@@ -1,8 +1,8 @@
 const GAME_STATE = {
-  gameId: "castle_g2_game3",
-  island: "castle",
+  gameId: "labyrinth_g2_game5",
+  island: "labyrinth",
   gameGrade:
-    parseInt(new URLSearchParams(window.location.search).get("grade"), 10) || 1,
+    parseInt(new URLSearchParams(window.location.search).get("grade"), 10) || 2,
   timeLimitSeconds: 30,
 };
 
