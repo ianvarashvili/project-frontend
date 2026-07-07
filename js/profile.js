@@ -15,9 +15,9 @@ const ALL_BADGES = [
     description: "მოხვდი ტოპ სამეულში",
   },
   {
-    id: "სრული სიზუსტე",
+    id: "კუნძულის ოსტატი",
     icon: "../assets/sprites.svg#icon-target-profile",
-    description: "100% სიზუსტე კუნძულზე",
+    description: "მიიღე 3 ვარსკვლავი კუნძულის ყველა თამაშზე",
   },
 ];
 
